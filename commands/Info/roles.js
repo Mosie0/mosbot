@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor("Server Owner" + `\n` + message.guild.owner.user.username, message.guild.owner.user.avatarURL)
         .setThumbnail(sIcon)
     message.channel.startTyping();
-    message.channel.send(serverEmbed);
+    message.channel.send(Server Roles message.guild.roles.map(role => role.name).join(' , '));
     await message.channel.stopTyping();
 }
 
