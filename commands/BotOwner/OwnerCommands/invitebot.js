@@ -7,10 +7,8 @@ module.exports.run = async (bot, message, args) => {
         .setColor("#00ffff")
         .setThumbnail(bot.user.avatarURL)
         .addField("Invite for the Bot", `[Click here for the Invite](https://discordapp.com/api/oauth2/authorize?client_id=${bot.user.id}&permissions=8&scope=bot)`)
-    message.channel.startTyping();
     message.channel.send(botembed);
     message.delete().catch();
-    await message.channel.stopTyping();
 }
 module.exports.help = {
     name: "invite"
