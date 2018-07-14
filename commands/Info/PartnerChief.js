@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 const embed = new Discord.RichEmbed()
 .setColor(`#11a8ff`)
 .setDescription(`
-●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬▬●
+●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬●
 
 <a:UpVote:465232115995246604> SUPERCHIEFYT's Discord
 
