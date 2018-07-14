@@ -19,7 +19,7 @@ Features:
 🔹 Open for Partnerships
 🔹 We are a Large Online Family
 `)
-.addField(`Server Invite`, `http://discord.gg/xzWtMvd`)
+.addField(`Server Invite`, `http://discord.gg/ynDsWHa`)
 .setThumbnail(`https://images-ext-1.discordapp.net/external/iFR7HW3zlD6oP9UOPVM9Htx9S4nhPKGwRyA4Sud1daU/https/discordapp.com/api/guilds/297872830488641536/icons/872f93ac1aaa326c4f7352133bebf21b.jpg`)
 message.channel.send(embed);
 }
