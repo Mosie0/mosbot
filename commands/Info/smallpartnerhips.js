@@ -8,7 +8,7 @@ Small Partnerships:
 <@244271175608303616>: https://discord.gg/SeWwhDd
 
 <@298201869585612810> and <@297871529621061643>'s Discord: https://discord.gg/23wfHyG`)
-.addField(`Partnerships`, `Dm Mo_sie to partnership with Gaming HQ!`)
+.addField(`Partnerships`, `Dm Mo_sie to partner with Gaming HQ!`)
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
 }
