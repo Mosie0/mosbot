@@ -108,17 +108,50 @@ fs.readdir("./commands/Moderation/", (err, files) => {
         bot.commands.set(props.help.name, props);
     });
 });
-fs.readdir("./commands/BotOwner/OwnerCommands", (err, files) => {
+
+fs.readdir("./commands/BotOwner", (err, files) => {
 
     if (err) console.log(err);
     let jsfile = files.filter(f => f.split(".").pop() === "js");
     if (jsfile.length <= 0) {
-        console.log("Couldn't find BotOwner/OwnerCommands commands.");
+        console.log("Couldn't find Bot Owner commands.");
         return;
     }
 
     jsfile.forEach((f, i) => {
-        let props = require(`./commands/BotOwner/OwnerCommands/${f}`);
+        let props = require(`./commands/BotOwner/${f}`);
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+});
+
+
+fs.readdir("./commands/BotOwner/SuperCommands", (err, files) => {
+
+    if (err) console.log(err);
+    let jsfile = files.filter(f => f.split(".").pop() === "js");
+    if (jsfile.length <= 0) {
+        console.log("Couldn't find BotOwner/SuperCommands commands.");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let props = require(`./commands/BotOwner/SuperCommands/${f}`);
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+});
+fs.readdir("./commands/BotOwner/MosieCommands", (err, files) => {
+
+    if (err) console.log(err);
+    let jsfile = files.filter(f => f.split(".").pop() === "js");
+    if (jsfile.length <= 0) {
+        console.log("Couldn't find BotOwner/MosieCommands commands.");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let props = require(`./commands/BotOwner/MosieCommands/${f}`);
         console.log(`${f} loaded!`);
         bot.commands.set(props.help.name, props);
     });
