@@ -13,7 +13,7 @@ Lit Fam Gaming: https://discord.gg/ynDsWHa
 
 <@421033482752360448>'s Discord: https://discord.gg/tApCxyn
 `)
-.addField(`Partnerships`, `Dm Mo_sie to partner with Gaming HQ!`)
+.addField(`Partnerships`, `Dm <@283311727477784576> to partner with Gaming HQ!`)
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
 }
