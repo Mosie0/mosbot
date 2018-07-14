@@ -18,7 +18,7 @@ let serverEmbed = new Discord.RichEmbed()
     .addField("Total Roles", message.guild.roles.size, true)
     .addField("Total Bots", botCount, true)
     .addField("Total Humans", humanCount, true)
-    .addField("Server Roles", "Type **s!roles** to see the server roles")
+    .addField("Server Roles", "Type **m!roles** to see the server roles")
     .addField("You Joined", message.member.joinedAt)
     .setFooter(`ID: ${message.guild.id} ` + "Server Created At ", sIcon);
     message.channel.startTyping();
