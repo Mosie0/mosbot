@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
 const embed = new Discord.RichEmbed()
 .setColor(`#11a8ff`)
+.setAuthor(`SUPERCHIEFYT`, `https://cdn.discordapp.com/avatars/288450828837322764/a_9da0205f2e4a0f15565046ad156ac839.gif`)
 .setDescription(`
 ●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬●
 
