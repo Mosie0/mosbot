@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     const usernameurl = message.author.avatarURL;
     let replyembed = new Discord.RichEmbed()
         .setColor("#FF0000")
-        .setDescription("This is a Bot Owner Command Only! For More Infomation Please Contact <@288450828837322764>")
+        .setDescription("This is a Bot Owner Command Only! For More Infomation Please Contact <@288450828837322764> or <@283311727477784576> ")
         .setAuthor(bot.user.username, bot.user.avatarURL)
         .setFooter("Commnad Ran By: " + message.author.username, message.author.avatarURL)
     if (message.author.id !== "283311727477784576") return message.channel.send(replyembed);
