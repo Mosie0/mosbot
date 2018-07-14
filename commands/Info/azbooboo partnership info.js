@@ -13,7 +13,7 @@ My server is a place for fun!! We like to game play and voice chat.
 🌞  A fun place to be 🎊
 `)
 .addField(`Server Invite`, `https://discord.gg/rqGzftT`)
-.setthumbnail(https://cdn.discordapp.com/attachments/422430815561973761/467753104725770240/43151bcb9c44b5b11f06ef7058950b5c.png)
+.setthumbnail(`https://cdn.discordapp.com/attachments/422430815561973761/467753104725770240/43151bcb9c44b5b11f06ef7058950b5c.png`)
 message.channel.send(embed);
 }
 module.exports.help = {
