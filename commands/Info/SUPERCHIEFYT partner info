@@ -16,7 +16,7 @@ Features:
 
 `)
 .addField(`Server Invite`, `https://discord.gg/ZMYu7KK`)
-.setthumbnail(https://images-ext-2.discordapp.net/external/l27Gxb4vbIwafwJ1QCI3KHb32bui1NvYmV-SQMgmDgA/https/discordapp.com/api/guilds/251055654465175554/icons/f2d1864625cf8d7e5865c9af98f827ca.jpg)
+.setthumbnail(https://images-ext-2.discordapp.net/external/5Tyx0JA0PmLtkfDsNKXpaQ8MmQ4ChvLHb2WvNfcScLs/https/discordapp.com/api/guilds/371105897570631691/icons/9da0205f2e4a0f15565046ad156ac839.jpg)
 message.channel.send(embed);
 }
 module.exports.help = {
