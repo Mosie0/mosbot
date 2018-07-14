@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     if (message.author.id !== "283311727477784576") return;
+    let bicon = ("");
     let botembed = new Discord.RichEmbed()
         .setColor("#00ffff")
         .setThumbnail(bot.user.avatarURL)
