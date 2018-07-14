@@ -11,8 +11,6 @@ Lit Fam Gaming: https://discord.gg/ynDsWHa
 
 <@289538490201538560>'s Discord: https://discord.gg/rqGzftT
 
-Verified Scripters: https://discord.gg/5DYYAwM
-
 <@421033482752360448>'s Discord: https://discord.gg/tApCxyn
 `)
 .addField(`Partnerships`, `Dm Mo_sie to partner with Gaming HQ!`)
