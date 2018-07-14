@@ -10,4 +10,4 @@ message.channel.send(embed);
 }
 module.exports.help = {
     name: "PartnerSS"
-}                                                                                                                                                                                                                                        :boom:And Much More!!!
+}
