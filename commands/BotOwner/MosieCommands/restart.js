@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     let alert = message.guild.channels.find('name', "modlogs");
     if (!alert) return message.channel.send(cantfindembed);
     console.log(`Bot Has Been Restart By: ` + message.author.username);
-    if (message.author.id !== "288450828837322764") return message.reply("Sorry But this is a Bot Owner Only Command.");
+    if (message.author.id !== "283311727477784576") return;
     await message.react("✅");
     await alert.send(botembed);
     message.delete(1000).catch();

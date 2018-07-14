@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription("This is a Bot Owner Command Only! For More Infomation Please Contact <@288450828837322764>")
         .setAuthor(bot.user.username, bot.user.avatarURL)
         .setFooter("Commnad Ran By: " + message.author.username, message.author.avatarURL)
-    if (message.author.id !== "288450828837322764") return message.channel.send(replyembed);
+    if (message.author.id !== "283311727477784576") return message.channel.send(replyembed);
 try {
     let code = args.join(" ");
     let evaled = eval(code);

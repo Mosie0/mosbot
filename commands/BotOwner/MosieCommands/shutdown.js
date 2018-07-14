@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         .setFooter("Shutting Down will take a few minutes for the bot to appear offline.", message.author.displayAvatarURL)
     let alert = message.guild.channels.find('name', "modlogs");
     console.log("Bot Has Gone Offline.");
-    if (message.author.id !== "288450828837322764") return message.reply("Sorry But this is a Bot Owner Only Command.");
+    if (message.author.id !== "283311727477784576") return;
     await message.react("✅");
     await alert.send(botembed);
     message.delete().catch();
