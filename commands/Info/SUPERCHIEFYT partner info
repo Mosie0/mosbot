@@ -1,0 +1,24 @@
+const Discord = require('discord.js');
+
+module.exports.run = async (bot, message, args) => {
+const embed = new Discord.RichEmbed()
+.setColor(`#11a8ff`)
+.setDescription(`
+●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬▬●
+
+<a:UpVote:465232115995246604> SUPERCHIEFYT's Discord
+
+Features:
+⬆  Level up roles 
+🛡  Good Staff members
+🤖  Fun bots
+<a:Cheer:446237254499958795>  Good chill hangout for people 
+
+`)
+.addField(`Server Invite`, `https://discord.gg/ZMYu7KK`)
+.setthumbnail(https://images-ext-2.discordapp.net/external/l27Gxb4vbIwafwJ1QCI3KHb32bui1NvYmV-SQMgmDgA/https/discordapp.com/api/guilds/251055654465175554/icons/f2d1864625cf8d7e5865c9af98f827ca.jpg)
+message.channel.send(embed);
+}
+module.exports.help = {
+    name: "PartnerChief"
+}
