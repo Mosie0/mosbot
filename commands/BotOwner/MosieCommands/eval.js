@@ -11,6 +11,7 @@ module.exports.run = async (bot, message, args) => {
     if (message.author.id !== "283311727477784576") return message.channel.send(replyembed);
 try {
     let code = args.join(" ");
+    if (!code) return message.channel.send(`You need to provide args, for this Command to work`)
     let evaled = eval(code);
 
     if (typeof evaled !== "string")
