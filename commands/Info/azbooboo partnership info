@@ -17,5 +17,5 @@ My server is a place for fun!! We like to game play and voice chat.
 message.channel.send(embed);
 }
 module.exports.help = {
-    name: "PartnerJon"
+    name: "PartnerAz"
 }
