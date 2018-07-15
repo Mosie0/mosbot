@@ -11,11 +11,11 @@ module.exports.run = async (bot, message, args) => {
     let rUser = message.mentions.users.first();
     let modlogs = message.guild.channels.find('name', '⌨modlog⌨');
     if(!modlogs) return message.channel.send('Cant Find the modlogs Channel');
-    if(message.mentions.users.size < 1) return message.channel.send('You need to Mention a user for me to warn them!').catch(console.error);
-    message.channel.send(`** ✅ ${rUser.tag} Has been warned.**`)
+    if(message.mentions.users.size < 1) return message.channel.send('You need to Mention a user for me to dm them!').catch(console.error);
+    message.channel.send(`** ✅ ${rUser.tag} Has been dmed.**`)
     const dmembed = new Discord.RichEmbed()
     .setColor(`#FF0000`)
-    .setDescription(`You have been warned in **${message.guild.name}** For **${reason}**`)
+    .setDescription(`You have been dmed in **${message.guild.name}** For **${reason}**`)
     rUser.send(dmembed)
 }
 
