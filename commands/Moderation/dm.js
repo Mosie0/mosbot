@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`** ✅ ${rUser.tag} Has been dmed.**`)
     const dmembed = new Discord.RichEmbed()
     .setColor(`#FF0000`)
-    .setDescription(`You have been dmed in **${message.guild.name}** For **${reason}**`)
+    .setDescription(`Dm from **${message.guild.name}**: **${reason}**`)
     rUser.send(dmembed)
 }
 
