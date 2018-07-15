@@ -17,17 +17,8 @@ module.exports.run = async (bot, message, args) => {
     .setColor(`#FF0000`)
     .setDescription(`You have been warned in **${message.guild.name}** For **${reason}**`)
     rUser.send(dmembed)
-    const warnembed = new Discord.RichEmbed()
-    .setColor(`#ff0000`)
-    .addField(`Warned User`, `<@${rUser.id}>`, true)
-    .addField(`Moderator`, `<@${Moderatoruser}>`, true)
-    .addField(`Reason`, `${reason}`)
-    .setTimestamp()
-    .setFooter(`ID: ` + `${rUser.id}`, rUser.avatarURL)
-    modlogs.send(warnembed);
-    await message.delete().catch();
 }
 
 module.exports.help = {
-    name: "warn"
+    name: "dm"
 }
