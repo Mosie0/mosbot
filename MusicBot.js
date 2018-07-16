@@ -18,7 +18,7 @@ bot.on("ready", async () => {
 
     console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
 
-    bot.user.setActivity(${bot.guilds.size} Servers, { type: "LISTENING"});
+    bot.user.setActivity(`${bot.guilds.size} Servers`, { type: "LISTENING"});
 
 });
 
