@@ -1,4 +1,4 @@
-client.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', member => {
 const embed = new Discord.RichEmbed()
 .setTitle("User Joined")
 .addField("User",member.tag,true)
@@ -6,5 +6,5 @@ const embed = new Discord.RichEmbed()
 .setThumbnail(member.iconUrl)
 .setTimestamp()
 .setFooter(member.guild.name)
-  client.channels.get('422057529271648256').send(embed)
+  bot.channels.get('422057529271648256').send(embed)
 });
