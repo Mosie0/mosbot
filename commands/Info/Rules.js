@@ -9,25 +9,25 @@ const embed = new Discord.RichEmbed()
 .addField(`
 ---------------------------Rules---------------------------
 GENERAL DISCORD RULES`, `
-:diamond_shape_with_a_dot_inside: Treat others with respect
-:diamond_shape_with_a_dot_inside: Do not disrespect staff 
-:diamond_shape_with_a_dot_inside: No swearing, profanity posts/talk emoticons
-:diamond_shape_with_a_dot_inside: EVERYTHING in this discord **must** be family friendly
-:diamond_shape_with_a_dot_inside: Bullying is NOT allowed
-:diamond_shape_with_a_dot_inside: No talking of politics or  religion
-:diamond_shape_with_a_dot_inside: This is a English speaking Discord
-:diamond_shape_with_a_dot_inside: Use your common sense
-:diamond_shape_with_a_dot_inside: NO spamming
-:diamond_shape_with_a_dot_inside: NO raiding
-:diamond_shape_with_a_dot_inside: No NSFW
-:diamond_shape_with_a_dot_inside: No random tagging
-:diamond_shape_with_a_dot_inside: No sharing personal info
-:diamond_shape_with_a_dot_inside: If you get banned you have to wait to rejoin, dont think you can talk me or the admins to unbanning right away.
-:diamond_shape_with_a_dot_inside: NO caps
-:diamond_shape_with_a_dot_inside: Dont tag staff (Moderators+) unless if you need major help with something.
-:diamond_shape_with_a_dot_inside: Do not leak chats to people outside of the Discord
+💠 Treat others with respect
+💠 Do not disrespect staff 
+💠 No swearing, profanity posts/talk emoticons
+💠 EVERYTHING in this discord **must** be family friendly
+💠 Bullying is NOT allowed
+💠 No talking of politics or  religion
+💠 This is a English speaking Discord
+💠 Use your common sense
+💠 NO spamming
+💠 NO raiding
+💠 No NSFW
+💠 No random tagging
+💠 No sharing personal info
+💠 NO caps
+💠 If you get banned you have to wait to rejoin, don't think you can talk me or the admins to unbanning right away.
+💠 Dont tag staff (Moderators+) unless if you need major help with something.
+💠 Do not leak chats to people outside of the Discord
 
-:diamond_shape_with_a_dot_inside: ***NEVER ARGUE WITH STAFF***
+💠 ***NEVER ARGUE WITH STAFF***
 
 :large_orange_diamond: **NOTE:** ***ALL STAFF HAVE FINAL SAY ON ANY OF THESE RULES***.
 
