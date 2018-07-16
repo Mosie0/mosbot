@@ -22,9 +22,9 @@ GENERAL DISCORD RULES`, `
 :diamond_shape_with_a_dot_inside: No NSFW
 :diamond_shape_with_a_dot_inside: No random tagging
 :diamond_shape_with_a_dot_inside: No sharing personal info
-:diamond_shape_with_a_dot_inside: If you get banned you have to wait to rejoin, don't think you can talk me or the admins to unbanning right away.
+:diamond_shape_with_a_dot_inside: If you get banned you have to wait to rejoin, dont think you can talk me or the admins to unbanning right away.
 :diamond_shape_with_a_dot_inside: NO caps
-:diamond_shape_with_a_dot_inside: Don't tag staff (Moderators+) unless if you need major help with something.
+:diamond_shape_with_a_dot_inside: Dont tag staff (Moderators+) unless if you need major help with something.
 :diamond_shape_with_a_dot_inside: Do not leak chats to people outside of the Discord
 
 :diamond_shape_with_a_dot_inside: ***NEVER ARGUE WITH STAFF***
