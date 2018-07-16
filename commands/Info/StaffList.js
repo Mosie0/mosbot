@@ -8,7 +8,7 @@ const embed = new Discord.RichEmbed()
 <@283311727477784576>
 
 <@&446172124353265665>
-N/A
+***N/A***
 
 <@&447962800791355402>
 <@244271175608303616>
@@ -29,8 +29,11 @@ N/A
 <@362143129136267265>
 <@372468580643635211>
 <@203259894743302145>
+
+<@&466006038244622338>
+***N/A***
 `)
-.setThumbnail(message.guild.iconURL)
+.setThumbnail(`https://cdn.discordapp.com/attachments/421895390065852431/468466969637552159/GamingHQLogo.png`)
 .setImage(`https://cdn.discordapp.com/attachments/422106448487776276/459126100061061139/my_tweet_7.png`)
 message.channel.send(embed);
 }
