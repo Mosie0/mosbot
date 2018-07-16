@@ -34,6 +34,7 @@ GENERAL DISCORD RULES`, `
 🔷 By joining this discord you must follow **ALL** of these rules, including staff.
 
 ⬜ Thank you so much for reading! And hope you have an **AWESOME** time here!`)
+.addField (`***In Case of Emergency***`, `Tag <@&431811267968106506>`)
 .setThumbnail(`https://images-ext-2.discordapp.net/external/pQEQWDyNfBGw1xqJt8vz1prqzbfjf4OasBlXbnN6s0M/https/cdn.discordapp.com/attachments/444028025932349441/445611500246269972/alert.gif`)
 message.channel.send(embed);
 }
