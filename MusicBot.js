@@ -21,7 +21,18 @@ bot.on("ready", async () => {
     bot.user.setActivity(`${bot.guilds.size} Servers`, { type: "LISTENING"});
 
 });
-
+bot.on("guildMemberAdd", async member => {
+    let modlogs = member.guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#1CFF00")
+        .setAuthor('Member Joined', member.user.avatarURL)
+        .setFooter(`ID: ${member.id}`)
+        .setTimestamp()
+        .setDescription(`${member} ${member.user.tag}`)
+        .setThumbnail(member.user.avatarURL)
+    await modlogs.send(botembed);
+});
 bot.on("message", async message => {
 
     if (message.author.bot) return;
