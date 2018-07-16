@@ -36,7 +36,7 @@ const embed = new Discord.RichEmbed()
 <@&466006038244622338>
 ***N/A***
 `)
-.setThumbnail(`message.guild.iconURL`)
+.setThumbnail(message.guild.iconURL)
 .setImage(`https://cdn.discordapp.com/attachments/422106448487776276/459126100061061139/my_tweet_7.png`)
 message.channel.send(embed);
 }
