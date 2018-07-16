@@ -6,5 +6,5 @@ const embed = new Discord.RichEmbed()
 .setThumbnail(member.iconUrl)
 .setTimestamp()
 .setFooter(member.guild.name)
-  client.channels.get('modlog').send(embed)
+  client.channels.get('422057529271648256').send(embed)
 });
