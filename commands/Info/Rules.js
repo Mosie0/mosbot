@@ -29,13 +29,13 @@ GENERAL DISCORD RULES`, `
 
 💠 ***NEVER ARGUE WITH STAFF***
 
-:large_orange_diamond: **NOTE:** ***ALL STAFF HAVE FINAL SAY ON ANY OF THESE RULES***.
+🔶 **NOTE:** ***ALL STAFF HAVE FINAL SAY ON ANY OF THESE RULES***.
 
-:large_orange_diamond: This discord complies with the Discord Guidelines: https://discordapp.com/guidelines
+🔶 This discord complies with the Discord Guidelines: https://discordapp.com/guidelines
 
-:large_blue_diamond: By joining this discord you must follow **ALL** of these rules, including staff.
+🔷 By joining this discord you must follow **ALL** of these rules, including staff.
 
-:white_large_square: Thank you so much for reading! And hope you have an **AWESOME** time here!`)
+⬜ Thank you so much for reading! And hope you have an **AWESOME** time here!`)
 .setThumbnail(`https://images-ext-2.discordapp.net/external/pQEQWDyNfBGw1xqJt8vz1prqzbfjf4OasBlXbnN6s0M/https/cdn.discordapp.com/attachments/444028025932349441/445611500246269972/alert.gif`)
 message.channel.send(embed);
 }
