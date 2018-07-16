@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-      //s!prune (number of messages here)
+      //m!prune (number of messages here)
       if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("you don't have permission to use this command.");
       const noembed = new Discord.RichEmbed()
       .setColor("#FF0000")
@@ -22,5 +22,5 @@ module.exports.run = async (bot, message, args) => {
 }      
 
 module.exports.help = {
-    name: "prune"
+    name: "purge"
 }
