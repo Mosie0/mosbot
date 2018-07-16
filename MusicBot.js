@@ -33,6 +33,19 @@ bot.on("guildMemberAdd", async member => {
         .setThumbnail(member.user.avatarURL)
     await modlogs.send(botembed);
 });
+bot.on("guildMemberRemove", async member => {
+    let guild = member.guild;
+    let modlogs = member.guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setAuthor('Member Left', member.user.avatarURL)
+        .setFooter(`ID: ${member.id}`)
+        .setTimestamp()
+        .setDescription(`${member} ${member.user.tag}`)
+        .setThumbnail(member.user.avatarURL)
+    modlogs.send(botembed);
+});
 bot.on("message", async message => {
 
     if (message.author.bot) return;
