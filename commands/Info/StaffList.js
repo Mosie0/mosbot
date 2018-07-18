@@ -34,7 +34,7 @@ const embed = new Discord.RichEmbed()
 <@203259894743302145>
 
 <@&466006038244622338>
-***N/A***
+<@368775528234352642>
 `)
 .setThumbnail(message.guild.iconURL)
 .setImage(`https://cdn.discordapp.com/attachments/422106448487776276/459126100061061139/my_tweet_7.png`)
