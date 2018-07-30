@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     let reason = args.slice(1).join(' ');
     if(!reason) return message.channel.send(`You need to Provide a Reason! <@${message.author.id}>`);
     let rUser = message.mentions.users.first();
-    let modlogs = message.guild.channels.find('name', 'modlog');
+    let modlogs = message.guild.channels.find('name', 'modlogs');
     if(!modlogs) return message.channel.send('Cant Find the modlogs Channel');
     if(message.mentions.users.size < 1) return message.channel.send('You need to Mention a user for me to warn them!').catch(console.error);
     message.channel.send(`** ✅ ${rUser.tag} Has been warned.**`)
