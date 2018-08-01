@@ -49,7 +49,15 @@ bot.on("guildMemberRemove", async member => {
 bot.on("message", async message => {
 
     if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
+    const dmembeds = new Discord.RichEmbed()
+    .setColor(`#FF000`)
+    .setAuthor(message.author.tag, message.author.avatarURL)
+    .setDescription(message.content)
+    .setThumbnail(message.author.avatarURL)
+    .setTimestamp()
+    .setFooter(`DM Recieved At`, bot.user.avatarURL)
+    const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
+    if (message.channel.type === "dm") return dmreplies.send(dmembeds);
 
     let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
     if (!prefixes[message.guild.id]) {
