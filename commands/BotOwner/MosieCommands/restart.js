@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     .setFooter("Command Ran By: " + message.author.username, message.author.avatarURL)
     .setTimestamp()
     console.log(`Bot Has Been Restart By: ` + message.author.username);
-    if (message.author.id !== "283311727477784576") return;
+    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return;
     await message.react("✅");
     await message.channel.send(botembed);
     message.delete(1000).catch();
