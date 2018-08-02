@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    if (message.author.id !== "283311727477784576") return;
+    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return;
     image = message.attachments.first().url;
     if(!image) return message.channel.send(`Sorry But you need to provide a Image!`)
     bot.user.setAvatar (image);
