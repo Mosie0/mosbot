@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription("Shutting Down :wave:")
         .setFooter("Shutting Down will take a few minutes for the bot to appear offline.", message.author.displayAvatarURL)
     console.log("Bot Has Gone Offline.");
-    if (message.author.id !== "283311727477784576") return;
+    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return;
     await message.react("✅");
     await message.channel.send(botembed);
     message.delete().catch();
