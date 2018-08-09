@@ -44,7 +44,6 @@ const embed = new Discord.RichEmbed()
 // Moderators: Cesargeronimo, Lord_H3xus, Boozoo6, Pancake, Victor, Silent
 // Helper of the month: Sirred90
 .setThumbnail(message.guild.iconURL)
-.setImage(`https://cdn.discordapp.com/attachments/422106448487776276/459126100061061139/my_tweet_7.png`)
 message.channel.send(embed);
 }
 module.exports.help = {
