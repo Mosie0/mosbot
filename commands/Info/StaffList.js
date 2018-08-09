@@ -23,19 +23,26 @@ const embed = new Discord.RichEmbed()
 <@298201869585612810>
 <@330752829859954698>
 <@421033482752360448>
+<@281153525977972736>
 
 <@&422058000250044416>
 <@265344329147613185>
 <@386620953414729728>
-<@281153525977972736>
 <@308290036334460929>
-<@362143129136267265>
 <@372468580643635211>
 <@203259894743302145>
 
-<@&466006038244622338>
+<@&466006038244622338> 
 <@368775528234352642>
 `)
+
+// Owner: Mo_sie
+// Co-Owner: N/A
+// Bot-Commander: SUPERCHIEFYT
+// Head Admin: Jonbn123
+// Admins: Dawn, Savage, BroBro, Strike, Hunter, Cryptic
+// Moderators: Cesargeronimo, Lord_H3xus, Boozoo6, Pancake, Victor, Silent
+// Helper of the month: Sirred90
 .setThumbnail(message.guild.iconURL)
 .setImage(`https://cdn.discordapp.com/attachments/422106448487776276/459126100061061139/my_tweet_7.png`)
 message.channel.send(embed);
