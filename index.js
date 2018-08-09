@@ -27,6 +27,7 @@ bot.on("guildMemberAdd", async member => {
     let welcomeembed = new Discord.RichEmbed()
     .setColor(`RANDOM`)
     .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
+    welcome.send(welcomeembed);
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
