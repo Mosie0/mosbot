@@ -113,15 +113,12 @@ bot.on("message", async message => {
     .setFooter(`DM Recieved At`, bot.user.avatarURL)
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
-
-    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-    if (!prefixes[message.guild.id]) {
-        prefixes[message.guild.id] = {
-            prefixes: botconfig.prefix
-        };
+   const prefixes = ['m!', 'M!'];
+    let prefix = false;
+    for (const thisPrefix of prefixes) {
+        if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
     }
-
-    let prefix = prefixes[message.guild.id].prefixes;
+    if (!prefix) return;
     if (!message.content.startsWith(prefix)) return;
     if (cooldown.has(message.author.id)) {
         message.delete();
