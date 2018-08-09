@@ -6,11 +6,13 @@ const embed = new Discord.RichEmbed()
 .setColor(`#11a8ff`)
 .setDescription(`
 Medium Partnerships: 
-<@244271175608303616>: https://discord.gg/ZMYu7KK
+<@288450828837322764>: https://discord.gg/ZMYu7KK
 
 Lit Fam Gaming: https://discord.gg/ynDsWHa
 
 <@421033482752360448>'s Discord: https://discord.gg/tApCxyn
+
+<@244271175608303616> 's Discord: https://discord.gg/SeWwhDd
 `)
 .addField(`Partnerships`, `Dm <@283311727477784576> to partner with Gaming HQ!`)
 .setThumbnail(message.guild.iconURL)
