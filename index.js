@@ -53,6 +53,54 @@ bot.on("guildMemberRemove", async member => {
         .setThumbnail(member.user.avatarURL)
     modlogs.send(botembed);
 });
+bot.on(`guildBanAdd`, (guild, user) => {
+    let modlogs = guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setAuthor('Member Banned', user.avatarURL)
+        .setFooter(`ID: ${user.id}`)
+        .setTimestamp()
+        .setDescription(`${user} ${user.tag}`)
+        .setThumbnail(user.avatarURL)
+    modlogs.send(botembed);
+});
+bot.on(`guildBanRemove`, (guild, user) => {
+    let modlogs = guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#12FF00")
+        .setAuthor('Member Unbanned', user.avatarURL)
+        .setFooter(`ID: ${user.id}`)
+        .setTimestamp()
+        .setDescription(`${user} ${user.tag}`)
+        .setThumbnail(user.avatarURL)
+    modlogs.send(botembed);
+});
+bot.on(`channelCreate`, async channel => {
+    let guild = channel.guild;
+    let modlogs = guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF000")
+        .setAuthor('Channel Created', channel.guild.iconURL)
+        .setFooter(`ID: ${channel.id}`)
+        .setTimestamp()
+        .setDescription(`_ _►Name<#${channel.id}> (**${channel.name}**) \n ►Type **${channel.type}** \n ►ID **${channel.id}**`)
+    await modlogs.send(botembed);
+});
+bot.on(`channelDelete`, channel => {
+    let guild = channel.guild;
+    let modlogs = guild.channels.find('name', "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setAuthor('Channel Deleted', channel.guild.iconURL)
+        .setFooter(`ID: ${channel.id}`)
+        .setTimestamp()
+        .setDescription(`_ _►Name **${channel.name}**\n ►Type **${channel.type}**\n ►ID ${channel.id}\n ►Position ${channel.position}`)
+    modlogs.send(botembed);
+});
 bot.on("message", async message => {
 
     if (message.author.bot) return;
