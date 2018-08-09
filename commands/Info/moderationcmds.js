@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#000FF")
         .setDescription("This is the Help Information")
-        .addField(`Moderation Comammnds`, `Currently Working on it.`)
+        .setTitle(`Moderation Commands`)
         .setDescription(`m!addrole: Add a role with this command
         m!ban: Ban a member with this command
         m!dm: Dm a member with this command
