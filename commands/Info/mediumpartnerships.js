@@ -21,3 +21,4 @@ message.channel.send(embed);
 module.exports.help = {
     name: "mediumpartnership"
 }
+//please say this will work
