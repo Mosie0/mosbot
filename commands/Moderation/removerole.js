@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Sorry pal, you can't do that.");
     let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
     if (!rMember) return message.reply("Couldn't find that user, yo.");
-    let role = args.join(" ").slice(22);
+    let role = args.slice(1).join(" ");
     if (!role) return message.reply("Specify a role!");
     let gRole = message.guild.roles.find(`name`, role);
     if (!gRole) return message.reply("Couldn't find that role.");
