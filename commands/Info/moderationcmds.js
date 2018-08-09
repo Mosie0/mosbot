@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#000FF")
         .setDescription("This is the Help Information")
-        .addField(`Commands List`, `Bot Owner Commands: m!botownercmds n/ Fun Commands: m!funcmds n/ Moderation Commands: m!moderationcommands`)
+        .addField(`Moderation Comammnds`, `Currently Working on it.`)
         .setThumbnail(bot.user.displayAvatarURL)
         .setTimestamp()
         .setFooter("Command Ran By: " + message.author.username, message.author.avatarURL)
@@ -13,5 +13,5 @@ module.exports.run = async (bot, message, args) => {
 
 
 module.exports.help = {
-    name: "help"
+    name: "moderationcmds"
 }
