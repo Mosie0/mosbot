@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#000FF")
-        .setDescription("This is the Help Information")
+        .setDescription("This is the Command List")
         .addField(`Commands List`, `Bot Owner Commands: m!botownercmds n/ Fun Commands: m!funcmds n/ Moderation Commands: m!moderationcommands`)
         .setThumbnail(bot.user.displayAvatarURL)
         .setTimestamp()
@@ -13,5 +13,5 @@ module.exports.run = async (bot, message, args) => {
 
 
 module.exports.help = {
-    name: "help"
+    name: "commandshelp"
 }
