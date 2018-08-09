@@ -22,6 +22,11 @@ bot.on("ready", async () => {
 
 });
 bot.on("guildMemberAdd", async member => {
+    member.send(`Welcome to the Server ${member} <a:Cheer:446237254499958795>`)
+    let welcome = member.guild.channels.find('name', '👋welcome👋')
+    let welcomeembed = new Discord.RichEmbed()
+    .setColor(`RANDOM`)
+    .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
@@ -34,6 +39,7 @@ bot.on("guildMemberAdd", async member => {
     await modlogs.send(botembed);
 });
 bot.on("guildMemberRemove", async member => {
+    member.send(`${member} Sorry for you to leave the server. :wave:`)
     let guild = member.guild;
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
