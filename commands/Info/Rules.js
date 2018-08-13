@@ -40,6 +40,7 @@ GENERAL DISCORD RULES`, `
 .addField (`***In Case of Emergency***`, `Tag <@&431811267968106506>`)
 .setThumbnail(`https://images-ext-2.discordapp.net/external/pQEQWDyNfBGw1xqJt8vz1prqzbfjf4OasBlXbnN6s0M/https/cdn.discordapp.com/attachments/444028025932349441/445611500246269972/alert.gif`)
 message.channel.send(embed);
+message.delete().catch();
 }
 module.exports.help = {
     name: "Rules"

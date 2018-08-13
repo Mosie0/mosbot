@@ -45,6 +45,7 @@ const embed = new Discord.RichEmbed()
 // Helper of the month: Sirred90
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
+message.delete().catch();
 }
 module.exports.help = {
     name: "StaffList"
