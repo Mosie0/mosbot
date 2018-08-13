@@ -7,6 +7,7 @@ let botembed = new Discord.RichEmbed()
 .setDescription(args.join(' '))
 .setAuthor(`${message.guild.name}`, `${message.guild.iconURL}`)
 .setFooter(`Announcement From ${message.author.username}`, message.author.avatarURL)
+.setTimestamp()
 announce.send(botembed);
 message.delete().catch();
 }
