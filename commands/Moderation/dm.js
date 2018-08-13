@@ -17,6 +17,7 @@ module.exports.run = async (bot, message, args) => {
     .setColor(`#FF0000`)
     .setDescription(`Dm from **${message.guild.name}**: **${reason}**`)
     rUser.send(dmembed)
+    await message.delete().catch();
 }
 
 module.exports.help = {
