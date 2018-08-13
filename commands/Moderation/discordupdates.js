@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission("MANAGE_SERVER")) return;
-let announce = message.guild.channels.find('name', 'discord-updates');
+let announce = message.guild.channels.find('name', 'change-log');
 let botembed = new Discord.RichEmbed()
 .setColor(`#FF000`)
 .setDescription(args.join(' '))
