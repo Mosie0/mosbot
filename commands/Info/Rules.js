@@ -24,7 +24,7 @@ GENERAL DISCORD RULES`, `
 💠 NO caps
 💠 If you get banned you have to wait to rejoin, don't think you can talk me or the admins to unbanning right away.
 💠 Dont tag staff (Moderators+) unless if you need major help with something.
-💠 Do not leak chats to people outside of the Discord
+💠 Do not leak chats to people outside of the Discord, if they would like to see our chats, have them join!
 
 💠 ***NEVER ARGUE WITH STAFF***
 
@@ -33,6 +33,8 @@ GENERAL DISCORD RULES`, `
 🔶 This discord complies with the Discord Guidelines: https://discordapp.com/guidelines
 
 🔷 By joining this discord you must follow **ALL** of these rules, including staff.
+
+♦ If you need to report someone please use the m!report command
 
 ⬜ Thank you so much for reading! And hope you have an **AWESOME** time here!`)
 .addField (`***In Case of Emergency***`, `Tag <@&431811267968106506>`)
