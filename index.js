@@ -23,11 +23,14 @@ bot.on("ready", async () => {
 });
 bot.on("guildMemberAdd", async member => {
     member.send(`Welcome to the Server ${member} <a:Cheer:446237254499958795>`)
+    let serverSize = message.guild.memberCount;
+    let botCount = message.guild.members.filter(m => m.user.bot).size;
+    let humanCount = serverSize - botCount;
     let welcome = member.guild.channels.find('name', '👋welcome👋')
     let welcomeembed = new Discord.RichEmbed()
     .setColor(`RANDOM`)
     .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
-    .addField(`Total Users`, `${bot.users.size.toLocaleString()}`, true)
+    .addField(`Total Users`, `${humanCount}`, true)
     welcome.send(welcomeembed);
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
