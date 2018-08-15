@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     `SpongeBob`, 'Patrick', 'Nothing', 'Admins', 'Moderators', 'Staff Members', 
     'Black Hole', 'Scams' , `Love`, `Hate`, `iPhone`, `Brick`, `Bad Bots`, `Chair`, 
     `Lemons`, `Cake`, `Pringles`, `Gummy Bears`, `Bus`, `Train`, `Yourself`, `Knife`, `UR MOM`,
-    `SUPERCHIEFYT`, `Mo_sie`,  `Self Bots`
+    `SUPERCHIEFYT`, `Mo_sie`,  `Self Bots`, `REEEEEEEEEEEEEEEE`, `Fortnite`, `Defaultio`, `Gaming HQ`, `Roblox`, `Lumber Tycoon 2`
 ]
     let result = Math.floor((Math.random() * replies.length));
     let embed = new Discord.RichEmbed()
