@@ -20,7 +20,7 @@ Jonbn123s Discord
 `)
 
 let image2 = ('https://images-ext-2.discordapp.net/external/D7pWKWW8lg23cZf65sYEMXjT8FtyHLB7fE3QCEITghY/https/discordapp.com/api/guilds/442780996895506442/icons/95b8f6e3929e58d3ddae70ca347ca3d4.jpg')
-let Strike = message.channel.send(embed);
+let Strike = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setAuthor("Owner Strike and Savage")
     .setTitle("Strike And Savages Hangout")
