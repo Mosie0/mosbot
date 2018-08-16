@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
       .setFooter("Command Ran By: " + message.author.username, message.author.avatarURL);
       if(!args[0]) return message.channel.send(noembed);
       message.channel.bulkDelete(args[0]).then(() => {
-          message.channel.send(clearembed).then(msg => msg.delete(5000));
+          message.channel.send(clearembed).then(msg => msg.delete(3500));
       
         });
 
