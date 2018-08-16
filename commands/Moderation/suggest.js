@@ -1,17 +1,8 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    let suggestmessage = args.join(" ").slice(22);
-    let suggestchannel = message.mentions.channels.first();
-
-    if (!suggestchannel) {
-        return message.reply("Please Mention the channel!")
-    }
-
-    if (!suggestmessage) {
-        return message.reply("Plase Give Text To Suggestion Channel!")
-    }
-
+    let suggestmessage = args.join(" ");
+    let suggestchannel = message.guild.channels.find('name', 'Channel name here')
     let embed = new Discord.RichEmbed()
         .addField("**SUGGESTION**", `${suggestmessage}`)
         .setFooter(`Suggestion By ${message.author.tag}`)
@@ -23,9 +14,9 @@ module.exports.run = async (bot, message, args) => {
     });
 
 
-    message.reply(`Your Suggestion is sended.`)
+    message.reply(`Your Suggestion has been sended.`)
     return;
 }
 module.exports.help = {
-name: "suggest"
+    name: "suggests"
 }
