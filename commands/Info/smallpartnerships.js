@@ -8,7 +8,7 @@ let Jon = new Discord.RichEmbed()
 .setAuthor("Owner Jon", image1)
 .setURL("https://discord.gg/SeWwhDd")
 .setTitle("Jonbn123's Discord")
-.addField("Discord Invite", "https://discord.gg/SeWwhDd"
+.addField("Discord Invite", "https://discord.gg/SeWwhDd")
 .setDescription(`
 Jonbn123s Discord
 》💥 A Family Friendly Environment
