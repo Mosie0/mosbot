@@ -25,7 +25,7 @@ let Strike = new Discord.RichEmbed()
     .setAuthor("Owner Strike and Savage")
     .setTitle("Strike And Savages Hangout")
     .addField("Discord Invite", "https://discord.gg/23wfHyG")
-    .setDescription💥 (`Welcome To Strike & Savage's Hangout! Be sure to enjoy being in the server! \n 💥 Friendly staff \n 💥 Nice Members \n 💥 A Friendly Community \n 💥 Giveaways \n 💥 Music Channels \n 💥 And Much More!!! `)
+    .setDescription(`💥Welcome To Strike & Savage's Hangout! Be sure to enjoy being in the server! \n 💥 Friendly staff \n 💥 Nice Members \n 💥 A Friendly Community \n 💥 Giveaways \n 💥 Music Channels \n 💥 And Much More!!! `)
 
     message.channel.send(Jon)
     message.channel.send(Strike)
