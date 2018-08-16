@@ -31,7 +31,7 @@ bot.on("guildMemberAdd", async member => {
     .setColor(`RANDOM`)
     .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
     .addField(`Total Users`, `${humanCount}`, true)
-    .setAuthor(member.user.username, member.user.avatarURL)
+    .setAuthor(member.username, member.user.avatarURL))
     welcome.send(welcomeembed);
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
