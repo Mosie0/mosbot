@@ -7,7 +7,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Sorry 
 let JonImage = ('https://images-ext-2.discordapp.net/external/l27Gxb4vbIwafwJ1QCI3KHb32bui1NvYmV-SQMgmDgA/https/discordapp.com/api/guilds/251055654465175554/icons/f2d1864625cf8d7e5865c9af98f827ca.jpg');
 let Jon = new Discord.RichEmbed()
 .setColor("RANDOM")
-.setAuthor("Owner Jon", image1)
+.setAuthor("Owner Jon")
 .setURL("https://discord.gg/SeWwhDd")
 .setTitle("Jonbn123's Discord")
 .addField("Server Invite", "https://discord.gg/SeWwhDd")
