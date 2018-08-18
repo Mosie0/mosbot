@@ -86,7 +86,7 @@ let EdwardImage = ('https://cdn.discordapp.com/attachments/465386983255179264/47
 let Edward = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor("Owner Edward")
-.setTitle("Edward")
+.setTitle("Edward and Friends")
 .setURL("https://discord.gg/GEffuEu")
 .setDescription(`
 Join Edward and Friends today For Great Fun!
