@@ -115,13 +115,13 @@ let Chief = new Discord.RichEmbed()
 .setDescription(`
 ●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬●
 
-<a:UpVote:465232115995246604> SUPERCHIEFYT's Discord
+<a:LoveDiscord:448269463402446850> SUPERCHIEFYT's Discord
 
 Features:
 ⬆  Level up roles 
 🛡  Good Staff members
 🤖  Fun bots
-<a:Cheer:446237254499958795>  Good chill hangout for people 
+<a:Cheer:446237254499958795> Good chill hangout for people 
 
 `)
 .addField(`Server Invite`, `https://discord.gg/ZMYu7KK`)
