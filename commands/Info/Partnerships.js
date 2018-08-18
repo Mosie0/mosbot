@@ -108,7 +108,7 @@ Join Edward and Friends today For Great Fun!
 //END OF EDWARD PARTNERSHIP MESSAGE
 //START OF CHIEF PARTNERSHIP MESSAGE
 let ChiefImage = ('https://cdn.discordapp.com/avatars/288450828837322764/a_9da0205f2e4a0f15565046ad156ac839.gif')
-let embed = new Discord.RichEmbed()
+let Chief = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor(`Owner SUPERCHIEFYT`)
 .setTitle("SUPERCHIEFYTS DISCORD")
