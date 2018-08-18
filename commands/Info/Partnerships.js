@@ -61,7 +61,6 @@ Features:
 .setThumbnail(LitFamImage)
 //END OF LIT FAM PARTNERSHIP MESSAGE
 //START OF CRYPTIC PARTNERSHIP MESSAGE
-let CrytpicImage = ('https://images-ext-1.discordapp.net/external/QF-f2CA6qQdezP5yzcowDDQ6iA4TCjsTJHbDtgNEYz0/https/discordapp.com/api/guilds/421828994724528128/icons/da92a1ef6e2770ec7c4357e700c036b7.jpg')
 let Cryptic = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor("Owner Cryptic")
@@ -80,7 +79,7 @@ Features
 
 `)
 .addField(`Server Invite`, `https://discord.gg/tApCxyn`)
-.setThumbnail(CrypticImage)
+.setThumbnail('https://images-ext-1.discordapp.net/external/QF-f2CA6qQdezP5yzcowDDQ6iA4TCjsTJHbDtgNEYz0/https/discordapp.com/api/guilds/421828994724528128/icons/da92a1ef6e2770ec7c4357e700c036b7.jpg')
 //END OF CRYPTIC PARTNERSHIP MESSAGE
 //START OF EDWARD PARTNERSHIP MESSAGE
 let EdwardImage = ('https://cdn.discordapp.com/attachments/465386983255179264/479887770119045122/image.jpg')
