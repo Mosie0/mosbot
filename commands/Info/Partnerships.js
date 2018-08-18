@@ -113,7 +113,7 @@ let Chief = new Discord.RichEmbed()
 .setTitle("SUPERCHIEFYTS DISCORD")
 .setURL("https://discord.gg/ZMYu7KK")
 .setDescription(`
-●▬▬▬▬▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬▬▬▬▬●
+●▬▬▬▬▬▬๑۩ SUPERCHIEFYT's Discord ۩๑▬▬▬▬▬▬●
 
 <a:LoveDiscord:448269463402446850> SUPERCHIEFYT's Discord
 
