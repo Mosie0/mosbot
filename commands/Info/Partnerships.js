@@ -36,7 +36,7 @@ let Strike = new Discord.RichEmbed()
 //END OF STRIKE PARTNERSHIP MESSAGE
 //START OF LIT FAM PARTNERSHIP MESSAGE
 let LitFamImage = ('https://images-ext-1.discordapp.net/external/iFR7HW3zlD6oP9UOPVM9Htx9S4nhPKGwRyA4Sud1daU/https/discordapp.com/api/guilds/297872830488641536/icons/872f93ac1aaa326c4f7352133bebf21b.jpg')
-let LitFam = new Discord.RichEmbed
+let LitFam = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor("Owner Savage and Idicer")
 .setTitle("Lit Fam Gaming")
