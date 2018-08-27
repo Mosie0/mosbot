@@ -7,20 +7,21 @@ module.exports = (bot) => {
 	bot.user.setActivity(`magic`, { type: "STREAMING", url: "https://www.twitch.tv/twitch" });
 
 	var status = [
-    `V${pak.version}`,
+    		`V${pak.version}`,
   
 		`${bot.guilds.array().length} server${bot.guilds.array().length > 1 ? 's' : ''}`,
 		`${bot.channels.array().length} channel${bot.channels.array().length > 1 ? 's' : ''}`,
-		`${bot.channels.array().length} channel${bot.channels.array().length > 1 ? 's' : ''}`,
+		`${bot.users.array().length} user${bot.users.array().length > 1 ? 's' : ''}`,
     
 		`for lives`,
 	];
 
 	var types = [
-    `WATCHING`,
+   		`WATCHING`,
+		
 		`LISTENING`,
 		`LISTENING`,
-    `LISTENING`,
+    		`LISTENING`,
 
 		`WATCHING`,
 	];
