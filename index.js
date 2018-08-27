@@ -16,12 +16,12 @@ bot.login(process.env.BOT_TOKEN)
 
 bot.on("ready", async () => {
 
-    //console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
+    console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
 
-    //bot.user.setActivity(`${bot.guilds.size} Servers`, { type: "LISTENING"});
+    // bot.user.setActivity(`${bot.guilds.size} Servers`, { type: "LISTENING"});
     
     console.log(`Ready. 👌`);
-    require("./functions/playing.js")(bot);
+    require("./utils/playing.js")(bot);
 });
 bot.on("guildMemberAdd", async member => {
     member.send(`Welcome to the Server ${member} <a:Cheer:446237254499958795>`)
