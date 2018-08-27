@@ -1,6 +1,6 @@
 {
     "name": "Mosbot",
-    "version": "1.2.3"
+    "version": "1.2.3",
 
     "engines": {
         "node": "~10.6.0"
