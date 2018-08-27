@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     try {
         await rMember.send(`RIP, you lost the ${gRole.name} role.`)
     } catch (e) {
-        message.channel.send(`<@${rMember.id}>, Sorry but you was removed from ${gRole.name} role I've Tried Dming the <@${rMember.id}> but their Dms are Closed.`)
+        message.channel.send(`<@${rMember.id}>, Sorry but you ware removed from ${gRole.name} role I've Tried Dming the <@${rMember.id}> but their Dms are Closed.`)
     }
     message.delete().catch();
 }
