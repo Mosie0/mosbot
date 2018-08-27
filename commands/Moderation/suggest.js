@@ -7,14 +7,11 @@ module.exports.run = async (bot, message, args) => {
         .addField("**SUGGESTION**", `${suggestmessage}`)
         .setFooter(`Suggestion By ${message.author.tag}`)
         .setTimestamp()
-    suggestchannel.send({
-        embed
-    }).then(msg => {
-        msg.react("✅").then(r => msg.react("❎"))
+    suggestchannel.send({embed}).then(msg => {
+        msg.react("✅").then(() => msg.react("❎"))
     });
-
-
-    message.reply(`Your Suggestion has been sended to the #suggestions channel.`)
+    
+    message.reply(`Your Suggestion has been sent to the #suggestions channel.`)
     return;
 }
 module.exports.help = {
