@@ -1,7 +1,6 @@
 const Discord = require('discord.js'),
-    arraySort = require('array-sort'),
-    
-    
+    arraySort = require('array-sort');
+   
 module.exports.run = async (bot, message, args) => {
   message.guild.fetchInvites().catch(error => {
         return message.channel.send('Sorry, I don\'t have the proper permissions to view invites!');
