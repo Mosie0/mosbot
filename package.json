@@ -9,6 +9,7 @@
         "start": "node index.js"
     },
     "dependencies": {
+        "array-sort": "^1.0.0",
         "discord.js": "~11.3.2",
         "nodemon": "^1.17.5",
         "ms": "^2.1.1",
