@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let kUser = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!kUser) return message.channel.send("Cound't Find the user to Kick them!!");
     let kReason = args.join(" ").slice(22);
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sorry but you don't have the Kick Memebrs Permission");
