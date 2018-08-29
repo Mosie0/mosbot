@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
+
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return;
+    if(message.author.id !== ("283311727477784576")) return;
 let announce = message.guild.channels.find('name', '📜announcements📜');
 let botembed = new Discord.RichEmbed()
 .setColor(`#FF000`)
@@ -14,3 +16,4 @@ message.delete().catch();
 module.exports.help = { 
     name: "annoucement"
 }
+
