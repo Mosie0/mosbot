@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     let botembed = new Discord.RichEmbed()
-        .setColor("#000FF")
+        .setColor("RANDOM")
         .setDescription("This is the Command List")
         .addField(`Commands List`, `Bot Owner Commands: m!botownercmds \n Fun Commands: m!funcmds \n Moderation Commands: m!moderationcmds`)
         .setThumbnail(bot.user.displayAvatarURL)

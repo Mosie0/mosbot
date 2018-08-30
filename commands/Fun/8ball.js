@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    //s!8ball (questionhere)
+    //m!8ball (questionhere)
     if(!args[0]) return message.reply("Please ask a full question!");
     let replies = ["Yes.", "No", "I don't know", "Ask Again Later"];
 

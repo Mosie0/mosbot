@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     if(message.author.id !== ("283311727477784576")) return;
 let announce = message.guild.channels.find('name', '📜announcements📜');
 let botembed = new Discord.RichEmbed()
-.setColor(`#FF000`)
+.setColor("RANDOM")
 .setDescription(args.join(' '))
 .setAuthor(`${message.guild.name}`, `${message.guild.iconURL}`)
 .setFooter(`Announcement From ${message.author.username}`, message.author.avatarURL)
