@@ -24,7 +24,6 @@ bot.on("ready", async () => {
     require("./utils/playing.js")(bot);
 });
 bot.on("guildMemberAdd", async member => {
-    member.send(`Welcome to the Server ${member} <a:Cheer:446237254499958795>`)
     let serverSize = member.guild.memberCount;
     let botCount = member.guild.members.filter(m => m.user.bot).size;
     let humanCount = serverSize - botCount;
@@ -48,7 +47,6 @@ bot.on("guildMemberAdd", async member => {
     await modlogs.send(botembed);
 });
 bot.on("guildMemberRemove", async member => {
-    member.send(`Awww, bye ${member}, we will miss you, if you ever wanna come back, here is the invite: discord.gg/krXDXEM`)
     let guild = member.guild;
     let modlogs = member.guild.channels.find('name', "modlogs");
     if (!modlogs) return;
