@@ -21,7 +21,6 @@ module.exports.run = async (bot, message, args) => {
         .setColor("RANDOM")
         .addField("Reported By", `${message.author}`, true)
         .setThumbnail("https://cdn.discordapp.com/attachments/434973905485037578/434976194622914561/user_report.gif")
-        .addField("Reported User", `${rUser}`,true)
         .addField("Thank You", "Your Support Message has been sent to the Devleopers of the Server, They will get back to you shortly.")
 
 
