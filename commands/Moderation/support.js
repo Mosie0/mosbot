@@ -1,46 +1,42 @@
-const Discord = require("discord.js");
-
+const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-    let reason = args.join(" ").slice(22);
-
-    let sIcon = message.guild.iconURL;
-
-
-    let reportEmbed = new Discord.RichEmbed()
-
-        .setTitle("User Report")
-        .setColor("RANDOM")
-        .setThumbnail("https://cdn.discordapp.com/attachments/444028025932349441/445824984204705792/tenor_12.gif")
-        .setFooter(message.guild.createdAt, sIcon)
-        .addField("Support Message by:", `${message.author}`, true)
-        .addField("Support in Channel:", message.channel)
-        .addField("Reason", reason);
-
-    let dmEmbed = new Discord.RichEmbed()
-        .setTitle("Your Support Message")
-        .setColor("RANDOM")
-        .addField("Reported By", `${message.author}`, true)
-        .setThumbnail("https://cdn.discordapp.com/attachments/434973905485037578/434976194622914561/user_report.gif")
-        .addField("Thank You", "Your Support Message has been sent to the Devleopers of the Server, They will get back to you shortly.")
-
-
-
-    let reportschannel = message.guild.channels.find(`name`, "modlogs");
-    if (!reportschannel) return message.channel.send("Couldn't find modlogs");
-
-    message.delete().catch();
-
-    reportschannel.send(reportEmbed);
-    message.author.send(dmEmbed);
-
-
-    if (!message.content.startsWith(prefix)) return;
-
-
-
+    if(message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`Sorry But you need the **Manage Messages** Permission to use this command`)
+    let logchannel = bot.channels.get('YOUR SUPPORT LOG CHANNEL ID HERE')
+    var options = {
+        maxAge: 0
+    };
+    let Susername = message.author;
+    let Suseravatar = message.author.avatarURL;
+    let server = message.guild;
+    let Schannel = message.channel;
+    let reason = args.join(' ');
+    message.delete().catch()
+    let embed = new Discord.RichEmbed()
+        .setColor("#000FF")
+        .setDescription(`Creating......`)
+        .setTimestamp()
+    message.delete(15000).catch()
+    logchannel.send(embed).then(message => {
+        Schannel.createInvite(options).then(i => {
+        embed.setColor(`RANDOM`)
+        embed.setDescription(`${Susername} Has Put in a Support Request!`)
+        embed.addField(`User`, Susername, true)
+        embed.addField(`User ID`, Susername.id, true)
+        embed.addField(`Server`, server.name, true)
+        embed.addField(`Server ID`, server.id, true)
+        embed.addField(`Channel`, Schannel.name, true)
+        embed.addField(`Channel ID`, Schannel.id, true)
+        embed.addField(`Server Invite`, `https://discord.gg/${i.code}`, true)
+        embed.setFooter(`Support Requested At`)
+        embed.setTimestamp()
+        embed.setThumbnail(Suseravatar)
+        embed.addField(`Reason`, reason)
+        message.edit(embed)
+        })
+    }).then(message => {
+        Schannel.send(`${Susername} You message has been given to the Bot Devleopers! They will get back to you as soon as possible!`)
+    })
 }
-
-
 module.exports.help = {
     name: "botsuggestion"
 }
