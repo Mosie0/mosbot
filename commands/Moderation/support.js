@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     let reportEmbed = new Discord.RichEmbed()
 
         .setTitle("User Report")
-        .setColor("#2CE51A")
+        .setColor("RANDOM")
         .setThumbnail("https://cdn.discordapp.com/attachments/444028025932349441/445824984204705792/tenor_12.gif")
         .setFooter(message.guild.createdAt, sIcon)
         .addField("Support Message by:", `${message.author}`, true)
@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 
     let dmEmbed = new Discord.RichEmbed()
         .setTitle("Your Support Message")
-        .setColor("#2CE51A")
+        .setColor("RANDOM")
         .addField("Reported By", `${message.author}`, true)
         .setThumbnail("https://cdn.discordapp.com/attachments/434973905485037578/434976194622914561/user_report.gif")
         .addField("Reported User", `${rUser}`,true)
