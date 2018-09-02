@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js'),
 arraySort = require('array-sort'),
 table = require('table'); 
