@@ -1,9 +1,10 @@
 //=============================================================================================================================================================================================
 // Start of the bot requirements etc.
 
-const botconfig = require("./botconfig.json");
-const Discord = require("discord.js");
-const fs = require("fs");
+const botconfig = require("./botconfig.json"),
+    const Discord = require("discord.js"),
+    fs = require("fs"),
+    mongoose = require("mongoose");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 let cooldown = new Set();
