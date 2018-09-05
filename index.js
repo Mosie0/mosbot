@@ -9,6 +9,7 @@ bot.commands = new Discord.Collection();
 let cooldown = new Set();
 let cdseconds = 2;
 bot.login(process.env.BOT_TOKEN)
+mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=RHG-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
 
 // End of the Bot Requirements etc.
 //=============================================================================================================================================================================================
