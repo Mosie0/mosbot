@@ -3,7 +3,7 @@ const Discord = require('discord.js'),
     truee = "<:yes:458348060163178516>",
     falsee = "<:no:458348057130565642>";
 
-let Setting = require("../models/settings.js");
+let Setting = require("../../../models/settings.js");
 
 module.exports.run = (bot, message, args) => {
     Setting.findOne({serverID: message.guild.id}, (err, settings) => {
