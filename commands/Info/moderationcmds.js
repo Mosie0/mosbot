@@ -24,7 +24,8 @@ module.exports.run = async (bot, message, args) => {
         m!unlock: Allow the role @ everyone to chat in that channel
         m!discordupdates: Allows the bot to send a message to the channel #change-log
         m!annoucement: Send an embedded message to the #annoucements channel
-        m!whois: Gives brief data on a member`)
+        m!whois: Gives brief data on a member
+        m!memberlist: Gives the list of members in a certain role`)
         .setThumbnail(bot.user.displayAvatarURL)
         .setTimestamp()
         .setFooter("Command Ran By: " + message.author.username, message.author.avatarURL)
