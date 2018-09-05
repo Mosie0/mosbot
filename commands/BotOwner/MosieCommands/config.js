@@ -49,7 +49,7 @@ module.exports.run = (bot, message, args) => {
 
         embed.addField(`
 5: **Miscellaneous: **`,
-`    ${clip} Prefix: ${setting.prefix == "" ? "Default [r;]" : setting.prefix}
+`    ${clip} Prefix: ${setting.prefix == "" ? "Default [m!]" : setting.prefix}
     ${clip} Log Channel: ${setting.logchannel == "" ? "None" : "<#" + setting.logchannel + ">"}
     ${clip} Admin Role: ${setting.adminrole == "" ? "None" : "<@&" + setting.adminrole + ">"}
     `);
@@ -121,7 +121,7 @@ Which level notification settings would you like to change?\n
                     cleansettingPage = "Miscellaneous";
                     embed.setDescription(`
 Which miscellaneous settings would you like to change?\n
-**1** Prefix **${setting.prefix == "" ? "r;" : setting.prefix}**
+**1** Prefix **${setting.prefix == "" ? "m!" : setting.prefix}**
 **2** Log Channel **${setting.logchannel == "" ? "None" : "<#" + setting.logchannel + ">"}**
 **3** Admin Role **${setting.adminrole == "" ? "None" : "<@&" + setting.adminrole + ">"}**`);
                 }
@@ -281,7 +281,7 @@ Current Setting: **${setting.userlevel.message == "" ? "None" : setting.userleve
                             cleansettingType = "Prefix";
                             embed.setDescription(`
 You are currently changing the prefix setting on commands.\n
-Current Setting: **${setting.prefix == "" ? "r;" : setting.prefix}**
+Current Setting: **${setting.prefix == "" ? "m!" : setting.prefix}**
 
 *Please say new prefix below or clear to reset or type quit to stop.*
 `);
@@ -387,7 +387,7 @@ New Setting: **${settingset == "" ? "None" : settingset}**
                                     settingset = collected.first().content;
                                     embed.setDescription(`
 You have set the ${cleansettingType}.\n
-Default: **r;**
+Default: **m!**
 Last Setting: **${setting[settingType] == "" ? "Default" : setting[settingType]}**
 New Setting: **${settingset == "" ? "Default" : settingset}**
 
