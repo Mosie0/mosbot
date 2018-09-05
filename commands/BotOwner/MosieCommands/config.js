@@ -9,7 +9,7 @@ module.exports.run = (bot, message, args) => {
     Setting.findOne({serverID: message.guild.id}, (err, settings) => {
         if (err) console.log(err);
         if (!settings) {
-            return message.channel.send(`Hmm this is wierd. Looks like your server doesn't have an file with the bot\nIf this happens you might want to readd the bot to the server.`);
+            return message.channel.send(`Hmm this is weird. Looks like your server doesn't have an file with the bot\nIf this happens you might want to readd the bot to the server.`);
         }
     });
     let embed = new Discord.RichEmbed()
