@@ -9,6 +9,7 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 let cooldown = new Set();
 let cdseconds = 2;
+let Settings = require("./models/settings.js");
 bot.login(process.env.BOT_TOKEN)
 mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=MosBot-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
 
@@ -17,11 +18,28 @@ mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb
 // Start Of the bot.on Messages.
 
 bot.on("ready", async () => {
+    bot.guilds.forEach(guild => {
+    Settings.findOne({serverID: guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (!settings) {
+        const newSettings = new Settings({
+          serverName: guild.name,
+          serverID: guild.id,
+          prefix: "",
+          logchannel: "",
+          adminrole: "",
+          autorole: { enabled: false, role: ""},
+          userjoin: { enabled: false, message: "", channel: "", dm: false },
+          userleave: { enabled: false, message: "", channel: "", dm: false },
+          userlevel: { enabled: false, message: "", channel: "", dm: false },
+        });
 
-    console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
-
-    // bot.user.setActivity(`${bot.guilds.size} Servers`, { type: "LISTENING"});
+        newSettings.save().catch(err => console.log(err));
+      }
+    });
+  });
     
+    console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
     console.log(`Ready. 👌`);
     require("./utils/playing.js")(bot);
 });
@@ -108,6 +126,55 @@ bot.on(`channelDelete`, channel => {
         .setTimestamp()
         .setDescription(`_ _►Name **${channel.name}**\n ►Type **${channel.type}**\n ►ID ${channel.id}\n ►Position ${channel.position}`)
     modlogs.send(botembed);
+});
+bot.on('guildCreate', (guild) => {
+  Settings.findOne({serverID: guild.id}, (err, settings) => {
+    if (err) console.log(err);
+    if (!settings) {
+      const newSettings = new Settings({
+        serverName: guild.name,
+        serverID: guild.id,
+        prefix: "",
+        logchannel: "",
+        adminrole: "",
+        autorole: { enabled: false, role: ""},
+        userjoin: { enabled: false, message: "", channel: "", dm: false },
+        userleave: { enabled: false, message: "", channel: "", dm: false },
+        userlevel: { enabled: false, message: "", channel: "", dm: false },
+      });
+
+      newSettings.save().catch(err => console.log(err));
+    }
+  });
+});
+
+bot.on('guildUpdate', (oldguild, guild) => {
+  Settings.findOne({serverID: guild.id}, (err, settings) => {
+    if (err) console.log(err);
+    if (!settings) {
+      const newSettings = new Settings({
+        serverName: guild.name,
+        serverID: guild.id,
+        prefix: "",
+        logchannel: "",
+        adminrole: "",
+        autorole: { enabled: false, role: ""},
+        userjoin: { enabled: false, message: "", channel: "", dm: false },
+        userleave: { enabled: false, message: "", channel: "", dm: false },
+        userlevel: { enabled: false, message: "", channel: "", dm: false },
+      });
+
+      newSettings.save().catch(err => console.log(err));
+    } else {
+      settings.serverName = guild.name;
+      settings.save().catch(err => console.log(err));
+    }
+  });
+});
+
+
+bot.on('guildDelete', (guild) => {
+  Settings.findOneAndRemove({serverID: guild.id}).catch((err) => console.log(err));
 });
 bot.on("message", async message => {
 
