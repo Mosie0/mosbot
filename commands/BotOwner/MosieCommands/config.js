@@ -2,6 +2,7 @@ const Discord = require('discord.js'),
     clip = "➥",
     truee = "<:yes:458348060163178516>",
     falsee = "<:no:458348057130565642>";
+    
 
 let Setting = require("../../../models/settings.js");
 
@@ -9,7 +10,7 @@ module.exports.run = (bot, message, args) => {
     Setting.findOne({serverID: message.guild.id}, (err, settings) => {
         if (err) console.log(err);
         if (!settings) {
-            return message.channel.send(`Hmm this is weird. Looks like your server doesn't have an file with the bot\nIf this happens you might want to readd the bot to the server.`);
+            return message.channel.send(`Hmm this is weird. Looks like your server doesn't have an file with the bot\nIf this happens you might want to read the bot to the server.`);
         }
     });
     let embed = new Discord.RichEmbed()
