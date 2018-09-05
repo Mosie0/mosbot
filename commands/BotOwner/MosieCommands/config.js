@@ -459,15 +459,6 @@ New Setting: **${settingset == "" ? "None" : "<@&" + settingset + ">"}**
     });
 };
 
-module.exports.command = {
-     enabled: true,
-     guildonly: false,
-     name: "config",
-     aliases: ["c"],
-
-     category: "database",
-     description: "N/A",
-     usage: "config",
-
-     permission: "admins"
-};
+module.exports.help = {
+    name: "config"
+}
