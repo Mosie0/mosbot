@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#000FF")
-        .setDescription("This is the Help Information")
+        .addField(`Moderation Commands`, `Current list of Moderation Commands`)
         .setTitle(`Moderation Commands`)
         .setDescription(`m!addrole: Add a role
         m!ban: Ban a member
