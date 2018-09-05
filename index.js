@@ -36,9 +36,9 @@ bot.on("guildMemberAdd", async member => {
     .addField(`Total Users`, `${humanCount}`, true)
     .setAuthor(member, member.user.avatarURL)
     .setAuthor(member.user.username, member.user.avatarURL)
+    if (!welcome) return;
     welcome.send(welcomeembed);
     let modlogs = member.guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#1CFF00")
         .setAuthor('Member Joined', member.user.avatarURL)
