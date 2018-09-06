@@ -163,10 +163,25 @@ bot.on('guildCreate', async guild => {
         .addField(`Guild Member Count`, `${guild.memberCount}`, true)
         .addField(`Guild Server Region`, `${guild.region}`, true)
         .addField(`Guild Verification Level`, `${guild.verificationLevel}`, true)
-    bot.channels.get('468372950266150916').send(newserverembed);
-    bot.users.get('288450828837322764').send(newserverembed)
+    bot.channels.get('422057529271648256').send(newserverembed);
+    bot.users.get('283311727477784576').send(newserverembed)
 
 });
+
+bot.on('guildMemberUpdate', async (oldMember, newMember) => {
+    let modlogs = oldMember.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    if (newMember.nickname === oldMember.nickname) return
+    let embed = new Discord.RichEmbed()
+        .setColor(`RANDOM`)
+        .setAuthor(newMember.user.tag, newMember.user.avatarURL)
+        .setThumbnail(newMember.user.avatarURL)
+        .setTitle(`Nickname Changed`)
+        .addField(`Old Nickname`, `${oldMember.nickname ? `${oldMember.nickname}` : `${oldMember.user.username}`}`)
+        .addField(`New Nickname`, `${newMember.nickname ? `${newMember.nickname}` : `${newMember.user.username}`}`)
+        .setTimestamp()
+    modlogs.send(embed)
+})
 
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     if (newMessage.author.bot) return;
