@@ -64,24 +64,35 @@ bot.on("guildMemberAdd", async member => {
         .setTimestamp()
         .setDescription(`${member} ${member.user.tag}`)
         .setThumbnail(member.user.avatarURL)
-    await modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on("guildMemberRemove", async member => {
-    let guild = member.guild;
-    let modlogs = member.guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
-    let botembed = new Discord.RichEmbed()
+   let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setAuthor('Member Left', member.user.avatarURL)
         .setFooter(`ID: ${member.id}`)
         .setTimestamp()
         .setDescription(`${member} ${member.user.tag}`)
         .setThumbnail(member.user.avatarURL)
-    modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on(`guildBanAdd`, (guild, user) => {
-    let modlogs = guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setAuthor('Member Banned', user.avatarURL)
@@ -89,11 +100,17 @@ bot.on(`guildBanAdd`, (guild, user) => {
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
         .setThumbnail(user.avatarURL)
-    modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on(`guildBanRemove`, (guild, user) => {
-    let modlogs = guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#12FF00")
         .setAuthor('Member Unbanned', user.avatarURL)
@@ -101,31 +118,51 @@ bot.on(`guildBanRemove`, (guild, user) => {
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
         .setThumbnail(user.avatarURL)
-    modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on(`channelCreate`, async channel => {
     let guild = channel.guild;
-    let modlogs = guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF000")
         .setAuthor('Channel Created', channel.guild.iconURL)
         .setFooter(`ID: ${channel.id}`)
         .setTimestamp()
         .setDescription(`_ _►Name<#${channel.id}> (**${channel.name}**) \n ►Type **${channel.type}** \n ►ID **${channel.id}**`)
-    await modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on(`channelDelete`, channel => {
     let guild = channel.guild;
-    let modlogs = guild.channels.find('name', "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setAuthor('Channel Deleted', channel.guild.iconURL)
         .setFooter(`ID: ${channel.id}`)
         .setTimestamp()
         .setDescription(`_ _►Name **${channel.name}**\n ►Type **${channel.type}**\n ►ID ${channel.id}\n ►Position ${channel.position}`)
-    modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel !== "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 bot.on('guildCreate', (guild) => {
   Settings.findOne({serverID: guild.id}, (err, settings) => {
