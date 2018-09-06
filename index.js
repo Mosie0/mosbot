@@ -148,6 +148,19 @@ bot.on('guildCreate', (guild) => {
   });
 });
 
+bot.on(`messageUpdate`, (oldMessage, newMessage) => {
+    if (newMessage.author.bot) return;
+    let modlogs = oldMessage.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setTimestamp()
+        .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.avatarURL}`)
+        .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
+        .setDescription(`_ _►Content: \n ►Old Message **\`${oldMessage.cleanContent}\`** \n ►Update Message **\`${newMessage.cleanContent}\`** \n ►Channel <#${newMessage.channel.id}> \n ►Message ID ${newMessage.id}`)
+    modlogs.send(botembed);
+});
+
 bot.on('guildUpdate', (oldguild, guild) => {
   Settings.findOne({serverID: guild.id}, (err, settings) => {
     if (err) console.log(err);
