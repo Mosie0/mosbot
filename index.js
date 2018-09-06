@@ -4,12 +4,12 @@
 const botconfig = require("./botconfig.json"),
     Discord = require("discord.js"),
     fs = require("fs"),
-    mongoose = require("mongoose");
-const bot = new Discord.Client({disableEveryone: true});
+    mongoose = require("mongoose")
+    bot = new Discord.Client({disableEveryone: true});
+let cooldown = new Set(),
+    cdseconds = 2,
+    Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
-let cooldown = new Set();
-let cdseconds = 2;
-let Settings = require("./models/settings.js");
 bot.login(process.env.BOT_TOKEN)
 mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=MosBot-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
 
@@ -67,7 +67,7 @@ bot.on("guildMemberAdd", async member => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -85,7 +85,7 @@ bot.on("guildMemberRemove", async member => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -103,7 +103,7 @@ bot.on(`guildBanAdd`, (guild, user) => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -121,7 +121,7 @@ bot.on(`guildBanRemove`, (guild, user) => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -139,7 +139,7 @@ bot.on(`channelCreate`, async channel => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -157,7 +157,7 @@ bot.on(`channelDelete`, channel => {
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
-       if (settings.logchannel !== "") return;
+       if (settings.logchannel == "") return;
        let modlogs = guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
@@ -221,8 +221,6 @@ bot.on('guildMemberUpdate', async (oldMember, newMember) => {
 })
 
 bot.on("emojiCreate", async (emoji, bot) => {
-    let modlogs = emoji.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     let embed = new Discord.RichEmbed()
         .setColor(`GREEN`)
         .setThumbnail(emoji.url)
@@ -234,12 +232,18 @@ bot.on("emojiCreate", async (emoji, bot) => {
         .addField(`Animated?`, emoji.animated, true)
         .setTimestamp(emoji.createdAt)
         .setFooter(`Emoji Created At`)
-    modlogs.send(embed)
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel == "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(embed); 
+      }
+    });
 });
 
 bot.on("emojiDelete", async (emoji, bot) => {
-    let modlogs = emoji.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     let embed = new Discord.RichEmbed()
         .setColor(`RED`)
         .setThumbnail(emoji.url)
@@ -251,12 +255,18 @@ bot.on("emojiDelete", async (emoji, bot) => {
         .addField(`Animated?`, emoji.animated, true)
         .setTimestamp(emoji.createdAt)
         .setFooter(`Emoji Deleted At`)
-    modlogs.send(embed)
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel == "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(embed); 
+      }
+    });
 });
 
 bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
-    let modlogs = newEmoji.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     let embed = new Discord.RichEmbed()
         .setColor(`PURPLE`)
         .setThumbnail(newEmoji.url)
@@ -269,20 +279,34 @@ bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
         .addField(`Animated?`, newEmoji.animated, true)
         .setTimestamp(newEmoji.createdAt)
         .setFooter(`Emoji Updated At`)
-    modlogs.send(embed)
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel == "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(embed); 
+      }
+    });
 });
 
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     if (newMessage.author.bot) return;
-    let modlogs = oldMessage.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setTimestamp()
         .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.avatarURL}`)
         .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
         .setDescription(`_ _►Content: \n ►Old Message **\`${oldMessage.cleanContent}\`** \n ►Update Message **\`${newMessage.cleanContent}\`** \n ►Channel <#${newMessage.channel.id}> \n ►Message ID ${newMessage.id}`)
-    modlogs.send(botembed);
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel == "") return;
+       let modlogs = guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(botembed); 
+      }
+    });
 });
 
 bot.on('guildUpdate', (oldguild, guild) => {
@@ -325,7 +349,14 @@ bot.on("message", async message => {
     .setFooter(`DM Recieved At`, bot.user.avatarURL)
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
-   const prefixes = ['m!', 'M!'];
+   let prefixes = ['m!', 'M!'];
+    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+        if (settings.prefix == "") return;
+        prefixes.push(settings.prefix)
+      }
+    });
     let prefix = false;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
