@@ -183,6 +183,58 @@ bot.on('guildMemberUpdate', async (oldMember, newMember) => {
     modlogs.send(embed)
 })
 
+bot.on("emojiCreate", async (emoji, bot) => {
+    let modlogs = emoji.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let embed = new Discord.RichEmbed()
+        .setColor(`GREEN`)
+        .setThumbnail(emoji.url)
+        .setTitle(`New Emoji Created`)
+        .setDescription(`Info`)
+        .addField(`Name`, emoji.name, true)
+        .addField(`ID`, emoji.id, true)
+        .addField(`Emoji URL`, `[Click Here](${emoji.url})`, true)
+        .addField(`Animated?`, emoji.animated, true)
+        .setTimestamp(emoji.createdAt)
+        .setFooter(`Emoji Created At`)
+    modlogs.send(embed)
+});
+
+bot.on("emojiDelete", async (emoji, bot) => {
+    let modlogs = emoji.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let embed = new Discord.RichEmbed()
+        .setColor(`RED`)
+        .setThumbnail(emoji.url)
+        .setTitle(`Emoji Deleted`)
+        .setDescription(`Info`)
+        .addField(`Name`, emoji.name, true)
+        .addField(`ID`, emoji.id, true)
+        .addField(`Emoji URL`, `[Click Here](${emoji.url})`, true)
+        .addField(`Animated?`, emoji.animated, true)
+        .setTimestamp(emoji.createdAt)
+        .setFooter(`Emoji Deleted At`)
+    modlogs.send(embed)
+});
+
+bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
+    let modlogs = newEmoji.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let embed = new Discord.RichEmbed()
+        .setColor(`PURPLE`)
+        .setThumbnail(newEmoji.url)
+        .setTitle(`Emoji Updated`)
+        .setDescription(`Info`)
+        .addField(`OldName`, oldEmoji.name, true)
+        .addField(`NewName`, newEmoji.name, true)
+        .addField(`ID`, newEmoji.id, true)
+        .addField(`Emoji URL`, `[Click Here](${newEmoji.url})`, true)
+        .addField(`Animated?`, newEmoji.animated, true)
+        .setTimestamp(newEmoji.createdAt)
+        .setFooter(`Emoji Updated At`)
+    modlogs.send(embed)
+});
+
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     if (newMessage.author.bot) return;
     let modlogs = oldMessage.guild.channels.find(c => c.name === "modlogs");
