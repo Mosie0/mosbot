@@ -68,7 +68,7 @@ bot.on("guildMemberAdd", async member => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = member.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
       }
@@ -86,7 +86,7 @@ bot.on("guildMemberRemove", async member => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = member.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
       }
@@ -100,7 +100,7 @@ bot.on(`guildBanAdd`, (guild, user) => {
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
         .setThumbnail(user.avatarURL)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
@@ -118,7 +118,7 @@ bot.on(`guildBanRemove`, (guild, user) => {
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
         .setThumbnail(user.avatarURL)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
@@ -136,11 +136,11 @@ bot.on(`channelCreate`, async channel => {
         .setFooter(`ID: ${channel.id}`)
         .setTimestamp()
         .setDescription(`_ _►Name<#${channel.id}> (**${channel.name}**) \n ►Type **${channel.type}** \n ►ID **${channel.id}**`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: channel.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = channel.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
       }
@@ -154,11 +154,11 @@ bot.on(`channelDelete`, channel => {
         .setFooter(`ID: ${channel.id}`)
         .setTimestamp()
         .setDescription(`_ _►Name **${channel.name}**\n ►Type **${channel.type}**\n ►ID ${channel.id}\n ►Position ${channel.position}`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: channel.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = channel.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
       }
@@ -186,7 +186,6 @@ bot.on('guildCreate', (guild) => {
 });
 
 bot.on('guildCreate', async guild => {
-    require('./playing.js')(bot)
     const newserverembed = new Discord.RichEmbed()
         .setColor(`#FF000`)
         .setDescription(`Server Added`)
@@ -206,8 +205,6 @@ bot.on('guildCreate', async guild => {
 });
 
 bot.on('guildMemberUpdate', async (oldMember, newMember) => {
-    let modlogs = oldMember.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     if (newMember.nickname === oldMember.nickname) return
     let embed = new Discord.RichEmbed()
         .setColor(`RANDOM`)
@@ -217,10 +214,18 @@ bot.on('guildMemberUpdate', async (oldMember, newMember) => {
         .addField(`Old Nickname`, `${oldMember.nickname ? `${oldMember.nickname}` : `${oldMember.user.username}`}`)
         .addField(`New Nickname`, `${newMember.nickname ? `${newMember.nickname}` : `${newMember.user.username}`}`)
         .setTimestamp()
-    modlogs.send(embed)
+    Settings.findOne({serverID: newMember.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+       if (settings.logchannel == "") return;
+       let modlogs = newMember.guild.channels.get(settings.logchannel);
+       if (!modlogs) return;
+       modlogs.send(embed); 
+      }
+    });
 })
 
-bot.on("emojiCreate", async (emoji, bot) => {
+bot.on("emojiCreate", async (emoji) => {
     let embed = new Discord.RichEmbed()
         .setColor(`GREEN`)
         .setThumbnail(emoji.url)
@@ -232,18 +237,18 @@ bot.on("emojiCreate", async (emoji, bot) => {
         .addField(`Animated?`, emoji.animated, true)
         .setTimestamp(emoji.createdAt)
         .setFooter(`Emoji Created At`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: emoji.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = emoji.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(embed); 
       }
     });
 });
 
-bot.on("emojiDelete", async (emoji, bot) => {
+bot.on("emojiDelete", async (emoji) => {
     let embed = new Discord.RichEmbed()
         .setColor(`RED`)
         .setThumbnail(emoji.url)
@@ -255,11 +260,11 @@ bot.on("emojiDelete", async (emoji, bot) => {
         .addField(`Animated?`, emoji.animated, true)
         .setTimestamp(emoji.createdAt)
         .setFooter(`Emoji Deleted At`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: emoji.member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = emoji.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(embed); 
       }
@@ -279,11 +284,11 @@ bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
         .addField(`Animated?`, newEmoji.animated, true)
         .setTimestamp(newEmoji.createdAt)
         .setFooter(`Emoji Updated At`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: newEmoji.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = newEmoji.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(embed); 
       }
@@ -298,11 +303,11 @@ bot.on(`messageUpdate`, (oldMessage, newMessage) => {
         .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.avatarURL}`)
         .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
         .setDescription(`_ _►Content: \n ►Old Message **\`${oldMessage.cleanContent}\`** \n ►Update Message **\`${newMessage.cleanContent}\`** \n ►Channel <#${newMessage.channel.id}> \n ►Message ID ${newMessage.id}`)
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
-       let modlogs = guild.channels.get(settings.logchannel);
+       let modlogs = newMessage.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
        modlogs.send(botembed); 
       }
@@ -349,14 +354,14 @@ bot.on("message", async message => {
     .setFooter(`DM Recieved At`, bot.user.avatarURL)
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
-   let prefixes = ['m!', 'M!'];
-    Settings.findOne({serverID: member.guild.id}, (err, settings) => {
-      if (err) console.log(err);
-      if (settings) {
-        if (settings.prefix == "") return;
-        prefixes.push(settings.prefix)
-      }
-    });
+   let prefixes = ["m!", "M!"];
+    //Settings.findOne({serverID: message.guild.id}, (err, settings) => {
+     // if (err) console.log(err);
+     // if (settings) {
+      //  if (settings.prefix == "") return;
+      //  prefixes.push(settings.prefix)
+      //}
+   // });
     let prefix = false;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
