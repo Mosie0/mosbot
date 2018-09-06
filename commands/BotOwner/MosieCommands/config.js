@@ -21,7 +21,7 @@ module.exports.run = (bot, message, args) => {
     Setting.findOne({serverID: message.guild.id}, (err, setting) => {
         if (err) console.log(err);
         if (!setting) { return message.channel.send("Error"); }
-        embed.setTitle(`RHG Settings for ${message.guild.name}`);
+        embed.setTitle(`Mosbots Settings for ${message.guild.name}`);
         embed.setDescription(`Thease are your current settings.`);
         embed.addField(`
 1: **Welcome Greetings: | ${setting.userjoin.enabled == true ? "Enabled" : "Disabled"} | ${setting.userjoin.enabled == true ? truee : falsee}**`,
