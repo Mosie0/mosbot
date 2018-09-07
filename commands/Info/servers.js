@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     bot.guilds.forEach(guild => { string += guild.name + '\n'; })
     let embed = new Discord.RichEmbed()
     .setColor(`#0000FF`)
-    .setTitle(`What servers are MosBot in?`)
+    .setTitle(`What servers am I in?`)
     .setDescription(string)
     message.channel.send(embed)
 }
