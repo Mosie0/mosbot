@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const Settings = require("../../models/settings.js");
 
 module.exports.run = async (bot, message, args) => {
     let kUser = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -14,11 +15,16 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Moderator`, `<@${message.author.id}>`, true)
     .addField(`Channel`, message.channel, true)
     .setTimestamp()
-    let kickChannel = message.guild.channels.find(`name`, "modlogs");
-    if (!kickChannel) return message.channel.send("Can't find The modlogs channel To Log in.");
-
+    Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+        if (err) console.log(err);
+        if (settings) {
+         if (settings.logchannel == "") return;
+         let modlogs = newMessage.guild.channels.get(settings.logchannel);
+         if (!modlogs) return;
+         modlogs.send(kickembed); 
+        }
+      });
     message.guild.member(kUser).kick(kReason);
-    kickChannel.send(kickembed);
     message.delete().catch();
 }
 
