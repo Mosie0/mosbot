@@ -6,10 +6,8 @@ const embed = new Discord.RichEmbed()
 module.exports.run = async (bot, message, args) => {
 message.channel.send(embed).then(sentmessage => {
   embed.setDescription("new Decription");
+  embed.setDesctiption('MOSBOT o_o')
   sentmessage.edit(embed)
-}).then(messages => {
-embed.setDescription("MOSBOT")
-  messages.edit(embed)
 })
 
 
