@@ -324,11 +324,11 @@ bot.on(`messageDelete`, message => {
         .setAuthor(`Message Deleted By ${message.author.tag}`, `${message.author.avatarURL}`)
         .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
         .setDescription(`_ _►Content: **\`${message.cleanContent}\`** \n ►Channel: <#${message.channel.id}> \n ►Message ID: ${message.id}`)
-        Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
+        Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
             if (err) console.log(err);
             if (settings) {
              if (settings.logchannel == "") return;
-             let modlogs = newMessage.guild.channels.get(settings.logchannel);
+             let modlogs = message.guild.channels.get(settings.logchannel);
              if (!modlogs) return;
         modlogs.send(botembed)
             }
