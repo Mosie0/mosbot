@@ -5,6 +5,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor(`#FF0000`)
         .setDescription(`<@${message.author.id}> You Don't have the Manage Messages Permission!`)
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nopermembed);
+    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return message.channel.send(nopermembed);
     let Moderatoruser = message.author.id;
     let reason = args.slice(1).join(' ');
     if(!reason) return message.channel.send(`You need to Provide a Reason! <@${message.author.id}>`);
