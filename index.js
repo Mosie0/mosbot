@@ -248,6 +248,52 @@ bot.on("emojiCreate", async (emoji) => {
     });
 });
 
+bot.on('roleCreate', role => {
+    let guild = role.guild;
+    let modlogs = guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF000")
+        .setAuthor('Role Created', role.guild.iconURL)
+        .setFooter(`${bot.user.tag}`, `${bot.user.avatarURL}`)
+        .setTimestamp()
+        .setDescription(`_ _►Name <@&${role.id}> (**${role.name}**)\n ►ID **${role.id}** \n ►Hex Color **${role.hexColor}** \n ►Hoisted ${role.hoist}`)
+        Settings.findOne({serverID: newEmoji.guild.id}, (err, settings) => {
+            if (err) console.log(err);
+            if (settings) {
+             if (settings.logchannel == "") return;
+             let modlogs = newEmoji.guild.channels.get(settings.logchannel);
+             if (!modlogs) return;
+             modlogs.send(embed); 
+            }
+          });
+
+});
+bot.on('roleDelete', role => {
+    let guild = role.guild;
+    let modlogs = guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF000")
+        .setAuthor('Role Deleted', role.guild.iconURL)
+        .setFooter(`${bot.user.tag}`, `${bot.user.avatarURL}`)
+        .setTimestamp()
+        .setDescription(`_ _►Name **${role.name}** \n ►ID **${role.id}** \n ►Position **${role.position}** \n ►Hoisted **${role.hoist}** \n ►Mentionable **${role.mentionable}** \n ►Color **${role.hexColor}** \n ►Role Created At **${new Date(role.createdTimestamp)}**`)
+        Settings.findOne({serverID: newEmoji.guild.id}, (err, settings) => {
+            if (err) console.log(err);
+            if (settings) {
+             if (settings.logchannel == "") return;
+             let modlogs = newEmoji.guild.channels.get(settings.logchannel);
+             if (!modlogs) return;
+             modlogs.send(embed); 
+            }
+          });
+
+});
+
+
+
+
 bot.on("emojiDelete", async (emoji) => {
     let embed = new Discord.RichEmbed()
         .setColor(`RED`)
