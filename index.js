@@ -315,6 +315,27 @@ bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     });
 });
 
+bot.on(`messageDelete`, message => {
+    if (message.author.bot) return;
+    let modlogs = message.guild.channels.find(c => c.name === "modlogs");
+    if (!modlogs) return;
+    let botembed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setTimestamp()
+        .setAuthor(`Message Deleted By ${message.author.tag}`, `${message.author.avatarURL}`)
+        .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
+        .setDescription(`_ _►Content: **\`${message.cleanContent}\`** \n ►Channel: <#${message.channel.id}> \n ►Message ID: ${message.id}`)
+        Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
+            if (err) console.log(err);
+            if (settings) {
+             if (settings.logchannel == "") return;
+             let modlogs = newMessage.guild.channels.get(settings.logchannel);
+             if (!modlogs) return;
+        modlogs.send(botembed)
+            }
+        });
+});
+
 bot.on('guildUpdate', (oldguild, guild) => {
   Settings.findOne({serverID: guild.id}, (err, settings) => {
     if (err) console.log(err);
