@@ -199,7 +199,7 @@ bot.on('guildCreate', async guild => {
         .addField(`Guild Member Count`, `${guild.memberCount}`, true)
         .addField(`Guild Server Region`, `${guild.region}`, true)
         .addField(`Guild Verification Level`, `${guild.verificationLevel}`, true)
-    bot.channels.get('422057529271648256').send(newserverembed);
+    bot.channels.get('487418015823036436').send(newserverembed);
     bot.users.get('283311727477784576').send(newserverembed)
 
 });
