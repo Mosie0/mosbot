@@ -3,9 +3,8 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
     let nopermembed = new Discord.RichEmbed()
         .setColor("FF0000")
-        .setDescription(`<@${message.author.is}> You don't have the Manage Messages Permission, and your not the bot owner!`)
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nopermembed);
-    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return message.channel.send(nopermembed);
+        .setDescription(`${message.author} You don't have the Manage Messages Permission.`)
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nopermembed) || if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return message.channel.send(nopermembed);
     let Moderatoruser = message.author.id;
     let reason = args.slice(1).join(' ');
     if(!reason) return message.channel.send(`You need to Provide a Reason! <@${message.author.id}>`);
