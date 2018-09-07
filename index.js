@@ -376,13 +376,13 @@ bot.on("message", async message => {
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
    let prefixes = ["m!", "M!"];
-    //Settings.findOne({serverID: message.guild.id}, (err, settings) => {
-     // if (err) console.log(err);
-     // if (settings) {
-      //  if (settings.prefix == "") return;
-      //  prefixes.push(settings.prefix)
-      //}
-   // });
+    Settings.findOne({serverID: message.guild.id}, (err, settings) => {
+      if (err) console.log(err);
+      if (settings) {
+        if (settings.prefix == "") return;
+        prefixes.push(settings.prefix)
+      }
+    });
     let prefix = false;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
