@@ -22,26 +22,35 @@ YOYOYOYO THIS IS A **TEST2**`,
 	},
 	
 	{
-		title: "test3",
+		title: "test4",
 		description: `
-**YOYOYOYO** THIS IS A TEST3`,
+**YOYOYOYO** THIS IS A TEST4`,
 	},
 	
 	{
-		title: "test3",
+		title: "test5",
 		description: `
-**YOYOYOYO** THIS IS A TEST3`,
+**YOYOYOYO** THIS IS A TEST5`,
 	},
 ]
 let page = 1; 
 
 module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
-    const embed = new Discord.RichEmbed()
+    let embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle(pages[page - 1].title)
-        .setFooter(`Page ${page} of ${pages.length}`)
-        .setDescription(pages[page - 1].description);
+        .setTitle("Help Page")
+        .setDescription(`
+${pageemo[0]} for **Moderation Commands**.
+
+${pageemo[1]} for **Fun Commands**.
+
+${pageemo[0]} for **Moderation Commands**.
+
+${pageemo[0]} for **Information Commands**.
+
+${pageemo[0]} for **Credits**.
+`);
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
@@ -59,8 +68,8 @@ module.exports.run = (bot, message, args) => {
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
 		embed.setColor("RANDOM")
-		embed.setTitle = pageemo[rid].title
-		embed.setDescription = pageemo[rid].description
+		embed.setTitle = pages[rid].title
+		embed.setDescription = pages[rid].description
 		msg.edit(embed)
 	}
 	reactArrows(0)
