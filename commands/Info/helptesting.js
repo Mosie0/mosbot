@@ -1,8 +1,23 @@
 const Discord = require('discord.js'),
-    pageemo = ["🛠", "🎉", "❔", "🔠", "🎲"];
+    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲"];
 
 
 const pages = [
+	{
+		title: "Help Menu",
+		description: `
+${pageemo[0]} to return **Home**.
+
+${pageemo[1]} for **Moderation Commands**.
+
+${pageemo[2]} for **Fun Commands**.
+
+${pageemo[3]} for **Information Commands**.
+
+${pageemo[4]} for **Bot Owner Commands**.
+
+${pageemo[5]} for **Credits**.`
+	},
 	{
 		title: "Moderation Commands",
 		description: `
@@ -39,22 +54,12 @@ module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
     let embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle("Help Page")
-        .setDescription(`
-${pageemo[0]} for **Moderation Commands**.
-
-${pageemo[1]} for **Fun Commands**.
-
-${pageemo[2]} for **Information Commands**.
-
-${pageemo[3]} for **Bot Owner Commands**.
-
-${pageemo[4]} for **Credits**.
-`);
+        .setTitle(pages[0].title)
+        .setDescription(pages[0].description);
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
-		if (arrow === 5) return;
+		if (arrow === 6) return;
 		msg.react(pageemo[arrow]).then(_ => {
 			reactArrows(arrow + 1);
 		}).catch(e => console.error(`Reaction Error: ${e}`));
