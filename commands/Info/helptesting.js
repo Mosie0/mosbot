@@ -1,5 +1,5 @@
 const Discord = require('discord.js'),
-    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲"];
+    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲", "❌"];
 
 
 const pages = [
@@ -16,7 +16,9 @@ ${pageemo[3]} for **Information Commands**.
 
 ${pageemo[4]} for **Bot Owner Commands**.
 
-${pageemo[5]} for **Credits**.`
+${pageemo[5]} for **Credits**.
+
+${pageemo[5]} to exit the menu.`
 	},
 	{
 		title: "Moderation Commands",
@@ -59,7 +61,7 @@ module.exports.run = (bot, message, args) => {
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
-		if (arrow === 6) return;
+		if (arrow === 7) return;
 		msg.react(pageemo[arrow]).then(_ => {
 			reactArrows(arrow + 1);
 		}).catch(e => console.error(`Reaction Error: ${e}`));
@@ -70,12 +72,17 @@ module.exports.run = (bot, message, args) => {
 		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
-		let embed2 = new Discord.RichEmbed()
-		.setColor("RANDOM")
-		.setTitle(pages[rid].title)
-		.setDescription(pages[rid].description)
-		
-		msg.edit(embed2)
+		if (rid !== 7 {
+			let embed2 = new Discord.RichEmbed()
+			.setColor("RANDOM")
+			.setTitle(pages[rid].title)
+			.setDescription(pages[rid].description)
+
+			msg.edit(embed2)
+		} else { 
+			msg.delete(1000)
+		}
+	    
 	}
 	reactArrows(0)
 	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);});
