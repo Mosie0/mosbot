@@ -18,7 +18,7 @@ ${pageemo[4]} for **Bot Owner Commands**.
 
 ${pageemo[5]} for **Credits**.
 
-${pageemo[5]} to exit the menu.`
+${pageemo[6]} to exit the menu.`
 	},
 	{
 		title: "Moderation Commands",
@@ -72,7 +72,7 @@ module.exports.run = (bot, message, args) => {
 		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
-		if (rid !== 7) {
+		if (rid !== 6) {
 			let embed2 = new Discord.RichEmbed()
 			.setColor("RANDOM")
 			.setTitle(pages[rid].title)
