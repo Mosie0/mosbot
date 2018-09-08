@@ -72,7 +72,7 @@ module.exports.run = (bot, message, args) => {
 		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
-		if (rid !== 7 {
+		if (rid !== 7) {
 			let embed2 = new Discord.RichEmbed()
 			.setColor("RANDOM")
 			.setTitle(pages[rid].title)
