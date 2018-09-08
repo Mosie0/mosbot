@@ -328,7 +328,7 @@ bot.on(`messageDelete`, message => {
              if (settings.logchannel == "") return;
              let modlogs = message.guild.channels.get(settings.logchannel);
              if (!modlogs) return;
-        `   modlogs.send(botembed)
+             modlogs.send(botembed)
             }
         });
 });
@@ -362,15 +362,14 @@ bot.on('guildDelete', (guild) => {
   Settings.findOneAndRemove({serverID: guild.id}).catch((err) => console.log(err));
 });
 bot.on("message", async message => {
-
     if (message.author.bot) return;
     const dmembeds = new Discord.RichEmbed()
-    .setColor(`#FF000`)
-    .setAuthor(message.author.tag, message.author.avatarURL)
-    .setDescription(message.content)
-    .setThumbnail(message.author.avatarURL)
-    .setTimestamp()
-    .setFooter(`DM Recieved At`, bot.user.avatarURL)
+        .setColor(`#FF000`)
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setDescription(message.content)
+        .setThumbnail(message.author.avatarURL)
+        .setTimestamp()
+        .setFooter(`DM Recieved At`, bot.user.avatarURL);
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
    let prefixes = ["m!", "M!"];
