@@ -3,6 +3,7 @@ const superagent = require("superagent");
 const api = process.env.GIPHY_API_KEY;
 // ==========================================================================================================================================
 module.exports.run = async (bot, message, args) => {
+    if(!message.channel.nsfw) return;
     const userURL = message.author.avatarURL;
     const usernameid = message.author.username;
     // ==========================================================================================================================================

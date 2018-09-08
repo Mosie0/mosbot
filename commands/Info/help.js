@@ -48,8 +48,12 @@ m!memberlist: Gives the list of members in a certain role`,
 	
 	{
 		title: "Fun Commands",
-		description: `
-***Not Ready Yet***`,
+		description: `m!8ball: Ask any question, MosBot knows the answer
+		m!cat: CATS!!
+		m!dog: DOGS!!
+		m!draw: Want to draw something? Go ahead
+		m!fortnite: Fortnite Stats
+		m!gif`,
 	},
 	
     	{
