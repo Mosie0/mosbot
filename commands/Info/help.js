@@ -18,7 +18,7 @@ ${pageemo[4]} for **Bot Owner Commands**.
 
 ${pageemo[5]} for **Credits**.
 
-${pageemo[6]} to exit the menu.`
+${pageemo[6]} to **exit** the menu.`
 	},
 	{
 		title: "Moderation Commands",
