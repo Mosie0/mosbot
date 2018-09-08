@@ -5,7 +5,7 @@ const api = process.env.GIPHY_API_KEY;
 module.exports.run = async (bot, message, args) => {
     let nsfwonly = new Discord.RichEmbed()
     .setColor("FF0000")
-    .description("NSFW channels only")
+    .description(`NSFW channels only`)
     if(!message.channel.nsfw) return message.channel.send (nsfwonly)
     const userURL = message.author.avatarURL;
     const usernameid = message.author.username;
