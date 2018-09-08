@@ -3,7 +3,9 @@ const Discord = require('discord.js'),
     forwardsemo = "⏩";
 
 
-let pages = ['testing! :)', 'Second page', 'Third', 'You can add pages', 'All you need to do is add another item in the array', '**Supports markdown and regular chat description properties**']; 
+let pages = [.setColor("RANDOM")
+.setDescription("helpplplpplp")
+, 'Second page', 'Third', 'You can add pages', 'All you need to do is add another item in the array', '**Supports markdown and regular chat description properties**']; 
 let page = 1; 
 
 module.exports.run = (bot, message, args) => {
