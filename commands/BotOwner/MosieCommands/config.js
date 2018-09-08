@@ -1,7 +1,8 @@
 const Discord = require('discord.js'),
-    clip = "➥",
-    truee = "<:yes:458348060163178516>",
-    falsee = "<:no:458348057130565642>";
+    //clip = "➥",
+    clip = "⚙",
+    truee = "👍",
+    falsee = "💣";
     
 
 let Setting = require("../../../models/settings.js");
