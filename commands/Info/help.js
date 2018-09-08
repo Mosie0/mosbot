@@ -1,3 +1,4 @@
+// *wakes up next morning* Find this command on chief's bot
 const Discord = require('discord.js'),
     pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲", "❌"];
 
@@ -47,7 +48,8 @@ m!memberlist: Gives the list of members in a certain role`,
 	
 	{
 		title: "Fun Commands",
-		description: `***Not Ready Yet***`,
+		description: `
+***Not Ready Yet***`,
 	},
 	
     	{
@@ -71,12 +73,14 @@ m!id: Find a members user ID`,
 	
 	{
 		title: "Bot Owner Commands",
-		description: `**Not ready yet***`,
+		description: `
+**Not ready yet***`,
 	},
 	
 	{
 		title: "Credits",
-		description: `***Not ready yet***`,
+		description: `
+***Not ready yet***`,
 	},
 ]
 let page = 1; 
