@@ -54,20 +54,29 @@ YOYOYOYO THIS IS A **TEST2**`,
 	
     	{
 		title: "Information Commands",
-		description: `
-**YOYOYOYO** THIS IS A TEST3`,
+		description: `m!avatar: Shows the avatar of a member
+        m!botinfo: Gives information about MosBot
+        m!createinvite: Creates an invite
+        m!emojify: Emojify a word
+        m!emojis: Gives the current animated/still emojis in the current guild
+        m!topinvites: Gives the current leaderboard of topinvites
+        m!ping: Current ping of MosBot
+        m!roles: Current roles in the server
+        m!serverinfo: Gives information about the current guild
+        m!serverlookup: Look up any server, and get information about that guild
+        m!servers: Gives a hastebin link of the current servers MosBot is in
+        m!stats: Gives stats about MosBot
+        m!uptime: Gives the current uptime of MosBot`,
 	},
 	
 	{
 		title: "Bot Owner Commands",
-		description: `
-**YOYOYOYO** THIS IS A TEST4`,
+		description: `**Not ready yet***`,
 	},
 	
 	{
 		title: "Credits",
-		description: `
-**YOYOYOYO** THIS IS A TEST5`,
+		description: `***Not ready yet***`,
 	},
 ]
 let page = 1; 
