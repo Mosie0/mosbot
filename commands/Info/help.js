@@ -118,7 +118,7 @@ module.exports.run = (bot, message, args) => {
 	    
 	}
 	reactArrows(0)
-	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);}, { time: 30000 });
+	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);}, { time: 180000 }); // 180000 = 3 mins
         collector.on("collect", (reaction) => {
             handleReaction(reaction);
         });
