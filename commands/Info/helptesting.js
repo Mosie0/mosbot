@@ -4,31 +4,31 @@ const Discord = require('discord.js'),
 
 const pages = [
 	{
-		title: "test1",
+		title: "Moderation Commands",
 		description: `
 YOYOYOYO THIS IS A TEST`,
 	},
 	
 	{
-		title: "test2",
+		title: "Fun Commands",
 		description: `
 YOYOYOYO THIS IS A **TEST2**`,
 	},
 	
     	{
-		title: "test3",
+		title: "Information Commands",
 		description: `
 **YOYOYOYO** THIS IS A TEST3`,
 	},
 	
 	{
-		title: "test4",
+		title: "Bot Owner Commands",
 		description: `
 **YOYOYOYO** THIS IS A TEST4`,
 	},
 	
 	{
-		title: "test5",
+		title: "Credits",
 		description: `
 **YOYOYOYO** THIS IS A TEST5`,
 	},
@@ -45,21 +45,19 @@ ${pageemo[0]} for **Moderation Commands**.
 
 ${pageemo[1]} for **Fun Commands**.
 
-${pageemo[0]} for **Moderation Commands**.
+${pageemo[2]} for **Information Commands**.
 
-${pageemo[0]} for **Information Commands**.
+${pageemo[3]} for **Bot Owner Commands**.
 
-${pageemo[0]} for **Credits**.
+${pageemo[4]} for **Credits**.
 `);
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
 		if (arrow === 6) return;
 		msg.react(pageemo[arrow]).then(_ => {
-		reactArrows(arrow + 1);
-		}).catch(
-		e => console.error(`Reaction Error: ${e}`)
-	);
+			reactArrows(arrow + 1);
+		}).catch(e => console.error(`Reaction Error: ${e}`));
 	}
 	function handleReaction(reaction) {
 		// console.log(`${reaction.emoji.name} from ${reaction.users.last().username}`);
