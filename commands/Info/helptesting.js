@@ -3,17 +3,30 @@ const Discord = require('discord.js'),
     forwardsemo = "⏩";
 
 
-let pages = [.setColor("RANDOM")
-.setDescription("helpplplpplp")
-, 'Second page', 'Third', 'You can add pages', 'All you need to do is add another item in the array', '**Supports markdown and regular chat description properties**']; 
+const pages = [
+	{
+		title: "test1",
+		description: "YOYOYOYO THIS IS A TEST",
+	},
+	
+	{
+		title: "test2",
+		description: "YOYOYOYO THIS IS A **TEST2**",
+	},
+    {
+		title: "test3",
+		description: "**YOYOYOYO** THIS IS A TEST3",
+	},
+]
 let page = 1; 
 
 module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
     const embed = new Discord.RichEmbed()
-        .setColor(0xffffff)
+        .setColor("RANDOM")
+        .setTitle(pages[page - 1].title)
         .setFooter(`Page ${page} of ${pages.length}`)
-        .setDescription(pages[page - 1]);
+        .setDescription(pages[page - 1].description);
 
     message.channel.send(embed).then(msg => {
 
@@ -31,7 +44,9 @@ module.exports.run = (bot, message, args) => {
                 if (page === 1) return;
                 msg.clearReactions().then(() => {
                     page--;
-                    embed.setDescription(pages[page - 1]);
+                    embed.setColor("RANDOM")
+                    embed.settitle(pages[page - 1].title);
+                    embed.setDescription(pages[page - 1].description);
                     embed.setFooter(`Page ${page} of ${pages.length}`);
                     msg.edit(embed);
                     msg.react(backwardsemo).then(() => {
@@ -44,7 +59,9 @@ module.exports.run = (bot, message, args) => {
                 if (page === pages.length) return;
                 msg.clearReactions().then(() => {
                     page++;
-                    embed.setDescription(pages[page - 1]);
+                    embed.setColor("RANDOM")
+                    embed.settitle(pages[page - 1].title);
+                    embed.setDescription(pages[page - 1].description);
                     embed.setFooter(`Page ${page} of ${pages.length}`);
                     msg.edit(embed);
                     msg.react(backwardsemo).then(() => {
