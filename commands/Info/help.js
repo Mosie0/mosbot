@@ -34,7 +34,6 @@ ${pageemo[6]} to exit the menu.`
         m!say: Make the bot say something
         m!unban: Unban a member
         m!warn: Warn a member
-        m!id: Find a members user ID
         m!poll: Start a poll
         m!softban:
         m!support: File a support ticket
@@ -48,8 +47,7 @@ ${pageemo[6]} to exit the menu.`
 	
 	{
 		title: "Fun Commands",
-		description: `
-YOYOYOYO THIS IS A **TEST2**`,
+		description: `***Not Ready Yet***`,
 	},
 	
     	{
@@ -66,7 +64,8 @@ YOYOYOYO THIS IS A **TEST2**`,
         m!serverlookup: Look up any server, and get information about that guild
         m!servers: Gives a hastebin link of the current servers MosBot is in
         m!stats: Gives stats about MosBot
-        m!uptime: Gives the current uptime of MosBot`,
+		m!uptime: Gives the current uptime of MosBot
+		m!id: Find a members user ID`,
 	},
 	
 	{
