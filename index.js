@@ -316,8 +316,6 @@ bot.on(`messageUpdate`, (oldMessage, newMessage) => {
 
 bot.on(`messageDelete`, message => {
     if (message.author.bot) return;
-    let modlogs = message.guild.channels.find(c => c.name === "modlogs");
-    if (!modlogs) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setTimestamp()
@@ -330,7 +328,7 @@ bot.on(`messageDelete`, message => {
              if (settings.logchannel == "") return;
              let modlogs = message.guild.channels.get(settings.logchannel);
              if (!modlogs) return;
-        modlogs.send(botembed)
+        `   modlogs.send(botembed)
             }
         });
 });
