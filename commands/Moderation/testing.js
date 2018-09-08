@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-  const embed = new Discord.RichEmbed()
+   let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setDescription(`Text here xd`)
 message.channel.send(embed).then(sentmessage => {
