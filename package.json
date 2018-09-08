@@ -44,7 +44,6 @@
         "util": "^0.11.0",
         "ytdl-core": "^0.21.1",
         "youtube-search": "^1.1.1",
-        "canvas": "1.6.11",
-        "canvas-constructor": "1.0.1"
+        "canvas": "1.6.11"
       }
     }
