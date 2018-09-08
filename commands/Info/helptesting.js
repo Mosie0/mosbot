@@ -35,7 +35,7 @@ YOYOYOYO THIS IS A **TEST2**`,
 ]
 let page = 1; 
 
-reactArrows(arrow) {
+function reactArrows(arrow) {
    if (arrow === 6) return;
   this.msg.react(reactions[arrow]).then(_ => {
      this.reactArrows(arrow + 1);
@@ -53,7 +53,7 @@ module.exports.run = (bot, message, args) => {
         .setDescription(pages[page - 1].description);
 
     message.channel.send(embed).then(msg => {
-	handleReaction(reaction) {
+	function handleReaction(reaction) {
 		// console.log(`${reaction.emoji.name} from ${reaction.users.last().username}`);
 		reaction.remove(reaction.users.last()).catch(e => {
 		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
