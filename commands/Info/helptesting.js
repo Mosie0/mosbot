@@ -1,6 +1,7 @@
 const Discord = require('discord.js'),
-    backwardsemo =  "⏪",
-    forwardsemo = "⏩";
+    pageemo = ["🛠", "", "", "", ""],
+    backwardsemo=  "⏪",
+    forwardsemo= "⏩";
 
 
 const pages = [
@@ -13,7 +14,8 @@ const pages = [
 		title: "test2",
 		description: "YOYOYOYO THIS IS A **TEST2**",
 	},
-    {
+	
+    	{
 		title: "test3",
 		description: "**YOYOYOYO** THIS IS A TEST3",
 	},
