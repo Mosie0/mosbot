@@ -1,26 +1,48 @@
 const Discord = require('discord.js'),
-    pageemo = ["🛠", "", "", "", ""],
-    backwardsemo=  "⏪",
-    forwardsemo= "⏩";
+    pageemo = ["🛠", "🎉", "❔", "🔠", "🎲"];
 
 
 const pages = [
 	{
 		title: "test1",
-		description: "YOYOYOYO THIS IS A TEST",
+		description: `
+YOYOYOYO THIS IS A TEST`,
 	},
 	
 	{
 		title: "test2",
-		description: "YOYOYOYO THIS IS A **TEST2**",
+		description: `
+YOYOYOYO THIS IS A **TEST2**`,
 	},
 	
     	{
 		title: "test3",
-		description: "**YOYOYOYO** THIS IS A TEST3",
+		description: `
+**YOYOYOYO** THIS IS A TEST3`,
+	},
+	
+	{
+		title: "test3",
+		description: `
+**YOYOYOYO** THIS IS A TEST3`,
+	},
+	
+	{
+		title: "test3",
+		description: `
+**YOYOYOYO** THIS IS A TEST3`,
 	},
 ]
 let page = 1; 
+
+reactArrows(arrow) {
+   if (arrow === 6) return;
+  this.msg.react(reactions[arrow]).then(_ => {
+     this.reactArrows(arrow + 1);
+  }).catch(
+     e => console.error(`Reaction Error: ${e}`)
+  );
+}
 
 module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
@@ -31,51 +53,25 @@ module.exports.run = (bot, message, args) => {
         .setDescription(pages[page - 1].description);
 
     message.channel.send(embed).then(msg => {
-
-        msg.react(backwardsemo).then(r => {
-            msg.react(forwardsemo);
-
-            const backwardsFilter = (reaction, user) => reaction.emoji.name === backwardsemo && user.id === message.author.id;
-            const forwardsFilter = (reaction, user) => reaction.emoji.name === forwardsemo && user.id === message.author.id;
-
-            const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
-            const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
-
-
-            backwards.on('collect', r => {
-                if (page === 1) return;
-                msg.clearReactions().then(() => {
-                    page--;
-                    embed.setColor("RANDOM")
-                    embed.setTitle(pages[page - 1].title);
-                    embed.setDescription(pages[page - 1].description);
-                    embed.setFooter(`Page ${page} of ${pages.length}`);
-                    msg.edit(embed);
-                    msg.react(backwardsemo).then(() => {
-                        msg.react(forwardsemo);
-                    });
-                });
-            });
-
-            forwards.on('collect', r => {
-                if (page === pages.length) return;
-                msg.clearReactions().then(() => {
-                    page++;
-                    embed.setColor("RANDOM")
-                    embed.setTitle(pages[page - 1].title);
-                    embed.setDescription(pages[page - 1].description);
-                    embed.setFooter(`Page ${page} of ${pages.length}`);
-                    msg.edit(embed);
-                    msg.react(backwardsemo).then(() => {
-                        msg.react(forwardsemo);
-                    });
-                });
-            });
-
-            forwards.on('end', () => {
-                msg.delete();
-            });
+	handleReaction(reaction) {
+		// console.log(`${reaction.emoji.name} from ${reaction.users.last().username}`);
+		reaction.remove(reaction.users.last()).catch(e => {
+		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
+		});
+		const rid = pageemo.indexOf(reaction.emoji.name);
+		embed.setColor("RANDOM")
+		embed.setTitle = pageemo[rid].title
+		embed.setDescription = pageemo[rid].description
+		msg.edit(embed)
+	}
+	reactArrows(0)
+	this.collector = msg.createReactionCollector((reaction, user) => {
+            return user.id !== msg.client.user.id && reactions.includes(reaction.emoji.name);
         });
+	let self = this;
+        this.collector.on("collect", (reaction) => {
+            self.handleReaction(reaction);
+        }); 
     });
 };
 
