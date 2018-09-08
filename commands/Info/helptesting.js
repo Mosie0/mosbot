@@ -35,15 +35,6 @@ YOYOYOYO THIS IS A **TEST2**`,
 ]
 let page = 1; 
 
-function reactArrows(arrow) {
-   if (arrow === 6) return;
-  this.msg.react(reactions[arrow]).then(_ => {
-     this.reactArrows(arrow + 1);
-  }).catch(
-     e => console.error(`Reaction Error: ${e}`)
-  );
-}
-
 module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
     const embed = new Discord.RichEmbed()
@@ -53,6 +44,14 @@ module.exports.run = (bot, message, args) => {
         .setDescription(pages[page - 1].description);
 
     message.channel.send(embed).then(msg => {
+	function reactArrows(arrow) {
+		if (arrow === 6) return;
+		msg.react(reactions[arrow]).then(_ => {
+		reactArrows(arrow + 1);
+		}).catch(
+		e => console.error(`Reaction Error: ${e}`)
+	);
+	}
 	function handleReaction(reaction) {
 		// console.log(`${reaction.emoji.name} from ${reaction.users.last().username}`);
 		reaction.remove(reaction.users.last()).catch(e => {
@@ -65,12 +64,11 @@ module.exports.run = (bot, message, args) => {
 		msg.edit(embed)
 	}
 	reactArrows(0)
-	this.collector = msg.createReactionCollector((reaction, user) => {
+	let collector = msg.createReactionCollector((reaction, user) => {
             return user.id !== msg.client.user.id && reactions.includes(reaction.emoji.name);
         });
-	let self = this;
-        this.collector.on("collect", (reaction) => {
-            self.handleReaction(reaction);
+        collector.on("collect", (reaction) => {
+            handleReaction(reaction);
         }); 
     });
 };
