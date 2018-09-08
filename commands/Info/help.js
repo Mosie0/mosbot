@@ -1,5 +1,6 @@
+// *wakes up next morning* Find this command on chief's bot
 const Discord = require('discord.js'),
-    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲", "❌"];
+    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🏅", "👌"];
 
 
 const pages = [
@@ -23,59 +24,63 @@ ${pageemo[6]} to **exit** the menu.`
 	{
 		title: "Moderation Commands",
 		description: `
-		m!addrole: Add a role
-        m!ban: Ban a member
-        m!dm: Dm a member
-        m!kick: Kick a member
-        m!mute: Mute a member
-        m!purge: Purge messages
-        m!removerole: Remove a role
-        m!report: Report members
-        m!say: Make the bot say something
-        m!unban: Unban a member
-        m!warn: Warn a member
-        m!poll: Start a poll
-        m!softban:
-        m!support: File a support ticket
-        m!lock: Lock this channel, so no one can chat in it
-        m!unlock: Allow the role @ everyone to chat in that channel
-        m!discordupdates: Allows the bot to send a message to the channel #change-log
-        m!annoucement: Send an embedded message to the #annoucements channel
-        m!whois: Gives brief data on a member
-        m!memberlist: Gives the list of members in a certain role`,
+m!addrole: Add a role
+m!ban: Ban a member
+m!dm: Dm a member
+m!kick: Kick a member
+m!mute: Mute a member
+m!purge: Purge messages
+m!removerole: Remove a role
+m!report: Report members
+m!say: Make the bot say something
+m!unban: Unban a member
+m!warn: Warn a member
+m!poll: Start a poll
+m!softban:
+m!support: File a support ticket
+m!lock: Lock this channel, so no one can chat in it
+m!unlock: Allow the role @ everyone to chat in that channel
+m!discordupdates: Allows the bot to send a message to the channel #change-log
+m!annoucement: Send an embedded message to the #annoucements channel
+m!whois: Gives brief data on a member
+m!memberlist: Gives the list of members in a certain role`,
 	},
 	
 	{
 		title: "Fun Commands",
-		description: `***Not Ready Yet***`,
+		description: `
+***Not Ready Yet***`,
 	},
 	
     	{
 		title: "Information Commands",
-		description: `m!avatar: Shows the avatar of a member
-        m!botinfo: Gives information about MosBot
-        m!createinvite: Creates an invite
-        m!emojify: Emojify a word!
-        m!emojis: Gives the current animated/still emojis in the current guild
-        m!topinvites: Gives the current leaderboard of topinvites
-        m!ping: Current ping of MosBot
-        m!roles: Current roles in the server
-        m!serverinfo: Gives information about the current guild
-        m!serverlookup: Look up any server, and get information about that guild
-        m!servers: Gives a hastebin link of the current servers MosBot is in
-        m!stats: Gives stats about MosBot
-		m!uptime: Gives the current uptime of MosBot
-		m!id: Find a members user ID`,
+		description: `
+m!avatar: Shows the avatar of a member
+m!botinfo: Gives information about MosBot
+m!createinvite: Creates an invite
+m!emojify: Emojify a word!
+m!emojis: Gives the current animated/still emojis in the current guild
+m!topinvites: Gives the current leaderboard of topinvites
+m!ping: Current ping of MosBot
+m!roles: Current roles in the server
+m!serverinfo: Gives information about the current guild
+m!serverlookup: Look up any server, and get information about that guild
+m!servers: Gives a hastebin link of the current servers MosBot is in
+m!stats: Gives stats about MosBot
+m!uptime: Gives the current uptime of MosBot
+m!id: Find a members user ID`,
 	},
 	
 	{
 		title: "Bot Owner Commands",
-		description: `**Not ready yet***`,
+		description: `
+**Not ready yet***`,
 	},
 	
 	{
 		title: "Credits",
-		description: `***Not ready yet***`,
+		description: `
+***Not ready yet***`,
 	},
 ]
 let page = 1; 
@@ -108,15 +113,16 @@ module.exports.run = (bot, message, args) => {
 
 			msg.edit(embed2)
 		} else { 
-			msg.delete(1000)
+			msg.delete(500)
 		}
 	    
 	}
 	reactArrows(0)
-	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);});
+	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);}, { time: 180000 }); // 180000 = 3 mins
         collector.on("collect", (reaction) => {
             handleReaction(reaction);
-        }); 
+        });
+	collector.on('end',() => msg.delete(500));
     });
 };
 
