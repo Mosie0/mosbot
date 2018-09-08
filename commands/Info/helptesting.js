@@ -54,7 +54,7 @@ ${pageemo[4]} for **Credits**.
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
-		if (arrow === 6) return;
+		if (arrow === 5) return;
 		msg.react(pageemo[arrow]).then(_ => {
 			reactArrows(arrow + 1);
 		}).catch(e => console.error(`Reaction Error: ${e}`));
@@ -65,10 +65,12 @@ ${pageemo[4]} for **Credits**.
 		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
-		embed.setColor("RANDOM")
-		embed.setTitle = pages[rid].title
-		embed.setDescription = pages[rid].description
-		msg.edit(embed)
+		let embed2 = new Discord.RichEmbed()
+		.setColor("RANDOM")
+		.setTitle(pages[rid].title)
+		.setDescription(pages[rid].description)
+		
+		msg.edit(embed2)
 	}
 	reactArrows(0)
 	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);});
