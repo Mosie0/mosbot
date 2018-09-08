@@ -1,6 +1,6 @@
 // *wakes up next morning* Find this command on chief's bot
 const Discord = require('discord.js'),
-    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🎲", "❌"];
+    pageemo = ["🏠", "🛠", "🎉", "❔", "🔠", "🏅", "👌"];
 
 
 const pages = [
