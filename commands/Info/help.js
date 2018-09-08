@@ -57,7 +57,7 @@ YOYOYOYO THIS IS A **TEST2**`,
 		description: `m!avatar: Shows the avatar of a member
         m!botinfo: Gives information about MosBot
         m!createinvite: Creates an invite
-        m!emojify: Emojify a word
+        m!emojify: Emojify a word!
         m!emojis: Gives the current animated/still emojis in the current guild
         m!topinvites: Gives the current leaderboard of topinvites
         m!ping: Current ping of MosBot
