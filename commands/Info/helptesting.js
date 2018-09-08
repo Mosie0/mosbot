@@ -46,7 +46,7 @@ module.exports.run = (bot, message, args) => {
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
 		if (arrow === 6) return;
-		msg.react(reactions[arrow]).then(_ => {
+		msg.react(pageemo[arrow]).then(_ => {
 		reactArrows(arrow + 1);
 		}).catch(
 		e => console.error(`Reaction Error: ${e}`)
@@ -64,9 +64,7 @@ module.exports.run = (bot, message, args) => {
 		msg.edit(embed)
 	}
 	reactArrows(0)
-	let collector = msg.createReactionCollector((reaction, user) => {
-            return user.id !== msg.client.user.id && reactions.includes(reaction.emoji.name);
-        });
+	let collector = msg.createReactionCollector((reaction, user) => {return user.id !== msg.client.user.id && pageemo.includes(reaction.emoji.name);});
         collector.on("collect", (reaction) => {
             handleReaction(reaction);
         }); 
