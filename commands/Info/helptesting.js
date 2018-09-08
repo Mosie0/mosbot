@@ -45,7 +45,7 @@ module.exports.run = (bot, message, args) => {
                 msg.clearReactions().then(() => {
                     page--;
                     embed.setColor("RANDOM")
-                    embed.settitle(pages[page - 1].title);
+                    embed.setTitle(pages[page - 1].title);
                     embed.setDescription(pages[page - 1].description);
                     embed.setFooter(`Page ${page} of ${pages.length}`);
                     msg.edit(embed);
@@ -60,7 +60,7 @@ module.exports.run = (bot, message, args) => {
                 msg.clearReactions().then(() => {
                     page++;
                     embed.setColor("RANDOM")
-                    embed.settitle(pages[page - 1].title);
+                    embed.setTitle(pages[page - 1].title);
                     embed.setDescription(pages[page - 1].description);
                     embed.setFooter(`Page ${page} of ${pages.length}`);
                     msg.edit(embed);
