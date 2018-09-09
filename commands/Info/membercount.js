@@ -5,7 +5,8 @@ module.exports.run = async (bot, message, args) => {
 .addField(`Total Humans in the Discord`, `${humanCount}`)
 }
 
-message.channel.send(membercount)
+message.channel.send(membercount);
+
 module.exports.help = {
     name: "membercount",
     names: "mc"
