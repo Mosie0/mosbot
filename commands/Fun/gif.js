@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     // ==========================================================================================================================================
     const brokenembed = new Discord.RichEmbed()
         .setColor("#FF0000")
-        .setDescription(`API is Broke <a:Dots:426956230582599690> Please Contact the Bot Owner. (Btw this is not the Bot Owners fault, its the GIPHY API)`)
+        .setDescription(`API is Broken <a:Dots:426956230582599690> Please Contact the Bot Owner. (Btw this is not the Bot Owners fault, its the GIPHY API)`)
     if (!body) return message.channel.send(brokenembed)
     // ==========================================================================================================================================
     const searchembed = new Discord.RichEmbed()
