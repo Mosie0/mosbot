@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     if(!channels) channels = message.channel.send(args.join(' '))
     let botmessage = args.slice(1).join(" ");
     message.delete().catch();
-    channels.send(botmessage);
+    message.channel.send(botmessage);
 }
 
 
