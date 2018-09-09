@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 module.exports.run = async (bot, message, args) => {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Sorry but you don't have the permissions to use this command.");
     let channels = message.mentions.channels.first() || message.guild.channels.get(args[0])
