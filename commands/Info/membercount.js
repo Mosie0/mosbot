@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-    let serverSize = member.guild.membercount;
+    let serverSize = member.guild.memberCount;
     let botCount = member.guild.members.filter(m => m.user.bot).size;
     let humanCount = serverSize - botCount;
     let servercount = serverSize;
