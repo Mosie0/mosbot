@@ -26,5 +26,5 @@ module.exports.run = (bot, message, args) => {
 
 module.exports.help = {
     name: "testing1",
-    names: "Testing1"
+    names: "membercount2"
 }
