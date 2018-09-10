@@ -17,7 +17,7 @@ module.exports.run = (bot, message, args) => {
         .addText(`Total Count: ${serverSize}`, 10, 125)
         .addText(`Human Count: ${humanCount}`, 10, 150)
         .addText(`Bot Count: ${botCount}`, 10, 175)
-        .addRoundImage(guildIcon.body, 250, 20, 128, 128, 64) // 64
+        .addRoundImage(guildIcon.body, 250, 85, 128, 128, 6) // 64
         .save();
         
         message.channel.send({files: [{ attachment: canvas.toBuffer(), name: "Account.png"}]});
