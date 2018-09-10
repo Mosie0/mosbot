@@ -5,7 +5,7 @@ module.exports.run = (bot, message, args) => {
     const botCount = message.guild.members.filter(m => m.user.bot).size;
     const humanCount = serverSize - botCount;
     const canvas = new Canvas(400, 200)
-    .setColor("#000000")
+    .setColor("#2C2F33")
     .addRect(0, 0, 400, 200)
     .setColor("#ffffff")
     .addText(`Total Count: ${serverSize}`, 100, 100)
