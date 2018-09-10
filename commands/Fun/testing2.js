@@ -8,7 +8,7 @@ module.exports.run = (bot, message, args) => {
     .setColor("#000000")
     .addRect(0, 0, 400, 200)
     .setColor("#ffffff")
-    .addText(`Server Members: ${serverSize}`, 400, 100)
+    .addText(`Server Count: ${serverSize}`, 300, 100)
     .addText(`Bot Count: ${botCount}`, 200, 100)
     .addText(`Human Count: ${humanCount}`, 100, 100)
 
