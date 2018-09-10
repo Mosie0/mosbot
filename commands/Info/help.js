@@ -93,12 +93,17 @@ module.exports.run = (bot, message, args) => {
     message.delete(500).catch();
     let embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle(pages[0].title)
-        .setDescription(pages[0].description);
+        .setTitle("Loading Help...")
+        //.setDescription("");
 
     message.channel.send(embed).then(msg => {
 	function reactArrows(arrow) {
-		if (arrow === 7) return;
+		if (arrow === 7) {
+			embed.setColor("RANDOM");
+			embed.setTitle(pages[0].title); 
+			embed.setDescription(pages[0].description); 
+			msg.edit(embed);
+		}
 		msg.react(pageemo[arrow]).then(_ => {
 			reactArrows(arrow + 1);
 		}).catch(e => console.error(`Reaction Error: ${e}`));
