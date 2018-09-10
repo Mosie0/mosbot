@@ -9,12 +9,12 @@ module.exports.run = (bot, message, args) => {
     .addRect(0, 0, 400, 200)
     .setColor("#ffffff")
     .setTextFont('25px Impact')
-    .setTextAlign("center")
-    .addText(`Server Members`, 100, 50)
+    //.setTextAlign("center")
+    .addText(`Server Members`, 10, 15)
     .setTextFont('20px Impact')
-    .addText(`Total Count: ${serverSize}`, 100, 50)
-    .addText(`Human Count: ${humanCount}`, 100, 100)
-    .addText(`Bot Count: ${botCount}`, 100, 150)
+    .addText(`Total Count: ${serverSize}`, 10, 75)
+    .addText(`Human Count: ${humanCount}`, 10, 100)
+    .addText(`Bot Count: ${botCount}`, 20, 125)
     
 
     message.channel.send({files: [{ attachment: canvas.toBuffer(), name: "Account.png"}]});
