@@ -8,7 +8,7 @@ module.exports.run = (bot, message, args) => {
     get(message.guild.iconURL).then(guildIcon => {
         const canvas = new Canvas(500, 300)
         .setColor("#2C2F33")
-        .addRect(0, 0, 400, 200)
+        .addRect(0, 0, 500, 300)
         .setColor("#ffffff")
         .setTextFont('25px Impact')
         //.setTextAlign("center")
@@ -17,7 +17,7 @@ module.exports.run = (bot, message, args) => {
         .addText(`Total Count: ${serverSize}`, 10, 125)
         .addText(`Human Count: ${humanCount}`, 10, 150)
         .addText(`Bot Count: ${botCount}`, 10, 175)
-        .addRoundImage(guildIcon.body, 420, 150, 78, 78, 64)
+        .addRoundImage(guildIcon.body, 400, 150, 78, 78, 78) // 64
         .save();
         
         message.channel.send({files: [{ attachment: canvas.toBuffer(), name: "Account.png"}]});
