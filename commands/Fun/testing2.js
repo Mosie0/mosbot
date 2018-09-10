@@ -8,9 +8,10 @@ module.exports.run = (bot, message, args) => {
     .setColor("#2C2F33")
     .addRect(0, 0, 400, 200)
     .setColor("#ffffff")
-    .addText(`Total Count: ${serverSize}`, 100, 100)
-    .addText(`Bot Count: ${botCount}`, 200, 100)
-    .addText(`Human Count: ${humanCount}`, 300, 100)
+    .addText(`Total Count: ${serverSize}`, 100, 50)
+    .addText(`Human Count: ${humanCount}`, 100, 100)
+    .addText(`Bot Count: ${botCount}`, 100, 150)
+    
 
     message.channel.send({files: [{ attachment: canvas.toBuffer(), name: "Account.png"}]});
 }
