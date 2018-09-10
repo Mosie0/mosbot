@@ -8,6 +8,9 @@ const Discord = require('discord.js'),
 let Setting = require("../../../models/settings.js");
 
 module.exports.run = (bot, message, args) => {
+    
+    if (!message.member.hasPermission("ADMINESTRATOR")) return message.channel.send("Sorry but you don't have the ADMINESTRATOR permission.");
+    
     Setting.findOne({serverID: message.guild.id}, (err, settings) => {
         if (err) console.log(err);
         if (!settings) {
