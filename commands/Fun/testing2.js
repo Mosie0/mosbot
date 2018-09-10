@@ -1,9 +1,8 @@
 const { Canvas } = require("canvas-constructor");
 
 module.exports.run = (bot, message, args) => {
-    const canvas = new Canvas(400,187)
-    let serverSize = message.guild.memberCount;
-    let canvas = new Canvas(400, 200)
+    const serverSize = message.guild.memberCount;
+    const canvas = new Canvas(400, 200)
     .setColor("#000000")
     .addRect(0, 0, 400, 200)
     .setColor("#ffffff")
