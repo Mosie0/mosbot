@@ -103,6 +103,7 @@ module.exports.run = (bot, message, args) => {
 			embed.setTitle(pages[0].title); 
 			embed.setDescription(pages[0].description); 
 			msg.edit(embed);
+			return;
 		}
 		msg.react(pageemo[arrow]).then(_ => {
 			reactArrows(arrow + 1);
