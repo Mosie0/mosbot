@@ -8,7 +8,7 @@ module.exports.run = (bot, message, args) => {
     
     message.channel.send('Admiring the painting...').then(msg => {
         get(user.user.displayAvatarURL.replace(/\.gif.+/g, '.png')).then(avatar => {
-            fsn.readFile('./assets/plates/beautiful.png').then(plate => {
+            fsn.readFile('./assets/beautiful.png').then(plate => {
                 let canvas = new Canvas(634, 675)
                     .setColor('#000000')
                     .addRect(0, 0, 634, 675)
