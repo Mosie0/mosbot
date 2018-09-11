@@ -13,7 +13,7 @@ module.exports.run = (bot, message, args) => {
         .setColor("#ffffff")
         .setTextFont('25px Impact')
         //.setTextAlign("center")
-        .addText(`Server Member Count for \n ${guildName}`, 10, 25)
+        .addText(`Server Member Count`, 10, 25)
         .setTextFont('20px Impact')
         .addText(`Total Count: ${serverSize}`, 10, 125)
         .addText(`Human Count: ${humanCount}`, 10, 150)
