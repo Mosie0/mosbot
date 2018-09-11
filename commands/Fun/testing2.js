@@ -5,6 +5,7 @@ module.exports.run = (bot, message, args) => {
     const serverSize = message.guild.memberCount;
     const botCount = message.guild.members.filter(m => m.user.bot).size;
     const humanCount = serverSize - botCount;
+    const guildName = message.guild.name;
     get(message.guild.iconURL).then(guildIcon => {
         const canvas = new Canvas(400, 200)
         .setColor("#2C2F33")
@@ -12,7 +13,7 @@ module.exports.run = (bot, message, args) => {
         .setColor("#ffffff")
         .setTextFont('25px Impact')
         //.setTextAlign("center")
-        .addText(`Server Member Count`, 10, 25)
+        .addText(`Server Member Count for ${guildName}`, 10, 25)
         .setTextFont('20px Impact')
         .addText(`Total Count: ${serverSize}`, 10, 125)
         .addText(`Human Count: ${humanCount}`, 10, 150)
