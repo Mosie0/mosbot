@@ -2,10 +2,10 @@
 Idk o.O
 Welcome to the Mosbot Repository 
 
-[![Version](https://img.shields.io/badge/Version-2.5.3-green.svg?style=flat-square)](https://github.com/RHGDEV/Little-R/releases)
+[![Version](https://img.shields.io/badge/Version-0.1.5-green.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/releases)
 [![Status](https://img.shields.io/badge/Status-Ready-green.svg?style=flat-square)]()
 [![GitHub stars](https://img.shields.io/github/stars/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/stargazers)
-[![GitHub license](https://img.shields.io/github/license/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/RHGDEV/Little-R/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/blob/master/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/network)
 [![GitHub issues](https://img.shields.io/github/issues/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/issues)
 
