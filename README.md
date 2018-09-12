@@ -9,12 +9,12 @@ Welcome to the Mosbot Repository
 [![GitHub forks](https://img.shields.io/github/forks/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/network)
 [![GitHub issues](https://img.shields.io/github/issues/SUPERCHIEFYT/mosbot.svg?style=flat-square)](https://github.com/SUPERCHIEFYT/mosbot/issues)
 
-All of the Code here you can use. *__(dont fork or copy large numbers of documents, thanks)__* *but you really won't receive any Support for it.*
-## PUBLIC
+All of the Code here you can use. **__(dont fork or copy large numbers of documents, thanks)__** *but you really won't receive any Support for it.*
+### PUBLIC
 if you want the Public Version of the bot please go to: https://github.com/SUPERCHIEFYT/Public-Bot 
 __reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee__
 
-## Todo
+### TODO
 
 - [ ] Fix the bugs found.
 - [x] Make bot configurable from a guild channel.
