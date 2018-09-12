@@ -13,3 +13,16 @@ All of the Code here you can use. *__(dont fork or copy large numbers of documen
 ## PUBLIC
 if you want the Public Version of the bot please go to: https://github.com/SUPERCHIEFYT/Public-Bot 
 __reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee__
+
+## Todo
+
+- [ ] Fix the bugs found.
+- [x] Make bot configurable from a guild channel.
+- [x] Clean up the code a bit.
+    - [x] Clean up the code some more.
+    - [ ] More modulating.
+    - [ ] Hot fixes for the love of javascript.
+- [x] Add permissions to certain commands.
+    - [ ] Make permissions alittle more advanced.
+- [ ] Add economy section to database and make commands.
+- [ ] Create a command to create temporary voice channels?
