@@ -13,7 +13,7 @@ try {
     let code = args.join(" ");
     if (!code) return message.channel.send(`You need to provide args, for this Command to work`)
     let evaled = eval(code);
-
+ if (evaled.includes(bot.token)) evaled = evaled.replace(bot.token, 'Not for your eyes');
     if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
    let cleanembed = new Discord.RichEmbed()
