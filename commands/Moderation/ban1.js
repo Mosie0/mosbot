@@ -4,7 +4,6 @@ module.exports.run = async (bot, message, args) => {
     let bUser = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!bUser) return message.channel.send("Couldn't Find the User to Ban them!!");
     let bReason = args.join(" ").slice(22);
-    if (bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be Banned, if that person really needs to be banned, talk to the owner!!");
 
     let banEmbed = new Discord.RichEmbed()
         .setDescription("Member Banned")
