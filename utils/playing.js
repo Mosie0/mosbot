@@ -14,6 +14,8 @@ module.exports = (bot) => {
 		`${bot.users.array().length} user${bot.users.array().length > 1 ? 's' : ''}`,
     
 		`for lives`,
+		`for my master`,
+		`for my creators`,
 	];
 
 	var types = [
@@ -23,6 +25,8 @@ module.exports = (bot) => {
 		`LISTENING`,
     		`LISTENING`,
 
+		`WATCHING`,
+		`WATCHING`,
 		`WATCHING`,
 	];
 
