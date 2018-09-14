@@ -384,7 +384,7 @@ bot.on("message", async message => {
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
     }
-    if (!prefix) return;
+    if (!prefix) require("./utils/money.js")(bot, message);
     if (!message.content.startsWith(prefix)) return;
     if (cooldown.has(message.author.id)) {
         message.delete();
@@ -393,8 +393,7 @@ bot.on("message", async message => {
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         cooldown.add(message.author.id);
     }
-
-
+    
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
