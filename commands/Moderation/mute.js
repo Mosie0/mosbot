@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
-    const modlogs = message.guild.channels.find('name', 'modlogs');
+    const modlogs = message.guild.channels.find(c => c.name === 'modlogs');
     if(!modlogs) return message.channel.send("Can't find **modlogs**");
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!tomute) return message.reply("Couldn't find user.");
@@ -32,13 +32,13 @@ module.exports.run = async (bot, message, args) => {
     await (tomute.addRole(muterole.id));
     let botembed = new Discord.RichEmbed()
     .setColor("#000FF")
-    .setAuthor(`${tomute.user.username}`, `${tomute.user.avatarURL}`)
+    .setAuthor(`${tomute.user.username}`, `${tomute.user.displayAvatarURL}`)
     .setDescription(`<@${tomute.id}> Has been Muted!`)
     .addField("Moderator", message.author.username, true)
     .addField("User Muted",`<@${tomute.id}>`, true)
     .addField("Time", `${ms(ms(mutetime))}`)
     .setTimestamp()
-    .setFooter("Command Ran By: " + message.author.username, message.author.avatarURL)
+    .setFooter("Command Ran By: " + message.author.username, message.author.displayAvatarURL)
     modlogs.send(botembed);
 
     setTimeout(function () {
