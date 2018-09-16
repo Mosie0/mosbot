@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args) => {
     let Moderatoruser = message.author.id;
     let reason = args.slice(1).join(' ');
     if(!reason) return message.channel.send(`You need to Provide a Reason! <@${message.author.id}>`);
-    let rUser = message.mentions.users.first();
-    let modlogs = message.guild.channels.find('name', 'modlogs');
+    let rUser = message.mentions.users.first() || message.guild.members.get(args[0]);
+    let modlogs = message.guild.channels.find(c => c.name ===  'modlogs');
     if(!modlogs) return message.channel.send('Cant Find the modlogs Channel');
     if(message.mentions.users.size < 1) return message.channel.send('You need to Mention a user for me to warn them!').catch(console.error);
     message.channel.send(`** ✅ ${rUser.tag} Has been warned.**`)
@@ -23,11 +23,12 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Moderator`, `<@${Moderatoruser}>`, true)
     .addField(`Reason`, `${reason}`)
     .setTimestamp()
-    .setFooter(`ID: ` + `${rUser.id}`, rUser.avatarURL)
+    .setFooter(`ID: ` + `${rUser.id}`, rUser.displayAvatarURL)
     modlogs.send(warnembed);
     await message.delete().catch();
 }
 
 module.exports.help = {
-    name: "warn"
+    name: "warn",
+    names: "Warn"
 }
