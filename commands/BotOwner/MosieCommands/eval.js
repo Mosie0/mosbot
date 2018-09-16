@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, ops, ops2) => {
-if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return;
+if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764" && message.author.id !== "140487710727995392") return;
     try {
         let code = args.join(" ");
         if (!code) return message.channel.send(`Sorry But you need to provide the Args to use the command.`)
