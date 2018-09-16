@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     const rmember = message.guild.member(user);
         let botembed = new Discord.RichEmbed()
         .setColor(`RANDOM`)
-        .setThumbnail(rmember.user.avatarURL || rmember.user.defaultAvatarURL)
+        .setThumbnail(rmember.user.displayAvatarURL)
         .addField("Name", rmember.user, true)
         .addField(`Nickname`, rmember.nickname ? rmember.nickname : 'No Nickname', true)
         .addField(`Bot`, rmember.user.bot ? 'Yes' : 'No', true)
@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp()
     message.channel.send(botembed)
 }catch (e) {
-    message.channel.send(`ERROR\nIf you have a default avatar this error will show, working on fixing this error.`)
+    message.channel.send(`ERROR\n${e}`)
 }
 }
 module.exports.help = {
