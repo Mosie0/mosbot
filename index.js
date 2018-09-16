@@ -17,6 +17,15 @@ mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb
 //=============================================================================================================================================================================================
 // Start Of the bot.on Messages.
 
+process.on('unhandledRejection', error => {
+    console.error(`ERROR: \n${error}`);
+    let errorembed = new Discord.RichEmbed()
+    .setColor(`RED`)
+    .setTitle(`ERROR`)
+    .setDescription(error)
+    bot.channels.get('490726893864222731').send(errorembed)
+});
+
 bot.on("ready", async () => {
     bot.guilds.forEach(guild => {
     Settings.findOne({serverID: guild.id}, (err, settings) => {
