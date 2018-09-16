@@ -48,12 +48,13 @@ m!role (role name): Gives the list of members in a certain role`,
 	
 	{
 		title: "Fun Commands",
-		description: `m!8ball: Ask any question, MosBot knows the answer
-		m!cat: CATS!!
-		m!dog: DOGS!!
-		m!draw: Want to draw something? Go ahead
-		m!fortnite: Fortnite Stats
-		m!gif`,
+description: `m!8ball: Ask any question, MosBot knows the answer
+m!cat: CATS!!
+m!dog: DOGS!!
+m!draw: Want to draw something? Go ahead
+m!fortnite: Fortnite Stats
+m!gif: Search any gif from GIPHY (NSFW CHANNELS ONLY)
+m!`,
 	},
 	
     	{
