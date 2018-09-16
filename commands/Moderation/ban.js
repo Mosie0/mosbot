@@ -3,7 +3,8 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
     let bUser = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!bUser) return message.channel.send("Couldn't Find the User to Ban them!!");
-    let bReason = args.join(" ").slice(22);
+    let bReason = args.slice(1).join(" ");
+    if(!bReason) bReason = "No Reason Provided";
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You Don't have the Ban permission to use this command.");
     if (bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be Banned, if that person really needs to be banned, talk to the owner!!");
 
@@ -16,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
         .setFooter(`${bUser.id}`)
         .setThumbnail("https://cdn.discordapp.com/attachments/444028025932349441/445824989447323648/tenor_14.gif");
 
-    let incidentchannel = message.guild.channels.find(`name`, "modlogs");
+    let incidentchannel = message.guild.channels.find(c => c.name === "modlogs");
     if (!incidentchannel) return message.channel.send("Can't find the channel To Log in.");
 
     message.guild.member(bUser).ban(bReason);
