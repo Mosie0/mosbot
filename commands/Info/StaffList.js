@@ -8,14 +8,14 @@ const embed = new Discord.RichEmbed()
 <@283311727477784576>
 
 <@&446172124353265665>
-***N/A***
+<@244271175608303616>
+<@434866964557463595>
 
 <@&447962800791355402>
 <@288450828837322764>
 
 <@&467779026069618694>
-<@244271175608303616>
-<@434866964557463595>
+***Soon***
 
 <@&431811267968106506>
 <@289148183282712590> 
@@ -28,7 +28,6 @@ const embed = new Discord.RichEmbed()
 
 <@&422058000250044416>
 <@265344329147613185>
-<@386620953414729728>
 <@308290036334460929>
 <@372468580643635211>
 <@203259894743302145>
@@ -38,9 +37,9 @@ const embed = new Discord.RichEmbed()
 `)
 
 // Owner: Mo_sie
-// Co-Owner: N/A
+// Co-Owner: Jonbn123, Brobro
 // Bot-Commander: SUPERCHIEFYT
-// Head Admin: Jonbn123, Brobro
+// Head Admin: 
 // Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby
 // Moderators: Cesargeronimo, Lord_H3xus, Boozoo6, Pancake, Victor, Silent
 // Helper of the month: Sirred90
