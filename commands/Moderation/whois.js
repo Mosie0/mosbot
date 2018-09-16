@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
         .addField(`Tag`, rmember.user.tag, true)
         .addField("User ID", rmember.id, true)
         .addField(`Nitro/Partner`, `${rmember.user.avatar.startsWith('a_') ? 'Has Nitro or Partner' : 'Regular User'}`, true)
-        .addField(`Avatar Url`, `[Click Here](${rmember.user.avatarURL || rmember.user.defaultAvatarURL })`, true)
+        .addField(`Avatar Url`, `[Click Here](${rmember.user.displayAvatarURL})`, true)
         .addField(`Account Creation:`, `${moment(rmember.user.createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a zz')}`)
         .addField(`Joined Server At:`, `${moment(rmember.joinedAt).format('dddd, MMMM Do YYYY, h:mm:ss a zz') }`)
         .addField("Status", rmember.presence.status.toUpperCase(), true)
