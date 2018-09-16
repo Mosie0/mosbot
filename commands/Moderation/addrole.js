@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     if (!rMember) return message.reply("Sorry please check again i don't see that user.");
     let role = args.slice(1).join(" ");
     if (!role) return message.reply("Specify a role!");
-    let gRole = message.guild.roles.find(`name`, role);
+    let gRole = message.guild.roles.find(c => c === role);
     if (!gRole) return message.reply("Couldn't find that role.");
 
     if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
@@ -23,5 +23,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "addrole"
+    name: "addrole",
+    names: "role+"
 }
