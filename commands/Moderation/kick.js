@@ -4,7 +4,8 @@ const Settings = require("../../models/settings.js");
 module.exports.run = async (bot, message, args) => {
     let kUser = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!kUser) return message.channel.send("Cound't Find the user to Kick them!!");
-    let kReason = args.join(" ").slice(22);
+    let kReason = args.slice(1).join(" ")
+    if(!kReason) kReason = "No Reason Provided";
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sorry but you don't have the Kick Memebrs Permission");
     if (kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person has Staff Permissions in the server!!");
     
