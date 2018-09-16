@@ -6,26 +6,21 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(`:x: Can't Find the User to SoftBan :x:`)
         .setTimestamp()
         .setColor(`#FF0000`)
-        .setFooter(`Command Ran By: ${message.author.username}`, message.author.avatarURL)
+        .setFooter(`Command Ran By: ${message.author.username}`, message.author.displayAvatarURL)
     if (!bUser) return message.channel.send(cantembed);
-    let bReason = args.join(" ").slice(22);
-    let noreasonembed = new Discord.RichEmbed()
-        .setDescription(`:x: You need to provide a reason for the SoftBan. :x:`)
-        .setTimestamp()
-        .setColor(`#FF0000`)
-        .setFooter(`Command Ran By: ${message.author.username}`, message.author.avatarURL)
-    if (!bReason) return message.channel.send(noreasonembed)
+    let bReason = args.slice(1).join(" ");
+    if (!bReason) bReason = "No Reason Provided";
     let nopermembed = new Discord.RichEmbed()
         .setDescription(`:x: Sorry but you need to have the Ban Permissions to use this command! :x:`)
         .setTimestamp()
         .setColor(`#FF0000`)
-        .setFooter(`Command Ran By: ${message.author.username}`, message.author.avatarURL)
+        .setFooter(`Command Ran By: ${message.author.username}`, message.author.displayAvatarURL)
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(nopermembed);
     let nobanembed = new Discord.RichEmbed()
         .setDescription(`:x: Sorry but i can't SoftBan this user, they are a **Moderator/Admin** :x:`)
         .setTimestamp()
         .setColor(`#FF0000`)
-        .setFooter(`Command Ran By: ${message.author.username}`, message.author.avatarURL)
+        .setFooter(`Command Ran By: ${message.author.username}`, message.author.displayAvatarURL)
     if (bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nobanembed);
     let softbanembed = new Discord.RichEmbed()
         .setColor(`#FF0000`)
@@ -39,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Moderator", `<@${message.author.id}>`, true)
         .addField("Reason for the SoftBan", bReason)
     bUser.send(softbanembed);
-    let incidentchannel = message.guild.channels.find(`name`, "modlogs");
+    let incidentchannel = message.guild.channels.find(c => c.name === "modlogs");
     if (!incidentchannel) return message.channel.send("Can't find the channel To Log in.");
 
     message.guild.member(bUser).ban(bReason);
