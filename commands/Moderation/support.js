@@ -6,10 +6,11 @@ module.exports.run = async (bot, message, args) => {
         maxAge: 0
     };
     let Susername = message.author;
-    let Suseravatar = message.author.avatarURL;
+    let Suseravatar = message.author.displayAvatarURL;
     let server = message.guild;
     let Schannel = message.channel;
     let reason = args.join(' ');
+    if(!reason) return message.channel.send(`Please provide a reason..`);
     message.delete().catch()
     let embed = new Discord.RichEmbed()
         .setColor("#000FF")
@@ -38,5 +39,6 @@ module.exports.run = async (bot, message, args) => {
     })
 }
 module.exports.help = {
-    name: "botsuggestion"
+    name: "botsuggestion",
+    names: "botsuggest"
 }
