@@ -28,12 +28,13 @@ const embed = new Discord.RichEmbed()
 
 <@&422058000250044416>
 <@265344329147613185>
-<@308290036334460929>
 <@372468580643635211>
 <@203259894743302145>
 
 <@&466006038244622338> 
 <@368775528234352642>
+<@358334640928325662>
+<@215496797710188544>
 `)
 
 // Owner: Mo_sie
@@ -41,8 +42,8 @@ const embed = new Discord.RichEmbed()
 // Bot-Commander: SUPERCHIEFYT
 // Head Admin: 
 // Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby
-// Moderators: Cesargeronimo, Lord_H3xus, Boozoo6, Pancake, Victor, Silent
-// Helper of the month: Sirred90
+// Moderators: Cesargeronimo, Boozoo6, Pancake, Victor, Silent
+// Helper of the month: Sirred90, Robo, Starlight
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
 message.delete().catch();
