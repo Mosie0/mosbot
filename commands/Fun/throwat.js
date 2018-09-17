@@ -14,12 +14,15 @@ module.exports.run = async (bot, message, args) => {
 
     
     let kReason = args.slice(1).join(" ")
-
+    const throwuser = message.mentions.users.first() || message.author;
+    
     let embed1 = new Discord.RichEmbed()
         .setColor("000FF")
-        .setDescription(`Threw **${replies[result]}** at **`)
+        .setDescription(`Threw **${replies[result]}** at **${throwuser.username}**`)
         if (!kReason) return message.channel.send(embed1);
-    const throwuser = message.mentions.users.first() || message.author;
+    
+    
+    
     let botmessage = args.slice(1).join(" ");
     let embed = new Discord.RichEmbed()
         .setColor("#000FF")
