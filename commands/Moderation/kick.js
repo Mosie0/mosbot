@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
         if (settings) {
          if (settings.logchannel == "") return;
          let modlogs = message.guild.channels.get(settings.logchannel);
-         if (!modlogs) return;
+        if (!modlogs) return;
          modlogs.send(kickembed); 
         }
       });
