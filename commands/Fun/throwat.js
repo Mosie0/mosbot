@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     let embed1 = new Discord.RichEmbed()
         .setColor("000FF")
         .setDescription(`Threw **${replies[result]}** at **`)
-    if(!kReason) kReason = return message.channel.send(embed1);
+        if (!kReason) return message.channel.send(embed1);
     const throwuser = message.mentions.users.first() || message.author;
     let botmessage = args.slice(1).join(" ");
     let embed = new Discord.RichEmbed()
