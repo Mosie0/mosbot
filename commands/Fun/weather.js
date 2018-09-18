@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    let apiKey = "590a7c51bf89725644d211b87dfb62c3";
+    let apiKey = process.env.WEATHERAPI;
     const fetch = require('node-fetch');
     let arg = message.content.split(" ").join(" ").slice(10);
     if (!arg) {
