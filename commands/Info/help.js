@@ -19,9 +19,7 @@ ${pageemo[4]} for **Bot Owner Commands**.
 
 ${pageemo[5]} for **Credits**.
 
-${pageemo[6]} to **exit** the menu.
-
-_Note we dont know why some of the titles are broken, just change channels and go back to this channel, we still dont know why :shrug:`
+${pageemo[6]} to **exit** the menu.`
 	},
 	{
 		title: "Moderation Commands",
