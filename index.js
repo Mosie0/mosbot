@@ -54,7 +54,7 @@ bot.on("guildMemberAdd", async member => {
     let serverSize = member.guild.memberCount;
     let botCount = member.guild.members.filter(m => m.user.bot).size;
     let humanCount = serverSize - botCount;
-    let welcome = member.guild.channels.find('name', '👋welcome👋')
+    let welcome = member.guild.channels.find(c => c.name === '👋welcome👋')
     let welcomeembed = new Discord.RichEmbed()
     .setColor(`RANDOM`)
     .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
@@ -63,14 +63,14 @@ bot.on("guildMemberAdd", async member => {
     .setAuthor(member.user.username, member.user.avatarURL)
     if (!welcome) return;
     welcome.send(welcomeembed);
-    let modlogs = member.guild.channels.find('name', "modlogs");
+    let modlogs = member.guild.channels.find(c => c.name === "modlogs");
     let botembed = new Discord.RichEmbed()
         .setColor("#1CFF00")
-        .setAuthor('Member Joined', member.user.avatarURL)
+        .setAuthor('Member Joined', member.user.displayAvatarURL)
         .setFooter(`ID: ${member.id}`)
         .setTimestamp()
         .setDescription(`${member} ${member.user.tag}`)
-        .setThumbnail(member.user.avatarURL)
+        .setThumbnail(member.user.displayAvatarURL)
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
@@ -84,11 +84,11 @@ bot.on("guildMemberAdd", async member => {
 bot.on("guildMemberRemove", async member => {
    let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
-        .setAuthor('Member Left', member.user.avatarURL)
+        .setAuthor('Member Left', member.user.displayAvatarURL)
         .setFooter(`ID: ${member.id}`)
         .setTimestamp()
         .setDescription(`${member} ${member.user.tag}`)
-        .setThumbnail(member.user.avatarURL)
+        .setThumbnail(member.user.displayAvatarURL)
     Settings.findOne({serverID: member.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
@@ -102,7 +102,7 @@ bot.on("guildMemberRemove", async member => {
 bot.on(`guildBanAdd`, (guild, user) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
-        .setAuthor('Member Banned', user.avatarURL)
+        .setAuthor('Member Banned', user.displayAvatarURL)
         .setFooter(`ID: ${user.id}`)
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
@@ -120,11 +120,11 @@ bot.on(`guildBanAdd`, (guild, user) => {
 bot.on(`guildBanRemove`, (guild, user) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#12FF00")
-        .setAuthor('Member Unbanned', user.avatarURL)
+        .setAuthor('Member Unbanned', user.displayAvatarURL)
         .setFooter(`ID: ${user.id}`)
         .setTimestamp()
         .setDescription(`${user} ${user.tag}`)
-        .setThumbnail(user.avatarURL)
+        .setThumbnail(user.displayAvatarURL)
     Settings.findOne({serverID: guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
@@ -198,7 +198,7 @@ bot.on('guildCreate', async guild => {
         .setDescription(`Server Added`)
         .setThumbnail(guild.iconURL)
         .setTimestamp()
-        .setAuthor(bot.user.username, bot.user.avatarURL)
+        .setAuthor(bot.user.username, bot.user.displayAvatarURL)
         .addField(`Guild Name`, `${guild.name}`, true)
         .addField(`Guild ID`, `${guild.id}`, true)
         .addField(`Guild Owner`, `${guild.owner}`, true)
@@ -214,8 +214,8 @@ bot.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (newMember.nickname === oldMember.nickname) return
     let embed = new Discord.RichEmbed()
         .setColor(`RANDOM`)
-        .setAuthor(newMember.user.tag, newMember.user.avatarURL)
-        .setThumbnail(newMember.user.avatarURL)
+        .setAuthor(newMember.user.tag, newMember.user.displayAvatarURL)
+        .setThumbnail(newMember.user.displayAvatarURL)
         .setTitle(`Nickname Changed`)
         .addField(`Old Nickname`, `${oldMember.nickname ? `${oldMember.nickname}` : `${oldMember.user.username}`}`)
         .addField(`New Nickname`, `${newMember.nickname ? `${newMember.nickname}` : `${newMember.user.username}`}`)
@@ -307,7 +307,7 @@ bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setTimestamp()
-        .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.avatarURL}`)
+        .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.displayAvatarURL}`)
         .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
         .setDescription(`_ _►Content: \n ►Old Message **\`${oldMessage.cleanContent}\`** \n ►Update Message **\`${newMessage.cleanContent}\`** \n ►Channel <#${newMessage.channel.id}> \n ►Message ID ${newMessage.id}`)
     Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
@@ -326,7 +326,7 @@ bot.on(`messageDelete`, message => {
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setTimestamp()
-        .setAuthor(`Message Deleted By ${message.author.tag}`, `${message.author.avatarURL}`)
+        .setAuthor(`Message Deleted By ${message.author.tag}`, `${message.author.displayAvatarURL}`)
         .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
         .setDescription(`_ _►Content: **\`${message.cleanContent}\`** \n ►Channel: <#${message.channel.id}> \n ►Message ID: ${message.id}`)
         Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
@@ -372,11 +372,11 @@ bot.on("message", async message => {
     if (message.author.bot) return;
     const dmembeds = new Discord.RichEmbed()
         .setColor(`#FF000`)
-        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setAuthor(message.author.tag, message.author.displayAvatarURL)
         .setDescription(message.content)
-        .setThumbnail(message.author.avatarURL)
+        .setThumbnail(message.author.displayAvatarURL)
         .setTimestamp()
-        .setFooter(`DM Recieved At`, bot.user.avatarURL);
+        .setFooter(`DM Recieved At`, bot.user.displayAvatarURL);
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
    let prefixes = ["m!", "M!"];
