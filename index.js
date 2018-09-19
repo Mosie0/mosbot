@@ -73,7 +73,6 @@ bot.on("guildMemberAdd", async member => {
     .setAuthor(member.user.username, member.user.avatarURL)
     if (!welcome) return;
     welcome.send(welcomeembed);
-    let modlogs = member.guild.channels.find(c => c.name === "modlogs");
     let botembed = new Discord.RichEmbed()
         .setColor("#1CFF00")
         .setAuthor('Member Joined', member.user.displayAvatarURL)
