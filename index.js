@@ -4,7 +4,7 @@
 const botconfig = require("./botconfig.json"),
     Discord = require("discord.js"),
     fs = require("fs"),
-    mongoose = require("mongoose")
+    mongoose = require("mongoose"),
     bot = new Discord.Client({disableEveryone: true});
 let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
