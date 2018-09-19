@@ -9,12 +9,19 @@ const botconfig = require("./botconfig.json"),
 let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
 bot.login(process.env.BOT_TOKEN)
+const DBL = require("dblapi.js");
+const dbl = new DBL(process.env.DBL, bot);
 mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=MosBot-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
 
 // End of the Bot Requirements etc.
 //=============================================================================================================================================================================================
 // Start Of the bot.on Messages.
-
+dbl.on('posted', () => {
+    console.log('Server count posted!');
+});
+dbl.on('error', e => {
+    console.log(`Oops! ${e}`);
+})
 process.on('unhandledRejection', error => {
     console.error(`ERROR: \n${error}`);
     let errorembed = new Discord.RichEmbed()
@@ -25,6 +32,9 @@ process.on('unhandledRejection', error => {
 });
 
 bot.on("ready", async () => {
+        setInterval(() => {
+        dbl.postStats(bot.guilds.size, bot.shards.Id, bot.shards.total);
+    }, 3600000);
     bot.guilds.forEach(guild => {
     Settings.findOne({serverID: guild.id}, (err, settings) => {
       if (err) console.log(err);
