@@ -6,9 +6,7 @@ const botconfig = require("./botconfig.json"),
     fs = require("fs"),
     mongoose = require("mongoose")
     bot = new Discord.Client({disableEveryone: true});
-let cooldown = new Set(),
-    cdseconds = 2,
-    Settings = require("./models/settings.js");
+let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
 bot.login(process.env.BOT_TOKEN)
 mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=MosBot-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
@@ -395,25 +393,12 @@ bot.on("message", async message => {
     }
     if (!prefix) require("./utils/money.js")(bot, message);
     if (!message.content.startsWith(prefix)) return;
-    if (cooldown.has(message.author.id)) {
-        message.delete();
-        return message.reply("You have to wait 5 seconds between commands.")
-    }
-    if (!message.member.hasPermission("ADMINISTRATOR")) {
-        cooldown.add(message.author.id);
-    }
-    
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
 
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if (commandfile) commandfile.run(bot, message, args);
-
-    setTimeout(() => {
-        cooldown.delete(message.author.id)
-    }, cdseconds * 1000)
-
 });
 
 // End of the bot.on Message.
