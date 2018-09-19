@@ -40,9 +40,9 @@ const embed = new Discord.RichEmbed()
 // Owner: Mo_sie
 // Co-Owner: Jonbn123, Brobro
 // Bot-Commander: SUPERCHIEFYT
-// Head Admin: 
-// Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby
-// Moderators: Cesargeronimo, Boozoo6, Pancake, Victor, Silent
+// Head Admin: Hunter
+// Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby, Boozoo
+// Moderators: Cesargeronimo, Victor, Silent
 // Helper of the month: Sirred90, Robo, Starlight
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
