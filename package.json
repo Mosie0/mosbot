@@ -10,7 +10,8 @@
     },
     "dependencies": {
         "array-sort": "^1.0.0",
-        "canvas-constructor": "^1.0.1",
+        "canvas": "github:Automattic/node-canvas#92b192447e9b9ae98da0f801e4e34afdd1dc1ef8",
+        "canvas-constructor": "^1.1.2",
         "cheerio": "^1.0.0-rc.2",
         "currency-formatter": "^1.4.3",
         "discord.js": "^11.4.2",
@@ -43,7 +44,6 @@
         "urban": "^0.3.1",
         "util": "^0.11.0",
         "ytdl-core": "^0.21.1",
-        "youtube-search": "^1.1.1",
-        "canvas": "1.6.11"
+        "youtube-search": "^1.1.1"
       }
     }
