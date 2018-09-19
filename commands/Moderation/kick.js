@@ -16,7 +16,8 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Kicked User`, kUser, true)
     .addField(`Moderator`, `<@${message.author.id}>`, true)
     .addField(`Channel`, message.channel, true)
-    .setTimestamp();
+    .setTimestamp()
+    .addField(`Reason`, kReason)
     
     Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
         if (err) console.log(err);
