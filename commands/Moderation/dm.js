@@ -17,6 +17,21 @@ module.exports.run = async (bot, message, args) => {
     .setColor(`#FF0000`)
     .setDescription(`Dm from **${message.guild.name}**: **${reason}**`)
     rUser.send(dmembed)
+
+    const modlogsdmembed = new Discord.RichEmbed()
+    .setColor(`#FF0000`)
+    .setDescription(`Dm to ${rUser}, from <@${Moderatoruser}`)
+    
+    Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+        if (err) console.log(err);
+        if (settings) {
+         if (settings.logchannel == "") return;
+         let modlogs = message.guild.channels.get(settings.logchannel);
+        if (!modlogs) return;
+         modlogs.send(modlogsdmembed); 
+        }
+      });
+    
     await message.delete().catch();
 }
 
