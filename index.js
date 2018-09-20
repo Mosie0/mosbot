@@ -33,7 +33,7 @@ process.on('unhandledRejection', error => {
 
 bot.on("ready", async () => {
         setInterval(() => {
-        dbl.postStats(bot.guilds.size, bot.shards.Id, bot.shards.total);
+        dbl.postStats(bot.guilds.size, bot.shards.id, bot.shards.total);
     }, 3600000);
     bot.guilds.forEach(guild => {
     Settings.findOne({serverID: guild.id}, (err, settings) => {
