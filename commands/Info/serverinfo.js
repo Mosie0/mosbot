@@ -31,19 +31,20 @@ module.exports.run = async (bot, message, args) => {
         .setColor("#000FF")
         .setAuthor("Command Ran By: " + message.author.username, message.author.avatarURL)
         .addField("Server Owner", `<@${message.guild.owner.user.id}>`, true)
-        .addField(`Partnered`, `${message.guild.features.length === 0 ? 'No' : `Yes, features: ${message.guild.features.map(feature => `\`${feature}\``).join(', ')}`}`, true)
         .addField("Created", `${message.guild.createdAt.toString().substr(0, 15)},\n${checkDays(message.guild.createdAt)}`, true)
         .setThumbnail(sIcon)
         .addField("Region", region[message.guild.region], true)
+        .addField(`Discord Partner`, `${message.guild.features.length === 0 ? 'No' : `Yes, features: ${message.guild.features.map(feature => `\`${feature}\``).join(', ')}`}`, true)
         .addField("Verification Level", verifLevels[message.guild.verificationLevel], true)
         .setTimestamp()
         .addField("Total Members", message.guild.memberCount, true)
+        .addField('Member Status', `**${message.guild.members.filter(o => o.presence.status === 'online').size}** Online\n**${message.guild.members.filter(i => i.presence.status === 'idle').size}** Idle/Away\n**${message.guild.members.filter(dnd => dnd.presence.status === 'dnd').size}** Do Not Disturb\n**${message.guild.members.filter(off => off.presence.status === 'offline').size}** Offline/Invisible\n**${message.guild.members.filter(s => s.presence.status === 'streaming').size}** Streaming`)
         .addField("Total Channels", message.guild.channels.size, true)
         .addField("Total Roles", message.guild.roles.size, true)
         .addField("Total Bots", botCount, true)
         .addField("Total Humans", humanCount, true)
-        .addField("Server Roles", `Type **m!roles** to see \nthe Server roles`, true)
-        .addField("Server Emojis", `Type **m!emojis** to see \nthe Servers Emojis`, true)
+        .addField("Server Roles", `Type **j!roles** to see \nthe Server roles`, true)
+        .addField("Server Emojis", `Type **j!emojis** to see \nthe Servers Emojis`, true)
         .setFooter(`ID: ${message.guild.id}`, sIcon);
     message.channel.startTyping();
     message.channel.send(serverEmbed);
