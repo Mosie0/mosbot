@@ -42,7 +42,7 @@ module.exports = (bot, message) => {
                     money.level = money.level + 1;
                     money.nextLevel = money.nextLevel + money.nextLevelMulti;
                     money.nextLevelMulti = money.nextLevelMulti + 10;
-                    console.log(`🎉 ${message.author.tag} has leveled up to level ${money.level} in ${message.guild.name} 🎉`);
+                    // console.log(`🎉 ${message.author.tag} has leveled up to level ${money.level} in ${message.guild.name} 🎉`);
                     Settings.findOne({serverID: message.guild.id}, (err, settings) => {
                          if (err) console.log(err);
                          if (settings) {
