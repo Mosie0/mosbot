@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-    if(message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`Sorry But you need the **Manage Messages** Permission to use this command`)
     let logchannel = bot.channels.get('492467099420196874')
     var options = {
         maxAge: 0
