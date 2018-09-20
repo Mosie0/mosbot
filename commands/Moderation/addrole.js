@@ -19,8 +19,13 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Member Involved`, rMember)
     .addField(`Role Given:`, gRole)
 
+    let dmroleadd = new Discord.RichEmbed()
+    .setColor("FF0000")
+    .addField(`Guild Name`, `${message.guild.name}`)
+    .addField(`Role Given`, gRole)
+
     try {
-        await rMember(`Congrats, you have been given the role ${gRole.name}`)
+        await rMember(dmroleadd)
     } catch (e) {
         message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. I've Tried Dming the <@${rMember.id}> but their Dms are Closed.`)
     }
