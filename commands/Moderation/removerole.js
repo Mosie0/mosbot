@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     if (!rMember) return message.reply("Couldn't find that user, yo.");
     let role = args.slice(1).join(" ");
     if (!role) return message.reply("Specify a role!");
-    let gRole = message.guild.roles.find(c => c === role);
+    let gRole = message.guild.roles.find(c => c.name === role) || message.guild.roles.find(c => c.id === role);
     if (!gRole) return message.reply("Couldn't find that role.");
 
     if (!rMember.roles.has(gRole.id)) return message.reply("They don't have that role.");
