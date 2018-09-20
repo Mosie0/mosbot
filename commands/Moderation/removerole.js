@@ -18,8 +18,14 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Member Involved`, rMember)
     .addField(`Role Lost:`, gRole)
 
+    let roleremove = new Discord.RichEmbed()
+    .setColor("FF0000")
+    .addField(`Guild Name`, `${message.guild.name}`)
+    .addField(`Role Lost`, gRole)
+    .setTimestamp()
+
     try {
-        await rMember.send(`RIP, you lost the ${gRole.name} role.`)
+        await rMember.send(roleremove)
     } catch (e) {
         message.channel.send(`<@${rMember.id}>, Sorry but you ware removed from ${gRole.name} role I've Tried Dming the <@${rMember.id}> but their Dms are Closed.`)
     }
