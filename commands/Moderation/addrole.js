@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     .addField(`Role Given:`, gRole)
 
     try {
-        await message.channel.send(`Congrats, you have been given the role ${gRole.name}`)
+        await rMember(`Congrats, you have been given the role ${gRole.name}`)
     } catch (e) {
         message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. I've Tried Dming the <@${rMember.id}> but their Dms are Closed.`)
     }
