@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
     let roleremove = new Discord.RichEmbed()
     .setColor("FF0000")
     .addField(`Guild Name`, `${message.guild.name}`)
-    .addField(`Role Lost`, gRole)
+    .addField(`Role Lost`, gRole.name)
     .setTimestamp()
 
     try {

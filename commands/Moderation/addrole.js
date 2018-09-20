@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
     let dmroleadd = new Discord.RichEmbed()
     .setColor("FF0000")
     .addField(`Guild Name`, `${message.guild.name}`)
-    .addField(`Role Given`, gRole)
+    .addField(`Role Given`, gRole.name)
 
     try {
         await rMember(dmroleadd)
