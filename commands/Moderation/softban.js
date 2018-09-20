@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
     if (bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nobanembed);
     let softbanembed = new Discord.RichEmbed()
         .setColor(`#FF0000`)
-        .setDescription(`You have been SoftBanned From ${message.guild.name} For ${bReason}`)
+        .setDescription(`You have been SoftBanned From **${message.guild.name}** For ${bReason}`)
         .setTimestamp()
         .setFooter(`Server Name: ${message.guild.name}`, message.guild.iconURL)
     let banEmbed = new Discord.RichEmbed()
