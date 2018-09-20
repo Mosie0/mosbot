@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     let modlogsembed = new Discord.RichEmbed()
     .setColor("FF0000")
     .addField(`Member Involved`, rMember)
-    .addField(`Role Lost:`, gRole)
+    .addField(`Role Given:`, gRole)
 
     try {
         await message.channel.send(`Congrats, you have been given the role ${gRole.name}`)
