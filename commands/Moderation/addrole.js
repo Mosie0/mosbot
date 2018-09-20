@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const Settings = require('../../models/settings.js');
 module.exports.run = async (bot, message, args) => {
 
-    //!addrole @andrew Dog Person
+    //m!role+ @andrew Dog Person
     if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Sorry pal, you can't do that.");
     let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
     if (!rMember) return message.reply("Sorry please check again i don't see that user.");
