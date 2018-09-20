@@ -18,8 +18,13 @@ module.exports.run = async (bot, message, args) => {
 
     const modlogsdmembed = new Discord.RichEmbed()
     .setColor(`#FF0000`)
-    .setDescription(`Dm to ${rUser}, from <@${Moderatoruser}>, reason: ${reason}`)
-    
+    .addField(`Dm to ${rUser}`)
+    .addField(`Moderator <@${Moderatoruser}`)
+    .addField(`Reason: ${reason}`)
+
+
+
+
     Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
         if (err) console.log(err);
         if (settings) {
