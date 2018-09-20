@@ -15,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
 
     let modlogsembed = new Discord.RichEmbed()
     .setColor("FF0000")
-    .addField(`Member Involved <@${rMember.id}>`)
-    .addField(`Role Lost: ${gRole.name}`)
+    .addField(`Member Involved`, rMember)
+    .addField(`Role Lost:`, gRole)
 
     try {
         await rMember.send(`RIP, you lost the ${gRole.name} role.`)
