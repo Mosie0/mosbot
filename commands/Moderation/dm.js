@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 
     const modlogsdmembed = new Discord.RichEmbed()
     .setColor(`#FF0000`)
-    .setDescription(`Dm to ${rUser}, from <@${Moderatoruser}`)
+    .setDescription(`Dm to ${rUser}, from <@${Moderatoruser}>, reason: ${reason}`)
     
     Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
         if (err) console.log(err);
