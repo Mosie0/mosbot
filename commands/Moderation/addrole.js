@@ -13,6 +13,11 @@ module.exports.run = async (bot, message, args) => {
 
     if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
     await (rMember.addRole(gRole.id));
+    
+    let modlogsembed = new Discord.RichEmbed()
+    .setColor("FF0000")
+    .addField(`Member Involved`, rMember)
+    .addField(`Role Lost:`, gRole)
 
     try {
         await message.channel.send(`Congrats, you have been given the role ${gRole.name}`)
