@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const Settings = require('../../modules/settings.js');
+const Settings = require('../../models/settings.js');
 module.exports.run = async (bot, message, args) => {
     let nopermembed = new Discord.RichEmbed()
     .setColor("FF0000")
