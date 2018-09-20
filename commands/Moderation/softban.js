@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor("#0011FF")
         .addField("Kicked User", `${bUser}`, true)
         .addField("Moderator", `<@${message.author.id}>`, true)
-        .addField("Reason for the SoftBan", bReason)
+        .addField("Reason for the Soft Ban", bReason)
     bUser.send(softbanembed);
     message.guild.member(bUser).ban(bReason);
     message.guild.unban(bUser.id)
