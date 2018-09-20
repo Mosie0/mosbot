@@ -34,12 +34,18 @@ module.exports.run = async (bot, message, args) => {
         .addField("Moderator", `<@${message.author.id}>`, true)
         .addField("Reason for the SoftBan", bReason)
     bUser.send(softbanembed);
-    let incidentchannel = message.guild.channels.find(c => c.name === "modlogs");
-    if (!incidentchannel) return message.channel.send("Can't find the channel To Log in.");
-
     message.guild.member(bUser).ban(bReason);
     message.guild.unban(bUser.id)
-    incidentchannel.send(banEmbed);
+
+    Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+        if (err) console.log(err);
+        if (settings) {
+         if (settings.logchannel == "") return;
+         let modlogs = message.guild.channels.get(settings.logchannel);
+        if (!modlogs) return;
+         modlogs.send(banEmbed); 
+        }
+      });
     message.delete().catch();
 }
 
