@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
                 message.channel.send(embed)
             let modlogsembed = new Discord.RichEmbed()
              .setColor(`FF0000`)
-              .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji},\nModerator User: ${Moderatoruser}`)
+              .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji},\nEmoji Creator: ${Moderatoruser}`)
             modlogs.send(modlogsembed)
             })
             .catch(console.error);
