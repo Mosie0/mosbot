@@ -4,9 +4,9 @@ const Settings = require('../../models/settings.js');
 module.exports.run = async (bot, message, args) => {
     const nopermembed = new Discord.RichEmbed()
     .setColor(`#FF0000`)
-    .setDescription(`<@${message.author.id}> You Don't have the Manage Messages Permission!`)
+    .setDescription(`<@${message.author.id}> You Don't have the Manage Guild Permission!`)
     let Moderatoruser = message.author.id;
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(nopermembed);
+    if (!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(nopermembed);
     message.channel.overwritePermissions(message.guild.id, {
         SEND_MESSAGES: true,
         READ_MESSAGES: true
