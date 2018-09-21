@@ -12,17 +12,15 @@ module.exports.run = async (bot, message, args) => {
                     .setDescription(`Created the Emoji! **${emoji.name}** ${emoji}`)
                     .setImage(emoji.url)
                 message.channel.send(embed)
+            let modlogsembed = new Discord.RichEmbed()
+             .setColor(`FF0000`)
+              .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji}, Moderator User: <@${Moderatoruser}`)
             })
             .catch(console.error);
     } catch (e) {
         message.channel.send(`ERROR\n${e}`)
     }
 }
-
-let modlogsembed = new Discord.RichEmbed()
-    .setColor(`FF0000`)
-    .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji}, Moderator User: <@${Moderatoruser}`)
-
 Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
     if (err) console.log(err);
     if (settings) {
