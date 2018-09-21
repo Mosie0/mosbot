@@ -1,6 +1,14 @@
 const Discord = require('discord.js');
 const Settings = require('../../models/settings.js');
 module.exports.run = async (bot, message, args) => {
+        Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+    if (err) console.log(err);
+    if (settings) {
+     if (settings.logchannel == "") return;
+     let modlogs = message.guild.channels.get(settings.logchannel);
+    if (!modlogs) return;
+    }
+  });
     try {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`Can't use this command`).then(message => {message.delete(10000).catch()})
         if (!args[0]) return message.channel.send('Please Provide a Link!\nExample `m!createemoji linkhere namehere`')
@@ -16,20 +24,12 @@ module.exports.run = async (bot, message, args) => {
             let modlogsembed = new Discord.RichEmbed()
              .setColor(`FF0000`)
               .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji}, Moderator User: <@${Moderatoruser}`)
+            modlogs.send(modlogsembed)
             })
             .catch(console.error);
     } catch (e) {
         message.channel.send(`ERROR\n${e}`)
     }
-    Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
-    if (err) console.log(err);
-    if (settings) {
-     if (settings.logchannel == "") return;
-     let modlogs = message.guild.channels.get(settings.logchannel);
-    if (!modlogs) return;
-     modlogs.send(modlogsembed); 
-    }
-  });
 }
 module.exports.help = {
     name: "createemoji",
