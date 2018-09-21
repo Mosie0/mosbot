@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args) => {
         if (!modlogs) return;
     let modlogsembed = new Discord.RichEmbed()
         .setColor(`#FF0000`)
-        .setTitle(`LOCKDOWN IN <#${message.channel}>`)
+        .addField(`LOCKDOWN`, `CHANNEL: <#${message.channel.id}> `)
         .addField(`Moderator:`, `<@${Moderatoruser}>`)
         .setTimestamp()
          modlogs.send(modlogsembed); 
