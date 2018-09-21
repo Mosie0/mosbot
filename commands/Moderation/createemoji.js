@@ -7,8 +7,7 @@ module.exports.run = async (bot, message, args) => {
      if (settings.logchannel == "") return;
      let modlogs = message.guild.channels.get(settings.logchannel);
     if (!modlogs) return;
-    }
-  });
+
     try {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`Can't use this command`).then(message => {message.delete(10000).catch()})
         if (!args[0]) return message.channel.send('Please Provide a Link!\nExample `m!createemoji linkhere namehere`')
@@ -30,6 +29,8 @@ module.exports.run = async (bot, message, args) => {
     } catch (e) {
         message.channel.send(`ERROR\n${e}`)
     }
+                }
+  });
 }
 module.exports.help = {
     name: "createemoji",
