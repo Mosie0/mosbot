@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
     try {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`Can't use this command`).then(message => {message.delete(10000).catch()})
-        if (!args[0]) return message.channel.send('Please Provide a Link!\nExample `e!createemoji linkhere namehere`')
-        if (!args[1]) return message.channel.send('Please Provide a Name!\nExample `e!createemoji linkhere namehere`')
+        if (!args[0]) return message.channel.send('Please Provide a Link!\nExample `m!createemoji linkhere namehere`')
+        if (!args[1]) return message.channel.send('Please Provide a Name!\nExample `m!createemoji linkhere namehere`')
+        let Moderatoruser = message.author.id;
         message.guild.createEmoji(args[0], args[1])
             .then(emoji => {
                 let embed = new Discord.RichEmbed()
@@ -17,6 +18,20 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send(`ERROR\n${e}`)
     }
 }
+
+let modlogsembed = new Discord.RichEmbed()
+    .setColor(`FF0000`)
+    .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji}, Moderator User: <@${Moderatoruser}`)
+
+Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+    if (err) console.log(err);
+    if (settings) {
+     if (settings.logchannel == "") return;
+     let modlogs = message.guild.channels.get(settings.logchannel);
+    if (!modlogs) return;
+     modlogs.send(modlogsembed); 
+    }
+  });
 module.exports.help = {
     name: "createemoji",
     names: "CreateEmoji"
