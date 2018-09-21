@@ -21,8 +21,7 @@ module.exports.run = async (bot, message, args) => {
     } catch (e) {
         message.channel.send(`ERROR\n${e}`)
     }
-}
-Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
     if (err) console.log(err);
     if (settings) {
      if (settings.logchannel == "") return;
@@ -31,6 +30,7 @@ Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
      modlogs.send(modlogsembed); 
     }
   });
+}
 module.exports.help = {
     name: "createemoji",
     names: "CreateEmoji"
