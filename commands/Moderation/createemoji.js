@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const Settings = require('../../models/settings.js');
 module.exports.run = async (bot, message, args) => {
     try {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`Can't use this command`).then(message => {message.delete(10000).catch()})
