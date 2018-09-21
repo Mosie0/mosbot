@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`Can't use this command`).then(message => {message.delete(10000).catch()})
         if (!args[0]) return message.channel.send('Please Provide a Link!\nExample `m!createemoji linkhere namehere`')
         if (!args[1]) return message.channel.send('Please Provide a Name!\nExample `m!createemoji linkhere namehere`')
-        let Moderatoruser = message.author.id;
+        let Moderatoruser = message.author;
         message.guild.createEmoji(args[0], args[1])
             .then(emoji => {
                 let embed = new Discord.RichEmbed()
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
                 message.channel.send(embed)
             let modlogsembed = new Discord.RichEmbed()
              .setColor(`FF0000`)
-              .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji}, Moderator User: <@${Moderatoruser}`)
+              .setDescription(`Created an Emoji! **${emoji.name}**, ${emoji},\nModerator User: ${Moderatoruser}`)
             modlogs.send(modlogsembed)
             })
             .catch(console.error);
