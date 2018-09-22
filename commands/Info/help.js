@@ -40,10 +40,9 @@ m!softban:
 m!support: File a support ticket
 m!lock: Lock this channel, so no one can chat in it
 m!unlock: Allow the role @ everyone to chat in that channel
-m!discordupdates: Allows the bot to send a message to the channel #change-log
 m!annoucement: Send an embedded message to the #annoucements channel
 m!whois: Gives brief data on a member
-m!role (role name): Gives the list of members in a certain role`,
+m!role: Gives the list of members in a certain role`,
 	},
 	
 	{
@@ -54,7 +53,12 @@ m!dog: DOGS!!
 m!draw: Want to draw something? Go ahead
 m!fortnite: Fortnite Stats
 m!gif: Search any gif from GIPHY (NSFW CHANNELS ONLY)
-m!`,
+m!hampster: HAMSTERS!!
+m!morse: Translate anything to morse code
+m!Mosie: Ooof
+m!pug: PUGS!!
+m!throw: Throw anything you want at someone
+m!weather: Find weather for any city in the world`,
 	},
 	
     	{
