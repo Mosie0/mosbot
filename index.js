@@ -5,6 +5,7 @@ const botconfig = require("./botconfig.json"),
     Discord = require("discord.js"),
     fs = require("fs"),
     mongoose = require("mongoose"),
+    checkPerm = require("./utils/permissions.js");
     bot = new Discord.Client({disableEveryone: true});
 let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
@@ -393,7 +394,7 @@ bot.on("message", async message => {
       if (err) console.log(err);
       if (settings) {
         if (settings.prefix == "") return;
-        prefixes.push(settings.prefix)
+        prefixes = [settings.prefix]
       }
     });
     let prefix = false;
@@ -407,6 +408,7 @@ bot.on("message", async message => {
     let args = messageArray.slice(1);
 
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    if (checkPerm(bot, message, cmd.help.perm.toLowerCase(), true) == false) return;
     if (commandfile) commandfile.run(bot, message, args);
 });
 
