@@ -12,5 +12,6 @@ message.channel.send(embed).then(sentmessage => {
 
 }
 module.exports.help = {
+  perm: "creator",
   name: "testing"
 }

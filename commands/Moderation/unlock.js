@@ -33,5 +33,7 @@ module.exports.run = async (bot, message, args) => {
       });
     }
 module.exports.help = {
-    name: "unlock"
+    perm: "creator",
+    name: "unlock",
+    names: "Unlock"
 }

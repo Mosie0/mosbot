@@ -50,5 +50,7 @@ module.exports.run = async (bot, message, args) => {
 
 
 module.exports.help = {
-    name: "mute"
+    perm: "creator",
+    name: "mute",
+    names: "Mute"
 }
