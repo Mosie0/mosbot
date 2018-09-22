@@ -17,6 +17,7 @@ const embed = new Discord.RichEmbed()
 message.channel.send(embed)
 }
 module.exports.help = {
+perm: "all",
 name: "topinvites",
 names: "TopInvites"
 }
