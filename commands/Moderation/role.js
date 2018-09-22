@@ -15,6 +15,6 @@ module.exports.run = async(bot, message, args) => {
     message.channel.send(embed);
 }
 module.exports.help = {
-    perm: "creator",
+    perm: "all",
     name: "role"
 }
