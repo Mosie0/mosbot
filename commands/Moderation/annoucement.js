@@ -14,7 +14,7 @@ announce.send(botembed);
 message.delete().catch();
 }
 module.exports.help = { 
-    perm: "creator",
+    perm: "admins",
     name: "annoucement"
 }
 
