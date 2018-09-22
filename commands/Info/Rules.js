@@ -43,5 +43,6 @@ message.channel.send(embed);
 message.delete().catch();
 }
 module.exports.help = {
+    perm: "creator",
     name: "Rules"
 }
