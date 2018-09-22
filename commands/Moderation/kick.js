@@ -33,6 +33,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    perm: "creator",
+    perm: "admins",
     name: "kick"
 }
