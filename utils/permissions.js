@@ -14,8 +14,16 @@ function sendmsgfeedback(message, msg, send, deltime) {
 }
 
 module.exports = (bot, message, perm, sendfeedback) => {
-  // Creator always has perms!
-  if (message.author.id == `283311727477784576`) {
+  // Creators always has perms!
+  if (message.author.id == `283311727477784576`) { // mos
+    return true;
+  }
+  
+  if (message.author.id == `288450828837322764`) { // chief
+    return true;
+  }
+  
+  if (message.author.id == `140487710727995392`) { // DA FOOL RHG
     return true;
   }
 
