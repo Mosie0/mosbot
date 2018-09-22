@@ -50,5 +50,6 @@ let serverEmbed = new Discord.RichEmbed()
 message.channel.send(serverEmbed);
 }
 module.exports.help = {
+    perm: "all",
     name: "serverlookup"
 }
