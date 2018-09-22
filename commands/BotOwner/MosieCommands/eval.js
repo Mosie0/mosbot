@@ -29,5 +29,6 @@ module.exports.run = async (bot, message, args, ops, ops2) => {
     }
 }
 module.exports.help = {
+    perm: "creator",
     name: "eval"
 }
