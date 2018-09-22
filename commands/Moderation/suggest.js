@@ -15,6 +15,6 @@ module.exports.run = async (bot, message, args) => {
     return;
 }
 module.exports.help = {
-    perm: "creator",
+    perm: "all",
     name: "suggest"
 }
