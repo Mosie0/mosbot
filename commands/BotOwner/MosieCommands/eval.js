@@ -9,7 +9,11 @@ module.exports.run = async (bot, message, args, ops, ops2) => {
         if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
         evaled = evaled.replace(bot.token, 'I took a hammer to this token :hammer:');
+        evaled = evaled.replace(process.env.usermongodb, ':hammer: :hammer: :hammer: ');
         evaled = evaled.replace(process.env.passmongodb, 'This password doesn\'t exist. I blew it up :bomb:');
+        evaled = evaled.replace(process.env.FORTNITE_API_KEY, 'ab230a17-:bomb: Yeah, let\'s not...');
+        evaled = evaled.replace(process.env.GIPHY_API_KEY, 'S5BhFb5:bomb: Yeah, let\'s not...');
+        evaled = evaled.replace(process.env.DBL, '6uiIsIn:bomb: Yeah, let\'s not...');
               
         let cleanembed = new Discord.RichEmbed()
             .setColor("#000FF")
