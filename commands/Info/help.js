@@ -113,7 +113,7 @@ module.exports.run = (bot, message, args) => {
 	function handleReaction(reaction) {
 		// console.log(`${reaction.emoji.name} from ${reaction.users.last().username}`);
 		reaction.remove(reaction.users.last()).catch(e => {
-		    if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
+		    //if (e.code === 50013) reaction.message.channel.send("I need the 'Manage Messages' permission in order to work properly!");
 		});
 		const rid = pageemo.indexOf(reaction.emoji.name);
 		if (rid !== 6) {
@@ -138,5 +138,6 @@ module.exports.run = (bot, message, args) => {
 };
 
 module.exports.help = {
+	perm: "all",
     name: "help"
 }
