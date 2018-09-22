@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args, ops, ops2) => {
 
         if (typeof evaled !== "string")
             evaled = require("util").inspect(evaled);
-        if (evaled.includes(bot.token)) evaled = evaled.replace(bot.token, 'NO THATS MY BOT TOKEN :rage:');
-        if (evaled.includes(process.env.passmongodb)) evaled = evaled.replace(process.env.passmongodb, 'r u trying to get my mongo password :angry:');
+        if (evaled.includes(bot.token)) evaled = evaled.replace(bot.token, 'I took a hammer to this token :hammer:');
+        if (evaled.includes(process.env.passmongodb)) evaled = evaled.replace(process.env.passmongodb, 'This password doesn't exist. I blew it up :bomb:');
         let cleanembed = new Discord.RichEmbed()
             .setColor("#000FF")
             .setDescription(`📥Input\n\n${code}\n\n📤Output\n\n${clean(evaled)}`)
