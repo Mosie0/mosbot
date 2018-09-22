@@ -32,6 +32,7 @@ module.exports.run = async (bot, message, args) => {
 }
 }
 module.exports.help = {
+    perm: "all",
     name: "whois",
     names: "userinfo"
 };
