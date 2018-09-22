@@ -27,5 +27,6 @@ module.exports.run = async (bot, msg, args) => {
     }
 }
 module.exports.help = {
+    perm: "all",
     name: "emojis"
 }
