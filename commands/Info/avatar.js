@@ -13,5 +13,6 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(botembed);   
 }
 module.exports.help = {
+    perm: "all",
     name: "avatar"
 };
