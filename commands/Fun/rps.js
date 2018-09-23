@@ -60,5 +60,6 @@ exports.run = async (bot, message, args, color, prefix) => {
 
 exports.help = {
 	name: "rps",
-	description: 'Play Rock Paper Scissors with bot'
+	description: 'Play Rock Paper Scissors with bot',
+	perm: "all"
 }
