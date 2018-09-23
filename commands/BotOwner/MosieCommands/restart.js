@@ -7,7 +7,6 @@ module.exports.run = async (bot, message, args) => {
     .addField("Restart Issued", `<@${message.author.id}> Has Restarted the Bot!`)
     .setTimestamp()
     console.log(`Bot Has Been Restart By: ` + message.author.username);
-    if (message.author.id !== "283311727477784576" && message.author.id !== "288450828837322764") return;
     await message.react("✅");
     await message.channel.send(botembed);
     message.delete(1000).catch();
@@ -16,5 +15,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "restart",
-    names: "RT"
+    names: "RT",
+    perm: "creator"
 }
