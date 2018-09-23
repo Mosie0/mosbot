@@ -14,5 +14,6 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "balance",
-    names: "bal"
+    names: "bal",
+    perm: "all"
 }
