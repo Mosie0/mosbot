@@ -1,5 +1,4 @@
 module.exports.run = async (bot, message, args) => {
-    if(message.author.id !== "283311727477784576") return;
     var options = {
         maxAge: 0
     };
@@ -16,5 +15,6 @@ module.exports.run = async (bot, message, args) => {
     }
     }
     module.exports.help = {
-        name: "guild"
+        name: "guild",
+        perm: "creator"
     }
