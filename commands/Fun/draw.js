@@ -155,5 +155,6 @@ class Drawing {
  
 module.exports.help = {
     name: "draw",
-    names: "Draw"
+    names: "Draw",
+    perm: "all"
 }
