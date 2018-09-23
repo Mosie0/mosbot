@@ -12,5 +12,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "morse",
-    names: "morsecode"
+    names: "morsecode",
+    perm: "all"
 }
