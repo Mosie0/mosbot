@@ -31,5 +31,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "throw",
-    names: "throwat"
+    names: "throwat",
+    perm: "all"
 }
