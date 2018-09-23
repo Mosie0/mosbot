@@ -24,5 +24,7 @@ module.exports.run = async (bot, message, args) => {
     })
 }
 module.exports.help = {
-    name: "pug"
+    name: "pug",
+    names: "Pug",
+    perm: "all"
 }
