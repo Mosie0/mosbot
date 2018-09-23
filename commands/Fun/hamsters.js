@@ -21,5 +21,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "hamster",
-    names: "Hamster"
+    names: "Hamster",
+    perm: "all"
 }
