@@ -45,5 +45,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "fortnite",
-    names: "Fortnite"
+    names: "Fortnite",
+    perm: "all"
 }
