@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     try {
     let guildid = bot.guilds.get(args[0])
     let channelfind = guildid.channels.find(c => c.name === args[1])
-    message.channel.send(`Boop`).then(message => {
+    message.channel.send(`Boop, I couldnt do anything!`).then(message => {
         channelfind.createInvite(options).then(i => {
             message.edit(`Created a Invite For you  \n https://discord.gg/${i.code}`)
     })
