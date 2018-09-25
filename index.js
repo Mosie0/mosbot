@@ -391,9 +391,6 @@ bot.on("message", async message => {
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
     
     // Start of prefix stuff o.o
-    
-    
-    let prefixes = ["m!", "M!"];
     Settings.findOne({serverID: message.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
@@ -401,7 +398,7 @@ bot.on("message", async message => {
         let prefixes = [settings.prefix]
       }
     });
-    let prefix = false;
+    let prefix = true;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
     }
