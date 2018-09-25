@@ -22,10 +22,6 @@ module.exports = (bot, message, perm, sendfeedback) => {
   if (message.author.id == `288450828837322764`) { // chief
     return true;
   }
-  
-  if (message.author.id == `140487710727995392`) { // DA FOOL RHG
-    return true;
-  }
 
   if (perm !== "creator") {
     if (message.author.id == message.guild.owner.id) {
