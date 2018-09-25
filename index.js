@@ -389,14 +389,18 @@ bot.on("message", async message => {
         .setFooter(`DM Recieved At`, bot.user.displayAvatarURL);
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
+    
+    // Start of prefix stuff o.o
+    
+    
+    let prefixes = ["m!", "M!"];
     Settings.findOne({serverID: message.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
         if (settings.prefix == "") return;
-        prefixes = [settings.prefix]
+        let prefixes = [settings.prefix]
       }
     });
-    let prefixes = ["m!", "M!", prefixes];
     let prefix = false;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
