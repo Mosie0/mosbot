@@ -398,7 +398,7 @@ bot.on("message", async message => {
         let prefixes = [settings.prefix]
       }
     });
-    let prefix = true;
+    let prefix = prefixes;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
     }
