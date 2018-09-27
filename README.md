@@ -24,6 +24,6 @@ __reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     - [ ] More modulating.
     - [ ] Hot fixes for the love of javascript.
 - [x] Add permissions to certain commands.
-    - [ ] Make permissions alittle more advanced.
+    - [x] Make permissions alittle more advanced.
 - [ ] Add economy section to database and make commands.
 - [ ] Create a command to create temporary voice channels?
