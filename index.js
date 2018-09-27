@@ -391,26 +391,29 @@ bot.on("message", async message => {
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
     
     // Start of prefix stuff o.o
-    Settings.findOne({serverID: message.guild.id}, (err, settings) => {
-      if (err) console.log(err);
-      if (settings) {
-        if (settings.prefix == "") return;
-        let prefixes = [settings.prefix]
-      }
-    });
-    let prefix = prefixes;
+    let prefixes = ["m!", "M!"];
+    //Settings.findOne({serverID: message.guild.id}, (err, settings) => {
+     // if (err) console.log(err);
+     // if (settings) {
+      //  if (settings.prefix == "") return;
+      //  prefixes.push(settings.prefix)
+      //}
+   // });
+    let prefix = false;
     for (const thisPrefix of prefixes) {
         if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
     }
-    if (!prefix) require("./utils/money.js")(bot, message);
+    if (!prefix) return;
     if (!message.content.startsWith(prefix)) return;
+
+
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
 
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (checkPerm(bot, message, commandfile.help.perm.toLowerCase(), true) == false) return;
     if (commandfile) commandfile.run(bot, message, args);
+
 });
 
 // End of the bot.on Message.
