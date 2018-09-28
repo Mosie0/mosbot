@@ -415,7 +415,7 @@ New Setting: **${settingset == "" ? "None" : "<#" + settingset + ">"}**
                                     } else if (message.guild.roles.get(collected.first().content)) {
                                         settingset = collected.first().content;
                                     } else {
-                                        return message.channel.send(`Error: Unable to get a valid channel.`).then(m => m.delete(10000));
+                                        return message.channel.send(`Error: Unable to get a valid admin role.`).then(m => m.delete(10000));
                                     }
                                     embed.setDescription(`
 You have set the ${cleansettingType}.\n
