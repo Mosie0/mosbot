@@ -19,7 +19,7 @@ module.exports = (bot, message, perm, sendfeedback) => {
     return true;
   }
   
-  if (message.author.id == `288450828837322764`) {
+  if (message.author.id == `288450828837322764` && message.author.id == `391529339214364674`) {
     return true;
   }
   
