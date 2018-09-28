@@ -512,7 +512,7 @@ fs.readdir("./commands/Info/Embedsgaminghq", (err, files) => {
     }
 
     jsfile.forEach((f, i) => {
-        let props = require(`./commands/Info/Embedsgaminghq${f}`);
+        let props = require(`./commands/Info/Embedsgaminghq/${f}`);
         console.log(`${f} loaded!`);
         bot.commands.set(props.help.name, props);
         bot.commands.set(props.help.names, props);
