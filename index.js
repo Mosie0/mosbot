@@ -279,7 +279,7 @@ bot.on("emojiDelete", async (emoji) => {
         .addField(`Animated?`, emoji.animated, true)
         .setTimestamp(emoji.createdAt)
         .setFooter(`Emoji Deleted At`)
-    Settings.findOne({serverID: emoji.member.guild.id}, (err, settings) => {
+    Settings.findOne({serverID: emoji.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
