@@ -147,6 +147,7 @@ bot.on(`guildBanRemove`, (guild, user) => {
     });
 });
 bot.on(`channelCreate`, async channel => {
+    if(channel.type === "dm") return;
     let guild = channel.guild;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF000")
