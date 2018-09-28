@@ -501,5 +501,22 @@ fs.readdir("./commands/BotOwner/MosieCommands", (err, files) => {
         bot.commands.set(props.help.names, props);
     });
 });
+
+fs.readdir("./commands/Info/Embedsgaminghq", (err, files) => {
+
+    if (err) console.log(err);
+    let jsfile = files.filter(f => f.split(".").pop() === "js");
+    if (jsfile.length <= 0) {
+        console.log("Couldn't find Info/Embedsgaminghq commands.");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let props = require(`./commands/Info/Embedsgaminghq${f}`);
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+        bot.commands.set(props.help.names, props);
+    });
+});
 // End of Getting Commands.
 //=============================================================================================================================================================================================
