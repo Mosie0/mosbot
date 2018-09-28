@@ -24,12 +24,13 @@ dbl.on('error', e => {
     console.log(`Oops! ${e}`);
 })
 process.on('unhandledRejection', error => {
-    console.error(`ERROR: \n${error}`);
+    console.error(`ERROR: \n${error.stack}`);
     let errorembed = new Discord.RichEmbed()
     .setColor(`RED`)
     .setTitle(`ERROR`)
-    .setDescription(error)
+    .setDescription(error.stack)
     bot.channels.get('490726893864222731').send(errorembed)
+    bot.channels.get("490211594312220702").send(errorembed)
 });
 
 bot.on("ready", async () => {
