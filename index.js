@@ -315,6 +315,7 @@ bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
 });
 
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
+    if(oldMessage.content === newMessage.content) return;
     if (newMessage.author.bot) return;
     let botembed = new Discord.RichEmbed()
         .setColor("#FF0000")
