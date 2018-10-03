@@ -24,3 +24,4 @@ All of the Code here you can use. **__(dont fork or copy large numbers of docume
     - [x] Make permissions alittle more advanced.
 - [ ] Add economy section to database and make commands.
 - [ ] Create a command to create temporary voice channels?
+- [ ] Create a command that can delete channels *using ids and names*
