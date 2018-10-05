@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Sorry but you don't have the permissions to use this command.");
 const embed = new Discord.RichEmbed()
 .setColor(`#11a8ff`)
 .setDescription(`**Owner**
@@ -49,5 +48,6 @@ message.channel.send(embed);
 message.delete().catch();
 }
 module.exports.help = {
+    perm: "creator",
     name: "StaffList"
 }
