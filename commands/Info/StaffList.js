@@ -9,7 +9,6 @@ const embed = new Discord.RichEmbed()
 
 <@&446172124353265665>
 <@244271175608303616>
-<@434866964557463595>
 
 <@&447962800791355402>
 <@288450828837322764>
@@ -30,20 +29,21 @@ const embed = new Discord.RichEmbed()
 <@265344329147613185>
 <@372468580643635211>
 <@203259894743302145>
-
-<@&466006038244622338> 
 <@368775528234352642>
 <@358334640928325662>
-<@215496797710188544>
+<@368775528234352642>
+
+<@&466006038244622338> 
+None
 `)
 
 // Owner: Mo_sie
-// Co-Owner: Jonbn123, Brobro
+// Co-Owner: Jonbn123
 // Bot-Commander: SUPERCHIEFYT
 // Head Admin: Hunter
 // Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby, Boozoo
-// Moderators: Cesargeronimo, Victor, Silent
-// Helper of the month: Sirred90, Robo, Starlight
+// Moderators: Cesargeronimo, Victor, Silent, Sirred90, Robo, StarLight
+// Helper of the month: None
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
 message.delete().catch();
