@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
     bot.commands.forEach( async cmd => {
         await bot.unloadCommand(cmd);
     });
-    process.exit(1);
+    client.destory();
 }
 module.exports.help = {
     name: "shutdown",
