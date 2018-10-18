@@ -183,7 +183,54 @@ bot.on(`channelDelete`, channel => {
       }
     });
 });
-bot.on('guildCreate', (guild) => {
+bot.on('guildCreate', async (guild) => {
+    
+    //===================================================================
+    // Guild Create message
+      let serverSize = guild.memberCount;
+    let botCount = guild.members.filter(m => m.user.bot).size;
+    let humanCount = serverSize - botCount;
+    let verifLevels = ["None", "Low\nmust have verified\nemail on account", "Medium - must be registered on Discord for longer than 5 minutes", "High -  (╯°□°）╯︵ ┻━┻ - must be a member of the server for longer than 10 minutes", "Very High - ┻━┻ミヽ(ಠ益ಠ)ﾉ彡┻━┻ - must have a verified phone number"];
+    let region = {
+        "brazil": "Brazil",
+        "eu-central": "Central Europe",
+        "singapore": "Singapore",
+        "us-central": "U.S. Central",
+        "sydney": "Sydney",
+        "us-east": "U.S. East",
+        "us-south": "U.S. South",
+        "us-west": "U.S. West",
+        "eu-west": "Western Europe",
+        "vip-us-east": "VIP U.S. East",
+        "london": "London",
+        "amsterdam": "Amsterdam",
+        "hongkong": "Hong Kong"
+    };
+    const newserverembed = new Discord.RichEmbed()
+        .setColor(`RANDOM`)
+        .setAuthor(`Owner: ${guild.owner.user.tag}`, guild.owner.user.displayAvatarURL)
+        .setFooter(`Guild Name: ${guild.name} ID: ${guild.id}`, guild.iconURL)
+        .setThumbnail(guild.iconURL ? guild.iconURL : guild.owner.user.displayAvatarURL)
+        .setTimestamp()
+        .setTitle(`Server Joined`)
+        .addField(`Server Name`, guild.name, true)
+        .addField(`Server ID`, guild.id, true)
+        .addField(`Server Owner`, guild.owner.user.tag, true)
+        .addField(`Server Owner ID`, guild.ownerID, true)
+        .addField(`Server Region`, region[guild.region], true)
+        .addField(`Verification Level`, verifLevels[guild.verificationLevel], true)
+        .addField(`Total Members`, serverSize, true)
+        .addField(`Total Bots`, botCount, true)
+        .addField(`Total Humans`, humanCount, true)
+        .addField(`Emoji Count`, guild.emojis.size, true)
+        .addField(`Role Count`, guild.roles.size, true)
+        .addField(`Channel Count`, guild.channels.size, true)
+        .addField(`Large?`, guild.large ? "Yes" : "No", true)
+        .addField(`Server Created At`, guild.createdAt)
+     bot.users.get('283311727477784576').send(newserverembed)
+     bot.users.get('288450828837322764').send(newserverembed)
+  // ========================================================
+    //Server Settings
   Settings.findOne({serverID: guild.id}, (err, settings) => {
     if (err) console.log(err);
     if (!settings) {
@@ -203,25 +250,6 @@ bot.on('guildCreate', (guild) => {
     }
   });
 });
-
-bot.on('guildCreate', async guild => {
-    const newserverembed = new Discord.RichEmbed()
-        .setColor(`#FF000`)
-        .setDescription(`Server Added`)
-        .setThumbnail(guild.iconURL)
-        .setTimestamp()
-        .setAuthor(bot.user.username, bot.user.displayAvatarURL)
-        .addField(`Guild Name`, `${guild.name}`, true)
-        .addField(`Guild ID`, `${guild.id}`, true)
-        .addField(`Guild Owner`, `${guild.owner}`, true)
-        .addField(`Guild Owner ID`, `${guild.ownerID}`, true)
-        .addField(`Guild Member Count`, `${guild.memberCount}`, true)
-        .addField(`Guild Server Region`, `${guild.region}`, true)
-        .addField(`Guild Verification Level`, `${guild.verificationLevel}`, true)
-    bot.users.get('283311727477784576').send(newserverembed)
-
-});
-
 bot.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (newMember.nickname === oldMember.nickname) return
     let embed = new Discord.RichEmbed()
@@ -378,8 +406,55 @@ bot.on('guildUpdate', (oldguild, guild) => {
 });
 
 
-bot.on('guildDelete', (guild) => {
+bot.on('guildDelete', async (guild) => {
+    
+    // ===============================================================================
+    // Removes the guild's settings once the bot leaves.
   Settings.findOneAndRemove({serverID: guild.id}).catch((err) => console.log(err));
+    // ===============================================================================
+    // Sends the bot owner(s) that the bot has left that guild.
+    let serverSize = guild.memberCount;
+    let botCount = guild.members.filter(m => m.user.bot).size;
+    let humanCount = serverSize - botCount;
+    let verifLevels = ["None", "Low\nmust have verified\nemail on account", "Medium - must be registered on Discord for longer than 5 minutes", "High -  (╯°□°）╯︵ ┻━┻ - must be a member of the server for longer than 10 minutes", "Very High - ┻━┻ミヽ(ಠ益ಠ)ﾉ彡┻━┻ - must have a verified phone number"];
+    let region = {
+        "brazil": "Brazil",
+        "eu-central": "Central Europe",
+        "singapore": "Singapore",
+        "us-central": "U.S. Central",
+        "sydney": "Sydney",
+        "us-east": "U.S. East",
+        "us-south": "U.S. South",
+        "us-west": "U.S. West",
+        "eu-west": "Western Europe",
+        "vip-us-east": "VIP U.S. East",
+        "london": "London",
+        "amsterdam": "Amsterdam",
+        "hongkong": "Hong Kong"
+    };
+    const Deletedserverembed = new Discord.RichEmbed()
+        .setColor(`RANDOM`)
+        .setAuthor(`Owner: ${guild.owner.user.tag}`, guild.owner.user.displayAvatarURL)
+        .setFooter(`Guild Name: ${guild.name} ID: ${guild.id}`, guild.iconURL)
+        .setThumbnail(guild.iconURL ? guild.iconURL : guild.owner.user.displayAvatarURL)
+        .setTimestamp()
+        .setTitle(`Server Left`)
+        .addField(`Server Name`, guild.name, true)
+        .addField(`Server ID`, guild.id, true)
+        .addField(`Server Owner`, guild.owner.user.tag, true)
+        .addField(`Server Owner ID`, guild.ownerID, true)
+        .addField(`Server Region`, region[guild.region], true)
+        .addField(`Verification Level`, verifLevels[guild.verificationLevel], true)
+        .addField(`Total Members`, serverSize, true)
+        .addField(`Total Bots`, botCount, true)
+        .addField(`Total Humans`, humanCount, true)
+        .addField(`Emoji Count`, guild.emojis.size, true)
+        .addField(`Role Count`, guild.roles.size, true)
+        .addField(`Channel Count`, guild.channels.size, true)
+        .addField(`Large?`, guild.large ? "Yes" : "No", true)
+        .addField(`Server Created At`, guild.createdAt)
+     bot.users.get('283311727477784576').send(newserverembed)
+     bot.users.get('288450828837322764').send(newserverembed)
 });
 bot.on("message", async message => {
     if (message.author.bot) return;
