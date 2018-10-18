@@ -453,8 +453,8 @@ bot.on('guildDelete', async (guild) => {
         .addField(`Channel Count`, guild.channels.size, true)
         .addField(`Large?`, guild.large ? "Yes" : "No", true)
         .addField(`Server Created At`, guild.createdAt)
-     bot.users.get('283311727477784576').send(newserverembed)
-     bot.users.get('288450828837322764').send(newserverembed)
+     bot.users.get('283311727477784576').send(Deletedserverembed)
+     bot.users.get('288450828837322764').send(Deletedserverembed)
 });
 bot.on("message", async message => {
     if (message.author.bot) return;
