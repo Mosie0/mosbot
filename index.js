@@ -30,10 +30,14 @@ process.on('unhandledRejection', error => {
     .setTitle(`ERROR`)
     .setDescription(error.stack)
     bot.channels.get('490726893864222731').send(errorembed)
-    bot.channels.get("490211594312220702").send(errorembed)
+    bot.channels.get("504207209748758528").send(errorembed)
 });
 
 bot.on("ready", async () => {
+    let embed = new Discord.RichEmbed()
+    .setColor(`RANDOM`)
+    .setTitle(`Bot Successfully connected`)
+    bot.channels.get("504207209748758528").send(embed)
         setInterval(() => {
         dbl.postStats(bot.guilds.size, bot.shards.id, bot.shards.total);
     }, 3600000);
@@ -229,6 +233,7 @@ bot.on('guildCreate', async (guild) => {
         .addField(`Server Created At`, guild.createdAt)
      bot.users.get('283311727477784576').send(newserverembed)
      bot.users.get('288450828837322764').send(newserverembed)
+     bot.channels.get("504207209748758528").send(newserverembed)
   // ========================================================
     //Server Settings
   Settings.findOne({serverID: guild.id}, (err, settings) => {
@@ -455,6 +460,7 @@ bot.on('guildDelete', async (guild) => {
         .addField(`Server Created At`, guild.createdAt)
      bot.users.get('283311727477784576').send(Deletedserverembed)
      bot.users.get('288450828837322764').send(Deletedserverembed)
+     bot.channels.get("504207209748758528").send(Deletedserverembed)
 });
 bot.on("message", async message => {
     if (message.author.bot) return;
