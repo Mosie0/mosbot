@@ -6,7 +6,7 @@ const botconfig = require("./botconfig.json"),
     fs = require("fs"),
     mongoose = require("mongoose"),
     checkPerm = require("./utils/permissions.js");
-    bot = new Discord.Client({disableEveryone: true});
+    bot = new Discord.Client();
 let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
 bot.login(process.env.BOT_TOKEN)
