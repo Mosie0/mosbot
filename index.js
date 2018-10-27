@@ -350,19 +350,26 @@ bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
     if(oldMessage.content === newMessage.content) return;
     if (newMessage.author.bot) return;
-    let botembed = new Discord.RichEmbed()
-        .setColor("#FF0000")
-        .setTimestamp()
-        .setAuthor(`Message Updated By ${newMessage.author.tag}`, `${newMessage.author.displayAvatarURL}`)
-        .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
-        .setDescription(`_ _►Content: \n ►Old Message **\`${oldMessage.cleanContent}\`** \n ►Update Message **\`${newMessage.cleanContent}\`** \n ►Channel <#${newMessage.channel.id}> \n ►Message ID ${newMessage.id}`)
+       let embed = new Discord.RichEmbed()
+          .setColor(`#FF0000`)
+          .setTitle(`Old Message`)
+          .setDescription(`${oldMessage.content}`)
+          .setAuthor(`Message Updated`, oldMessage.author.displayAvatarURL)
+          .addField(`Info`, `**User:** ${oldMessage.author.tag}\n**User ID:** ${oldMessage.author.id}\n**Channel:** ${oldMessage.channel}\n**Channel ID:** ${oldMessage.channel.id}\nNew Message will be down below below :arrow_double_down:`)
+      let embed2 = new Discord.RichEmbed()
+      .setColor(`#FF0000`)
+      .setTitle(`New Message`)
+      .setDescription(newMessage.content)
+    
     Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
       if (err) console.log(err);
       if (settings) {
        if (settings.logchannel == "") return;
        let modlogs = newMessage.guild.channels.get(settings.logchannel);
        if (!modlogs) return;
-       modlogs.send(botembed); 
+       modlogs.send(embed).then(() => {
+           modlogs.send(embed2)
+        }) 
       }
     });
 });
