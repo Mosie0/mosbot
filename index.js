@@ -348,31 +348,47 @@ bot.on("emojiUpdate", async (oldEmoji, newEmoji) => {
 });
 
 bot.on(`messageUpdate`, (oldMessage, newMessage) => {
-    if(oldMessage.content === newMessage.content) return;
+    if (oldMessage.content === newMessage.content) return;
     if (newMessage.author.bot) return;
-       let embed = new Discord.RichEmbed()
-          .setColor(`#FF0000`)
-          .setTitle(`Old Message`)
-          .setDescription(`${oldMessage.content}`)
-          .setAuthor(`Message Updated`, oldMessage.author.displayAvatarURL)
-          .addField(`Info`, `**User:** ${oldMessage.author.tag}\n**User ID:** ${oldMessage.author.id}\n**Channel:** ${oldMessage.channel}\n**Channel ID:** ${oldMessage.channel.id}\nNew Message will be down below below :arrow_double_down:`)
-      let embed2 = new Discord.RichEmbed()
-      .setColor(`#FF0000`)
-      .setTitle(`New Message`)
-      .setDescription(newMessage.content)
-    
-    Settings.findOne({serverID: newMessage.channel.guild.id}, (err, settings) => {
-      if (err) console.log(err);
-      if (settings) {
-       if (settings.logchannel == "") return;
-       let modlogs = newMessage.guild.channels.get(settings.logchannel);
-       if (!modlogs) return;
-       modlogs.send(embed).then(() => {
-           modlogs.send(embed2)
-        }) 
-      }
+    if (oldMessage.channel.type === "dm") return;
+    if (oldMessage.content.length === 0) return; 
+    Settings.findOne({ serverID: newMessage.channel.guild.id }, (err, settings) => {
+        if (err) console.log(err);
+        if (settings) {
+        if (settings.logchannel == "") return;
+        let modlogs = newMessage.guild.channels.get(settings.logchannel);
+        if (!modlogs) return;
+        let content = oldMessage.content;
+        let content2 = newMessage.content;
+        let length = content.length + content2.length;
+        if (length > 2048) {
+        let embed = new Discord.RichEmbed()
+            .setColor(`#FF0000`)
+            .setTitle(`Old Message`)
+            .setDescription(`${content}`)
+            .setAuthor(`Message Updated`, oldMessage.author.displayAvatarURL)
+            .addField(`Info`, `**User:** ${oldMessage.author.tag}\n**User ID:** ${oldMessage.author.id}\n**Channel:** ${oldMessage.channel}\n**Channel ID:** ${oldMessage.channel.id}\nNew Message will be down below below :arrow_double_down:`)
+        modlogs.send(embed)
+        let embed2 = new Discord.RichEmbed()
+            .setColor(`#FF0000`)
+            .setTitle(`New Message`)
+            .setDescription(content2)
+        modlogs.send(embed2)
+    } else
+        if (length < 2040) {
+            let embed = new Discord.RichEmbed()
+                .setColor(`#FF0000`)
+                .setTitle(`Content`)
+                .setDescription(`**Old Message: **\n${content}\n\n**New Message: **\n${content2}`)
+                .setAuthor(`Message Updated`, oldMessage.author.displayAvatarURL)
+                .addField(`Info`, `**User:** ${oldMessage.author.tag}\n**User ID:** ${oldMessage.author.id}\n**Channel:** ${oldMessage.channel}\n**Channel ID:** ${oldMessage.channel.id}`)
+            modlogs.send(embed)
+        }
+        }
     });
+    
 });
+
 
 bot.on(`messageDelete`, message => {
     if (message.author.bot) return;
