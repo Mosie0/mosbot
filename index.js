@@ -391,20 +391,35 @@ bot.on(`messageUpdate`, (oldMessage, newMessage) => {
 
 
 bot.on(`messageDelete`, message => {
+    if (message.channel.type === "dm") return;
     if (message.author.bot) return;
-    let botembed = new Discord.RichEmbed()
-        .setColor("#FF0000")
-        .setTimestamp()
-        .setAuthor(`Message Deleted By ${message.author.tag}`, `${message.author.displayAvatarURL}`)
-        .setFooter(`${bot.user.tag}`, `${bot.user.displayAvatarURL}`)
-        .setDescription(`_ _►Content: **\`${message.cleanContent}\`** \n ►Channel: <#${message.channel.id}> \n ►Message ID: ${message.id}`)
+    let image = message.attachments.map(g => g.proxyURL)
+    let embed = new Discord.RichEmbed()
+    .setColor(`#FF0000`)
+    .setTitle(`Content`)
+    .setAuthor(`Message Deleted`,message.author.displayAvatarURL)
+    .addField(`Info`, `**User:** ${message.author.tag}\n**User ID:** ${message.author.id}\n**Channel:** ${message.channel}\n**Message ID: **${message.id}`)
+    if(message.attachments.map(c => c.proxyURL).length === 1) { 
+    if(image.join(" ").toLowerCase().includes(".gif")){
+    embed.attachFiles([new Discord.Attachment(image.join(" "), "boop.gif")])
+    embed.setImage("attachment://boop.gif")
+    }
+    if(image.join(" ").toLowerCase().includes(".png") || image.join(" ").toLowerCase().includes(".jpg") || image.join(" ").toLowerCase().includes('.jpeg')){
+    embed.attachFiles([new Discord.Attachment(image.join(" "), "boop.png")])
+    embed.setImage("attachment://boop.png")
+    }
+    embed.setDescription(`${message.cleanContent ? message.cleanContent : "Image was Deleted."}`)
+    embed.addField(`Image URL`, image.join(' '))
+    }else {
+        embed.setDescription(message.cleanContent ? message.cleanContent : image)
+    }
         Settings.findOne({serverID: message.channel.guild.id}, (err, settings) => {
             if (err) console.log(err);
             if (settings) {
              if (settings.logchannel == "") return;
              let modlogs = message.guild.channels.get(settings.logchannel);
              if (!modlogs) return;
-             modlogs.send(botembed)
+             modlogs.send(embed)
             }
         });
 });
