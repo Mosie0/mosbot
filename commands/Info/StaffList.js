@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
 const embed = new Discord.RichEmbed()
 .setColor(`#11a8ff`)
+.setTitle(`Staff List`)
 .setDescription(`**Owner**
 <@283311727477784576>
 
@@ -13,36 +14,19 @@ const embed = new Discord.RichEmbed()
 <@288450828837322764>
 
 <@&467779026069618694>
-<@330752829859954698>
+<@421033482752360448>
 
 <@&431811267968106506>
 <@289148183282712590> 
 <@297871529621061643>
-<@298201869585612810>
-<@330752829859954698>
-<@421033482752360448>
-<@281153525977972736>
-<@288846410936221696>
+<@203259894743302145>
 
 <@&422058000250044416>
 <@265344329147613185>
 <@372468580643635211>
-<@203259894743302145>
 <@368775528234352642>
 <@358334640928325662>
-<@368775528234352642>
-
-<@&466006038244622338> 
-None
 `)
-
-// Owner: Mo_sie
-// Co-Owner: Jonbn123
-// Bot-Commander: SUPERCHIEFYT
-// Head Admin: Hunter
-// Admins: Dawn, Savage, Strike, Hunter, Cryptic, Weeby, Boozoo
-// Moderators: Cesargeronimo, Victor, Silent, Sirred90, Robo, StarLight
-// Helper of the month: None
 .setThumbnail(message.guild.iconURL)
 message.channel.send(embed);
 message.delete().catch();
