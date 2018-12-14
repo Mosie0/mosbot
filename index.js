@@ -57,18 +57,6 @@ bot.on("ready", async () => {
     require("./utils/playing.js")(bot);
 });
 bot.on("guildMemberAdd", async member => {
-    let serverSize = member.guild.memberCount;
-    let botCount = member.guild.members.filter(m => m.user.bot).size;
-    let humanCount = serverSize - botCount;
-    let welcome = member.guild.channels.find(c => c.name === '👋welcome👋')
-    let welcomeembed = new Discord.RichEmbed()
-    .setColor(`RANDOM`)
-    .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
-    .addField(`Total Users`, `${humanCount}`, true)
-    .setAuthor(member, member.user.avatarURL)
-    .setAuthor(member.user.username, member.user.avatarURL)
-    if (!welcome) return;
-    welcome.send(welcomeembed);
     let botembed = new Discord.RichEmbed()
         .setColor("#1CFF00")
         .setAuthor('Member Joined', member.user.displayAvatarURL)
@@ -85,6 +73,19 @@ bot.on("guildMemberAdd", async member => {
        modlogs.send(botembed); 
       }
     });
+});
+bot.on("guildMemberAdd", async member => {
+    let serverSize = member.guild.memberCount;
+    let botCount = member.guild.members.filter(m => m.user.bot).size;
+    let humanCount = serverSize - botCount;
+    let welcome = member.guild.channels.find(c => c.name === '👋welcome👋')
+    if (!welcome) return;
+    let welcomeembed = new Discord.RichEmbed()
+    .setColor(`RANDOM`)
+    .setDescription(`Welcome to **${member.guild.name}** ${member}!!! So glad that you are here! :smile:<:Hype:446237019283259422>:wave:<a:Cheer:446237254499958795>`)
+    .addField(`Total Users`, `${humanCount}`, true)
+    .setAuthor(member.user.tag, member.user.displayAvatarURL)
+    welcome.send(welcomeembed);
 });
 bot.on("guildMemberRemove", async member => {
    let botembed = new Discord.RichEmbed()
