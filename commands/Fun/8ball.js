@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     let result = Math.floor((Math.random() * replies.length));
-    let question = args.slice(1).join(" ");
+    let question = args.join(" ");
 
     let ballembed = new Discord.RichEmbed()
     .setAuthor(message.author.tag)
