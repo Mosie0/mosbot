@@ -1,7 +1,7 @@
 // SOON ;)
 const Discord = require("discord.js"),
      Money = require("../../models/money.js");
-let progressBar = (percent, bar = `▬`, dot = ``, length = 12) => {
+let progressBar = (percent, bar = `▬`, dot = `💎`, length = 12) => {
      var str = "";
      var i;
      for (i = 0; i < length; i++) { if (i == Math.floor(percent * length)) { str += dot; } else { str += bar; } }
