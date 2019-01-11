@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
                     .setColor("RANDOM")
                     .setAuthor(message.author.tag, message.author.displayAvatarURL)
                     .setTimestamp()
-                    .embedsetFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL);
+                    .setFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL);
                if (money) {
                     balEmbed.setDescription(`
 **Money:** $${money.money}
