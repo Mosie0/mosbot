@@ -9,7 +9,7 @@ let progressBar = (percent, bar = `▬`, dot = ``, length = 12) => {
 };
 
 module.exports.run = async (bot, message, args) => {
-     let user = message.guild.users.get(args[0]) || message.mentions.users.first() || message.author;
+     let user = message.guild.members.get(args[0]) || message.mentions.users.first() || message.author;
 
      message.channel.send('Gathering balance...').then(msg => {
           Money.findOne({ userID: user.id, serverID: message.guild.id }, (err, money) => {
@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
                     .setColor("RANDOM")
                     .setAuthor(message.author.tag, message.author.displayAvatarURL)
                     .setTimestamp()
-                    .setFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL);
+                    .embedsetFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL);
                if (money) {
                     balEmbed.setDescription(`
 **Money:** $${money.money}
