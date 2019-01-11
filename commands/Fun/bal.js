@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 **Level:** ${money.level}
 **XP:** ${money.xp}
 
-**${money.level}** ${progressBar(money.xp / money.nextlevel)} **${money.level + 1}** [${money.xp}/${money.nextlevel}]`)
+**${money.level}** ${progressBar(money.xp / money.nextLevel)} **${money.level + 1}** [${money.xp}/${money.nextLevel}]`)
                } else {
                     balEmbed.setDescription(`
 **Money:** $0
