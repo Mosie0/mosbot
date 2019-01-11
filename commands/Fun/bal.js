@@ -2,7 +2,7 @@
 const Discord = require("discord.js");
 const idk = require("../../models/money.js");
 module.exports.run = async (bot, message, args) => {
-   idk.findOne({guildID: message.guild.id, userID: message.author.id}, async (err, db) => {
+   idk.findOne({serverID: message.guild.id, userID: message.author.id}, async (err, db) => {
     if(!db){return message.channel.send(`${message.author}, I couldn't find anything for you in our database!`)}else{
     let e = new Discord.RichEmbed()
     .setColor("RANDOM")
