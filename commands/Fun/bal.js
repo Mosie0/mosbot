@@ -1,25 +1,46 @@
 // SOON ;)
-const Discord = require("discord.js");
-const idk = require("../../models/money.js");
+const Discord = require("discord.js"),
+     Money = require("../../models/money.js");
+let progressBar = (percent, bar = `▬`, dot = ``, length = 12) => {
+     var str = "";
+     var i;
+     for (i = 0; i < length; i++) { if (i == Math.floor(percent * length)) { str += dot; } else { str += bar; } }
+     return str;
+};
+
 module.exports.run = async (bot, message, args) => {
-   idk.findOne({serverID: message.guild.id, userID: message.author.id}, async (err, db) => {
-    if(!db){return message.channel.send(`${message.author}, I couldn't find anything for you in our database!`)}else{
-    let e = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setAuthor(message.author.tag, message.author.displayAvatarURL)
-    .setTimestamp()
-    .addField("Money", `$${db.money}`, true)
-    .addField("XP", `${db.xp}`, true)
-    .addField("Level", `${db.level}`, true)
-    .addField("Next Level", `${db.nextLevel}`, true)
-    .setFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL)
-    return message.channel.send(e)
-    }
-})
+     let user = message.guild.members.get(args[0]) || message.mentions.members.first() || message.member;
+
+     message.channel.send('Gathering balance...').then(msg => {
+          Money.findOne({ userID: user.id, serverID: message.guild.id }, (err, money) => {
+               if (err) console.log(err);
+               let balEmbed = new Discord.RichEmbed()
+                    .setColor("RANDOM")
+                    .setAuthor(message.author.tag, message.author.displayAvatarURL)
+                    .setTimestamp()
+                    .embedsetFooter("Note: This isn't fully added yet >.>", bot.user.displayAvatarURL);
+               if (money) {
+                    balEmbed.setDescription(`
+**Money:** $${money.money}
+**Level:** ${money.level}
+**XP:** ${money.xp}
+
+**${money.level}** ${progressBar(money.xp / money.nextlevel)} **${money.level + 1}** [${money.xp}/${money.nextlevel}]`)
+               } else {
+                    balEmbed.setDescription(`
+**Money:** $0
+**Level:** 0
+**XP:** 0
+
+**0** ${progressBar(-1)} **1** [0/100]`)
+               }
+               return message.channel.send(balEmbed);
+          });
+     });
 }
 
 module.exports.help = {
-    name: "balance",
-    names: "bal",
-    perm: "all"
+     name: "balance",
+     names: "bal",
+     perm: "all"
 }
