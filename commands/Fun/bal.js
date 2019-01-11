@@ -9,7 +9,7 @@ let progressBar = (percent, bar = `▬`, dot = ``, length = 12) => {
 };
 
 module.exports.run = async (bot, message, args) => {
-     let user = message.guild.members.get(args[0]) || message.mentions.members.first() || message.member;
+     let user = message.guild.users.get(args[0]) || message.mentions.users.first() || message.author;
 
      message.channel.send('Gathering balance...').then(msg => {
           Money.findOne({ userID: user.id, serverID: message.guild.id }, (err, money) => {
@@ -34,6 +34,7 @@ module.exports.run = async (bot, message, args) => {
 
 **0** ${progressBar(-1)} **1** [0/100]`)
                }
+               msg.delete(250);
                return message.channel.send(balEmbed);
           });
      });
