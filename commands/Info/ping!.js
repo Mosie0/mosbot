@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(`RANDOM`)
             .setTitle(`<:Mosbot:533775017435987979> Status <:Mosbot:533775017435987979>`)
             .setFooter(message.author.tag, message.author.displayAvatarURL)
-            .addField(`Message Latency`, `${message.createdTimestamp - m.createdTimestamp}ms`, true)
+            .addField(`Message Latency`, `${m.createdTimestamp - message.createdTimestamp}ms`, true)
             .addField(`API Latency`, `${Math.round(bot.ping)}ms`, true)
             .addField(`Uptime`, `${moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]")}`, true)
             .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
