@@ -3,9 +3,9 @@ module.exports.run = async (bot,message,args) => {
     var options = {
         maxAge: 0
     };
-    const useruser = "Command Ran By: " + message.author.username;
+    const useruser = "Requested By: " + message.author.username;
     const usermade = message.author;
-    const userurl = message.author.avatarURL;
+    const userurl = message.author.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
         .setColor("#000FF")
         .setDescription(`<a:Dots:426956230582599690> Creating......`)
