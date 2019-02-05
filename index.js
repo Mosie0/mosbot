@@ -441,7 +441,7 @@ bot.on('guildUpdate', (oldguild, guild) => {
 
 
 bot.on('guildDelete', async (guild) => {
-    
+    if(guild.available === false) return;
     // ===============================================================================
     // Removes the guild's settings once the bot leaves.
   Settings.findOneAndRemove({serverID: guild.id}).catch((err) => console.log(err));
