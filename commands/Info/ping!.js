@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         const m = await message.channel.send(loadingembed);
         let embed = new Discord.RichEmbed()
             .setColor(`RANDOM`)
-            .setTitle(`<:Mosbot:533775017435987979> Status <:Mosbot:533775017435987979>`)
+            .setTitle(`Status`)
             .setFooter(message.author.tag, message.author.displayAvatarURL)
             .addField(`Message Latency`, `${m.createdTimestamp - message.createdTimestamp}ms`, true)
             .addField(`API Latency`, `${Math.round(bot.ping)}ms`, true)
