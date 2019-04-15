@@ -525,8 +525,10 @@ bot.on("message", async message => {
     let args = messageArray.slice(1);
 
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (checkPerm(bot, message, commandfile.help.perm.toLowerCase(), true) == false) return;
-    if (commandfile) commandfile.run(bot, message, args);
+    if (commandfile){
+         if (checkPerm(bot, message, commandfile.help.perm.toLowerCase(), true) == false) return;
+        commandfile.run(bot, message, args)
+    }
 });
 
 // End of the bot.on Message.
