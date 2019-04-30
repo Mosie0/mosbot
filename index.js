@@ -503,32 +503,27 @@ bot.on("message", async message => {
     const dmreplies = new Discord.WebhookClient(`${process.env.DMWEBHOOKID}`, `${process.env.DMWEBHOOKTOKEN}`);
     if (message.channel.type === "dm") return dmreplies.send(dmembeds);
     
-   let prefixes; 
-   
-   prefixes = ["m!", "M!"];
-    Settings.findOne({serverID: message.guild.id}, (err, settings) => {
-      if (err) console.log(err);
-      if (settings) {
-        if (settings.prefix == "") return;
-        prefixes = [settings.prefix]
-      }
-    });
-    
-    let prefix;
-    for (const thisPrefix of prefixes) {
-        if (message.content.startsWith(thisPrefix)) prefix = thisPrefix;
-    }
-    if (!prefix) require("./utils/money.js")(bot, message);
-    if (!message.content.startsWith(prefix)) return;
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (commandfile){
-         if (checkPerm(bot, message, commandfile.help.perm.toLowerCase(), true) == false) return;
-        commandfile.run(bot, message, args)
-    }
+let prefix;
+await Settings.findOne({serverID: message.guild.id}, async (err, db) => {
+	 if(db){
+		 if(db.prefix ==) return prefix = "m!".toLowerCase();
+		 prefix = db.prefix.toLowerCase()
+	 }else{
+		 prefix = "m!".toLowerCase()
+	 }
+ })
+ 	let commands = await message.content.replace(`<@${bot.user.id}>`, prefix).replace(`<@!${bot.user.id}>`, prefix).replace(' ', '');
+ 	if(commands.startsWith(prefix)){
+ 	let args = commands.slice(prefix.length).trim().split(/ +/g);
+ 	let cmd = args.shift().toLowerCase();
+	 let commandfile = bot.commands.get(cmd);
+	 if (commandfile){
+		  if(checkPerm(bot, message, commandfile.help.perm.toLowerCase(), true) == false) return;
+		 commandfile.run(bot, message, args)
+	 }
+}else{
+	require('./utils/money.js')(bot, message);
+}
 });
 
 // End of the bot.on Message.
