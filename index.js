@@ -506,7 +506,7 @@ bot.on("message", async message => {
 let prefix;
 await Settings.findOne({serverID: message.guild.id}, async (err, db) => {
 	 if(db){
-		 if(db.prefix ==) return prefix = "m!".toLowerCase();
+		 if(db.prefix == '') return prefix = "m!".toLowerCase();
 		 prefix = db.prefix.toLowerCase()
 	 }else{
 		 prefix = "m!".toLowerCase()
