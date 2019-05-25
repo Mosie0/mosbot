@@ -21,15 +21,10 @@ process.on('unhandledRejection', error => {
     .setColor(`RED`)
     .setTitle(`ERROR`)
     .setDescription(error.stack)
-    ["566316752020045861", "490726893864222731"].forEach(c => {try{bot.channels.get(c).send(errorembed)}catch(e){}})
+    try{bot.channels.get("490726893864222731").send(errorembed)}catch(e){}
 });
 
 bot.on("ready", async () => {
-    let embed = new Discord.RichEmbed()
-    .setColor(`RANDOM`)
-    .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
-    .setTitle(`Connected`)
-    bot.channels.get("504207127133421568").send(embed)
     bot.guilds.forEach(guild => {
     Settings.findOne({serverID: guild.id}, (err, settings) => {
       if (err) console.log(err);
