@@ -1,6 +1,3 @@
-//=============================================================================================================================================================================================
-// Start of the bot requirements etc.
-
 const botconfig = require("./botconfig.json"),
     Discord = require("discord.js"),
     fs = require("fs"),
@@ -11,10 +8,6 @@ let Settings = require("./models/settings.js");
 bot.commands = new Discord.Collection();
 bot.login(process.env.BOT_TOKEN)
 mongoose.connect(`mongodb://${process.env.usermongodb}:${process.env.passmongodb}@mosbot-shard-00-00-wfckx.mongodb.net:27017/account?ssl=true&replicaSet=MosBot-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true});
-
-// End of the Bot Requirements etc.
-//=============================================================================================================================================================================================
-// Start Of the bot.on Messages.
 process.on('unhandledRejection', error => {
     console.error(`ERROR: \n${error.stack}`);
     let errorembed = new Discord.RichEmbed()
@@ -518,109 +511,17 @@ await Settings.findOne({serverID: message.guild.id}, async (err, db) => {
 }
 });
 
-// End of the bot.on Message.
-//==============================================================================================================================================================================================
-// Start of Getting and Loading the Commands
-
-fs.readdir("./commands/Fun", (err, files) => {
-
-    if (err) console.log(err);
+// -- Command Handler -- 
+["Fun/", "Info/", "Moderation/", "BotOwner/", "BotOwner/MosieCommands/", "Info/Embedsgaminghq/"].forEach(event => {
+fs.readdir(`./commands/${event}`, (err, files) => {
+    if (err) return console.log(err);
     let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't find Fun commands.");
-        return;
-    }
-
+    if (jsfile.length === 0) return;
     jsfile.forEach((f, i) => {
-        let props = require(`./commands/Fun/${f}`);
+        let props = require(`./commands/${event}${f}`);
         console.log(`${f} loaded!`);
         bot.commands.set(props.help.name, props);
         bot.commands.set(props.help.names, props);
     });
 });
-
-fs.readdir("./commands/Info/", (err, files) => {
-
-    if (err) console.log(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't Info find commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/Info/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-        bot.commands.set(props.help.names, props);
-    });
-});
-
-fs.readdir("./commands/Moderation/", (err, files) => {
-
-    if (err) console.log(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't find Moderation commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/Moderation/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-        bot.commands.set(props.help.names, props);
-    });
-});
-
-fs.readdir("./commands/BotOwner", (err, files) => {
-
-    if (err) console.log(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't find Bot Owner commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/BotOwner/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-        bot.commands.set(props.help.names, props);
-    });
-});
-fs.readdir("./commands/BotOwner/MosieCommands", (err, files) => {
-
-    if (err) console.log(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't find BotOwner/MosieCommands commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/BotOwner/MosieCommands/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-        bot.commands.set(props.help.names, props);
-    });
-});
-
-fs.readdir("./commands/Info/Embedsgaminghq", (err, files) => {
-
-    if (err) console.log(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) {
-        console.log("Couldn't find Info/Embedsgaminghq commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/Info/Embedsgaminghq/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-        bot.commands.set(props.help.names, props);
-    });
-});
-// End of Getting Commands.
-//=============================================================================================================================================================================================
+})
